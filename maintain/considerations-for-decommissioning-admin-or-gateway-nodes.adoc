@@ -1,0 +1,22 @@
+---
+permalink: maintain/considerations-for-decommissioning-admin-or-gateway-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission admin node, decommission gateway node 
+summary: Prima di disattivare un nodo Admin o un nodo gateway, esaminare le seguenti considerazioni. 
+---
+= Considerazioni per la decommissionazione del nodo Admin o del nodo gateway
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di disattivare un nodo Admin o un nodo gateway, esaminare le seguenti considerazioni.
+
+* La procedura di decommissionamento richiede l'accesso esclusivo ad alcune risorse di sistema, pertanto è necessario verificare che non siano in esecuzione altre procedure di manutenzione.
+* Impossibile decommissionare il nodo di amministrazione primario.
+* Non è possibile decommissionare un nodo Admin o un nodo Gateway se una delle sue interfacce di rete fa parte di un gruppo ad alta disponibilità (ha). Rimuovere prima le interfacce di rete dal gruppo ha. Consultare le istruzioni per link:../admin/managing-high-availability-groups.html["Gestione dei gruppi ha"].
+* Come richiesto, è possibile modificare in modo sicuro il criterio ILM durante la disattivazione di un nodo gateway o di un nodo amministratore.
+* Se si decommissiona un nodo amministratore e si attiva l'accesso singolo (SSO) per il sistema StorageGRID, è necessario ricordare di rimuovere l'attendibilità della parte di base del nodo dai servizi di federazione di Active Directory (ad FS).
+* Se si utilizza link:../admin/grid-federation-overview.html["federazione di grid"], Assicurarsi che l'indirizzo IP del nodo che si sta smantellando non sia stato specificato per una connessione a federazione di griglia.
+

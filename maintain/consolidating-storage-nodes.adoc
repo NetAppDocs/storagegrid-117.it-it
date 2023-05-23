@@ -1,0 +1,26 @@
+---
+permalink: maintain/consolidating-storage-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, storage node, consolidate storage node, consolidating storage node 
+summary: 'È possibile consolidare i nodi di storage per ridurre il numero di nodi di storage per un sito o un"implementazione, aumentando al contempo la capacità di storage.' 
+---
+= Consolidare i nodi di storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile consolidare i nodi di storage per ridurre il numero di nodi di storage per un sito o un'implementazione, aumentando al contempo la capacità di storage.
+
+Quando consolidate i nodi storage, espandete il sistema StorageGRID per aggiungere nuovi nodi storage con capacità maggiore e decommissionare i vecchi nodi storage con capacità inferiore. Durante la procedura di decommissionamento, gli oggetti vengono migrati dai vecchi nodi di storage ai nuovi nodi di storage.
+
+
+NOTE: Se si consolidano appliance più vecchie e più piccole con nuovi modelli o appliance di capacità superiore, molti utilizzano la funzionalità di clone del nodo o la procedura di clone del nodo e la procedura di decommissionamento se non si esegue una sostituzione uno a uno.
+
+Ad esempio, è possibile aggiungere due nuovi nodi di storage con capacità maggiore per sostituire tre nodi di storage meno recenti. Prima di tutto, utilizzare la procedura di espansione per aggiungere i due nuovi nodi di storage di dimensioni maggiori, quindi utilizzare la procedura di decommissionamento per rimuovere i tre nodi di storage di capacità inferiore.
+
+Aggiungendo nuova capacità prima di rimuovere i nodi di storage esistenti, è possibile garantire una distribuzione più equilibrata dei dati nel sistema StorageGRID. Inoltre, si riduce la possibilità che un nodo di storage esistente venga spinto oltre il livello di filigrana dello storage.
+
+.Informazioni correlate
+link:../expand/index.html["Espandi il tuo grid"]

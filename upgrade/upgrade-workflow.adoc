@@ -1,0 +1,33 @@
+---
+permalink: upgrade/upgrade-workflow.html 
+sidebar: sidebar 
+keywords: upgrade workflow 
+summary: 'Prima di iniziare l"aggiornamento, esaminare il flusso di lavoro generale. La pagina aggiornamento StorageGRID guida l"utente attraverso la procedura di aggiornamento.' 
+---
+= Workflow di upgrade
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di iniziare l'aggiornamento, esaminare il flusso di lavoro generale. La pagina aggiornamento StorageGRID guida l'utente attraverso ogni fase di aggiornamento.
+
+image::../media/upgrade_workflow.png[Diagramma di flusso delle fasi di aggiornamento del software]
+
+. Se vengono implementati nodi StorageGRID su host Linux, link:linux-installing-rpm-or-deb-package-on-all-hosts.html["Installare il pacchetto RPM o DEB su ciascun host"] prima di iniziare l'aggiornamento.
+. Dal nodo di amministrazione principale, accedere alla pagina di aggiornamento StorageGRID e caricare il file di aggiornamento e il file di correzione rapida, se necessario.
+. Scaricare il pacchetto di ripristino corrente.
+. Eseguire i controlli preliminari per l'aggiornamento per rilevare e risolvere eventuali problemi prima di avviare l'aggiornamento effettivo.
+. Avviare l'aggiornamento, che esegue controlli preliminari e aggiorna automaticamente il nodo di amministrazione primario. Impossibile accedere a Grid Manager durante l'aggiornamento del nodo di amministrazione primario. Anche i registri di controllo non saranno disponibili. L'aggiornamento può richiedere fino a 30 minuti.
+. Una volta aggiornato il nodo di amministrazione primario, scaricare un nuovo pacchetto di ripristino.
+. Approvare i nodi della griglia. È possibile approvare singoli nodi griglia, gruppi di nodi griglia o tutti i nodi griglia.
++
+
+IMPORTANT: Non approvare l'aggiornamento per un nodo grid a meno che non si sia certi che il nodo sia pronto per essere arrestato e riavviato.
+
+. Riprendere le operazioni. Una volta aggiornati tutti i nodi della griglia, vengono attivate nuove funzionalità ed è possibile riprendere le operazioni. È necessario attendere l'esecuzione di una procedura di decommissionamento o espansione fino al completamento dell'attività *Upgrade database* in background e dell'attività *Final upgrade steps*.
+
+
+.Informazioni correlate
+link:estimating-time-to-complete-upgrade.html["Stima del tempo necessario per completare un aggiornamento"]

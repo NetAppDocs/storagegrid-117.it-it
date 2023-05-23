@@ -1,0 +1,229 @@
+---
+permalink: monitor/configure-audit-messages.html 
+sidebar: sidebar 
+keywords: audit messages, configure syslog server, configure external syslog server. log destinations 
+summary: 'Tutti i nodi StorageGRID generano messaggi di audit per tenere traccia dell"attività e degli eventi del sistema. È possibile regolare i livelli di audit per aumentare o diminuire il tipo e il numero di messaggi di audit registrati.' 
+---
+= Configurare i messaggi di audit e le destinazioni dei log
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I messaggi e i registri di audit registrano le attività del sistema e gli eventi di sicurezza e sono strumenti essenziali per il monitoraggio e la risoluzione dei problemi. È possibile regolare i livelli di audit per aumentare o diminuire il tipo e il numero di messaggi di audit registrati. Facoltativamente, è possibile definire le intestazioni delle richieste HTTP che si desidera includere nei messaggi di controllo di lettura e scrittura del client. È inoltre possibile configurare un server syslog esterno e modificare la destinazione delle informazioni di controllo.
+
+Per ulteriori informazioni sui messaggi di controllo, vedere link:../audit/index.html["Esaminare i registri di audit"].
+
+.Prima di iniziare
+* Hai effettuato l'accesso a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* Si dispone delle autorizzazioni di accesso Maintenance o Root.
+
+
+.A proposito di questa attività
+Tutti i nodi StorageGRID generano messaggi di audit e registri per tenere traccia dell'attività e degli eventi del sistema. Per impostazione predefinita, le informazioni di controllo vengono inviate al registro di controllo sui nodi di amministrazione. È possibile regolare i livelli di audit per aumentare o diminuire il tipo e il numero di messaggi di audit registrati nel registro di audit. In alternativa, è possibile configurare le informazioni di audit in modo che vengano memorizzate temporaneamente nei nodi di origine per la raccolta manuale.
+
+
+IMPORTANT: Se si dispone di un grande grid, si utilizzano più tipi di applicazioni S3 o si desidera conservare tutti i dati di audit, configurare un server syslog esterno e salvare le informazioni di audit in remoto. L'utilizzo di un server esterno riduce al minimo l'impatto delle performance della registrazione dei messaggi di audit senza ridurre la completezza dei dati di audit. Vedere link:../monitor/considerations-for-external-syslog-server.html["Considerazioni sul server syslog esterno"] per ulteriori informazioni.
+
+
+
+== Modificare i livelli dei messaggi di audit nel registro di audit
+
+È possibile impostare un livello di audit diverso per ciascuna delle seguenti categorie di messaggi nel registro di audit:
+
+[cols="1a,3a"]
+|===
+| Categoria di audit | Descrizione 
+
+
+ a| 
+Sistema
+ a| 
+Per impostazione predefinita, questo livello è impostato su normale. Vedere link:../audit/system-audit-messages.html["Messaggi di audit del sistema"].
+
+
+
+ a| 
+Storage
+ a| 
+Per impostazione predefinita, questo livello è impostato su Error (errore). Vedere link:../audit/object-storage-audit-messages.html["Messaggi di audit dello storage a oggetti"].
+
+
+
+ a| 
+Gestione
+ a| 
+Per impostazione predefinita, questo livello è impostato su normale. Vedere link:../audit/management-audit-message.html["Messaggio di audit della gestione"].
+
+
+
+ a| 
+Letture del client
+ a| 
+Per impostazione predefinita, questo livello è impostato su normale. Vedere link:../audit/client-read-audit-messages.html["Messaggi di audit in lettura del client"].
+
+
+
+ a| 
+Il client scrive
+ a| 
+Per impostazione predefinita, questo livello è impostato su normale. Vedere link:../audit/client-write-audit-messages.html["Messaggi di audit di scrittura del client"].
+
+
+
+ a| 
+Operazioni ILM
+ a| 
+Per impostazione predefinita, questo livello è impostato su normale. Vedere link:../audit/ilm-audit-messages.html["Messaggi di audit delle operazioni ILM"].
+
+|===
+
+NOTE: Queste impostazioni predefinite si applicano se StorageGRID è stato installato inizialmente utilizzando la versione 10.3 o successiva. Se è stato eseguito l'aggiornamento da una versione precedente di StorageGRID, l'impostazione predefinita per tutte le categorie è normale.
+
+
+NOTE: Durante gli aggiornamenti, le configurazioni a livello di audit non saranno effettive immediatamente.
+
+.Fasi
+. Selezionare *CONFIGURATION* > *Monitoring* > *Audit and syslog server*.
+. Per ciascuna categoria di messaggi di audit, selezionare un livello di audit dall'elenco a discesa:
++
+[cols="1a,3a"]
+|===
+| Livello di audit | Descrizione 
+
+
+ a| 
+Spento
+ a| 
+Non vengono registrati messaggi di audit della categoria.
+
+
+
+ a| 
+Errore
+ a| 
+Vengono registrati solo messaggi di errore - messaggi di audit per i quali il codice risultato non è stato "riuscito" (SUCS).
+
+
+
+ a| 
+Normale
+ a| 
+Vengono registrati i messaggi transazionali standard, ovvero i messaggi elencati in queste istruzioni per la categoria.
+
+
+
+ a| 
+Debug
+ a| 
+Obsoleto. Questo livello si comporta come il livello di audit normale.
+
+|===
++
+I messaggi inclusi per qualsiasi livello specifico includono quelli che verrebbero registrati ai livelli superiori. Ad esempio, il livello normale include tutti i messaggi di errore.
+
++
+
+NOTE: Se non si richiede un record dettagliato delle operazioni di lettura del client per le applicazioni S3, modificare l'impostazione *letture del client* su *errore* per ridurre il numero di messaggi di audit registrati nel registro di audit.
+
+. Facoltativamente, in *Audit Protocol headers*, definire le intestazioni delle richieste HTTP che si desidera includere nei messaggi di controllo di lettura e scrittura del client. Utilizzare un asterisco (*) come carattere jolly per far corrispondere zero o più caratteri. Utilizzare la sequenza escape (*) per far corrispondere un asterisco letterale.
++
+
+NOTE: Le intestazioni dei protocolli di audit si applicano solo alle richieste S3 e Swift.
+
+. Selezionare *Add another header* (Aggiungi un'altra intestazione) per creare altre intestazioni, se necessario.
++
+Quando le intestazioni HTTP vengono trovate in una richiesta, vengono incluse nel messaggio di audit nel campo HTRH.
+
++
+
+NOTE: Le intestazioni delle richieste del protocollo di audit vengono registrate solo se il livello di audit per *letture client* o *scritture client* non è *disattivato*.
+
+. Selezionare *Salva*
++
+Viene visualizzato un banner verde per indicare che la configurazione è stata salvata correttamente.
+
+
+
+
+
+== Utilizzare un server syslog esterno
+
+È possibile configurare un server syslog esterno se si desidera salvare le informazioni di audit in remoto.
+
+* Se si desidera salvare le informazioni di controllo su un server syslog esterno, visitare il sito Web link:../monitor/configuring-syslog-server.html["Configurare un server syslog esterno"].
+* Se non si utilizza un server syslog esterno, visitare il sito Web all'indirizzo <<Select-audit-information-destinations,Selezionare le destinazioni delle informazioni di audit>>.
+
+
+
+
+== Selezionare le destinazioni delle informazioni di audit
+
+È possibile specificare dove inviare registri di audit, registri eventi di protezione e registri delle applicazioni.
+
+
+NOTE: Alcune destinazioni sono disponibili solo se si utilizza un server syslog esterno. Vedere link:../monitor/configuring-syslog-server.html["Configurare un server syslog esterno"] per configurare un server syslog esterno.
+
+
+NOTE: Per ulteriori informazioni sui log del software StorageGRID, vedere link:../monitor/storagegrid-software-logs.html#["Log del software StorageGRID"].
+
+. Nella pagina Audit and syslog server, selezionare la destinazione per le informazioni di audit dalle opzioni elencate:
++
+[cols="1a,2a"]
+|===
+| Opzione | Descrizione 
+
+
+ a| 
+Predefinito (nodi amministrativi/nodi locali)
+ a| 
+I messaggi di audit vengono inviati al registro di audit (`audit.log`) Nel nodo di amministrazione, i registri degli eventi di protezione e i registri delle applicazioni vengono memorizzati nei nodi in cui sono stati generati (anche denominati "nodo locale").
+
+
+
+ a| 
+Server syslog esterno
+ a| 
+Le informazioni di audit vengono inviate a un server syslog esterno e salvate sul nodo locale. Il tipo di informazioni inviate dipende dalla configurazione del server syslog esterno. Questa opzione viene attivata solo dopo aver configurato un server syslog esterno.
+
+
+
+ a| 
+Nodo di amministrazione e server syslog esterno
+ a| 
+I messaggi di audit vengono inviati al registro di audit (`audit.log`) Sul nodo Admin e le informazioni di audit vengono inviate al server syslog esterno e salvate sul nodo locale. Il tipo di informazioni inviate dipende dalla configurazione del server syslog esterno. Questa opzione viene attivata solo dopo aver configurato un server syslog esterno.
+
+
+
+ a| 
+Solo nodi locali
+ a| 
+Nessuna informazione di controllo viene inviata a un nodo di amministrazione o a un server syslog remoto. Le informazioni di audit vengono salvate solo sui nodi che le hanno generate.
+
+*Nota*: StorageGRID rimuove periodicamente questi log locali in una rotazione per liberare spazio. Quando il file di log di un nodo raggiunge 1 GB, il file esistente viene salvato e viene avviato un nuovo file di log. Il limite di rotazione per il log è di 21 file. Quando viene creata la ventiduesima versione del file di log, il file di log più vecchio viene cancellato. In media, su ciascun nodo vengono memorizzati circa 20 GB di dati di log.
+
+|===
++
+
+NOTE: Le informazioni di audit generate su ogni nodo locale sono memorizzate in `/var/local/log/localaudit.log`
+
+. Selezionare *Salva*.
++
+Viene visualizzato un messaggio di avviso.
+
+. Selezionare *OK* per confermare che si desidera modificare la destinazione per le informazioni di controllo.
++
+Viene visualizzato un banner verde che informa che la configurazione di controllo è stata salvata.
+
++
+I nuovi registri vengono inviati alle destinazioni selezionate. I registri esistenti rimangono nella posizione corrente.
+
+
+
+.Informazioni correlate
+link:../monitor/considerations-for-external-syslog-server.html["Considerazioni sul server syslog esterno"]
+
+link:../admin/index.html["Amministrare StorageGRID"]
+
+link:../troubleshoot/troubleshooting-syslog-server.html["Risolvere i problemi del server syslog esterno"]

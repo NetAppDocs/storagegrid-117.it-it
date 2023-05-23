@@ -1,0 +1,24 @@
+---
+permalink: monitor/index.html 
+sidebar: sidebar 
+keywords: monitor StorageGRID 
+summary: Utilizzare queste istruzioni per monitorare un sistema StorageGRID e per valutare e risolvere i problemi che potrebbero verificarsi. 
+---
+= Monitorare un sistema StorageGRID: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzare queste istruzioni per monitorare un sistema StorageGRID e valutare i problemi che potrebbero verificarsi.
+
+Queste istruzioni descrivono come utilizzare Grid Manager per monitorare un sistema StorageGRID. Verranno fornite informazioni su quali informazioni monitorare regolarmente, su come gestire gli avvisi e gli allarmi legacy, su come utilizzare SNMP per il monitoraggio e su come ottenere dati StorageGRID aggiuntivi, tra cui metriche e diagnostica.
+
+.Prima di iniziare
+* È necessario accedere a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* Devi avere link:../admin/admin-group-permissions.html["autorizzazioni di accesso specifiche"].
+
+
+
+NOTE: Per modificare le unità per i valori di storage visualizzati in Grid Manager, selezionare il menu a discesa User (utente) in alto a destra in Grid Manager, quindi selezionare *User preferences* (Preferenze utente).

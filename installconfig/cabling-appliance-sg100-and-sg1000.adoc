@@ -1,0 +1,197 @@
+---
+permalink: installconfig/cabling-appliance-sg100-and-sg1000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, cabling, wiring, connecting, cable, wire, connect 
+summary: 'È necessario collegare la porta di gestione dell"appliance al laptop di servizio e le porte di rete dell"appliance alla rete di rete e alla rete client opzionale per StorageGRID.' 
+---
+= Capocorda (SG100 e SG1000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario collegare la porta di gestione dell'appliance al laptop di servizio e le porte di rete dell'appliance alla rete di rete e alla rete client opzionale per StorageGRID.
+
+.Prima di iniziare
+* Si dispone di un cavo Ethernet RJ-45 per il collegamento della porta di gestione.
+* Per le porte di rete è disponibile una delle seguenti opzioni. Questi elementi non sono forniti con l'apparecchio.
++
+** Da uno a quattro cavi twinax per il collegamento delle quattro porte di rete.
+** Per SG100, da uno a quattro ricetrasmettitori SFP+ o SFP28 se si intende utilizzare cavi ottici per le porte.
+** Per SG1000, da uno a quattro ricetrasmettitori QSFP+ o QSFP28 se si intende utilizzare cavi ottici per le porte.
+
+
+
+
+
+CAUTION: *Rischio di esposizione alle radiazioni laser* -- non smontare o rimuovere alcuna parte di un ricetrasmettitore SFP o QSFP. L'utente potrebbe essere esposto alle radiazioni laser.
+
+.A proposito di questa attività
+Le seguenti figure mostrano le porte sul retro dell'apparecchio.
+
+Connessioni porta SG100:
+
+image::../media/sg100_connections.png[Connettori posteriori SG100]
+
+Connessioni porta SG1000:
+
+image::../media/sg1000_connections.png[Connessioni a porte SG1000]
+
+[cols="1a,2a,2a,3a"]
+|===
+| Didascalia | Porta | Tipo di porta | Utilizzare 
+
+
+ a| 
+1
+ a| 
+Porta di gestione BMC sull'appliance
+ a| 
+1 GbE (RJ-45)
+ a| 
+Si connette alla rete da cui si accede all'interfaccia BMC.
+
+
+
+ a| 
+2
+ a| 
+Quattro porte di rete sull'appliance
+ a| 
+* Per SG100: 10/25-GbE
+* Per SG1000: 10/25/40/100-GbE
+
+ a| 
+Connettersi alla rete griglia e alla rete client per StorageGRID.
+
+
+
+ a| 
+3
+ a| 
+Admin Network Port (porta di rete amministrativa) sull'appliance (indicata con P1 nelle figure)
+ a| 
+1 GbE (RJ-45)
+
+*Importante:* questa porta funziona solo a 1000 BaseT/full e non supporta velocità da 10 o 100 megabit.
+ a| 
+Collega l'appliance alla rete amministrativa per StorageGRID.
+
+
+
+ a| 
+ a| 
+Porta RJ-45 più a destra dell'appliance
+ a| 
+1 GbE (RJ-45)
+
+*Importante:* questa porta funziona solo a 1000 BaseT/full e non supporta velocità da 10 o 100 megabit.
+ a| 
+* Può essere collegato alla porta di gestione 1 se si desidera una connessione ridondante alla rete di amministrazione.
+* Può essere lasciato disconnesso e disponibile per l'accesso locale temporaneo (IP 169.254.0.1).
+* Durante l'installazione, può essere utilizzato per collegare l'appliance a un laptop di assistenza se gli indirizzi IP assegnati da DHCP non sono disponibili.
+
+
+|===
+.Fasi
+. Collegare la porta di gestione BMC dell'appliance alla rete di gestione utilizzando un cavo Ethernet.
++
+Sebbene questa connessione sia opzionale, si consiglia di facilitare il supporto.
+
+. Collegare le porte di rete dell'appliance agli switch di rete appropriati, utilizzando cavi twinax o cavi ottici e ricetrasmettitori.
++
+[NOTE]
+====
+Tutte e quattro le porte di rete devono utilizzare la stessa velocità di collegamento. Consultare la seguente tabella per le apparecchiature necessarie per l'hardware e la velocità di collegamento.
+
+[cols="2a,2a"]
+|===
+| Velocità di collegamento SG100 (GbE) | Attrezzatura necessaria 
+
+
+ a| 
+10
+ a| 
+Ricetrasmettitore SFP+
+
+
+
+ a| 
+25
+ a| 
+Ricetrasmettitore SFP28
+
+
+
+| Velocità di collegamento SG1000 (GbE) | Attrezzatura necessaria 
+
+
+ a| 
+10
+ a| 
+Ricetrasmettitore QSA e SFP+
+
+
+
+ a| 
+25
+ a| 
+Ricetrasmettitore QSA e SFP28
+
+
+
+ a| 
+40
+ a| 
+Ricetrasmettitore QSFP+
+
+
+
+ a| 
+100
+ a| 
+Ricetrasmettitore QFSP28
+
+|===
+====
++
+** Se si prevede di utilizzare la modalità Fixed Port Bond (connessione porta fissa) (impostazione predefinita), collegare le porte alla rete StorageGRID e alle reti client, come mostrato nella tabella.
++
+[cols="1a,2a"]
+|===
+| Porta | Si connette a... 
+
+
+ a| 
+Porta 1
+ a| 
+Rete client (opzionale)
+
+
+
+ a| 
+Porta 2
+ a| 
+Grid Network
+
+
+
+ a| 
+Porta 3
+ a| 
+Rete client (opzionale)
+
+
+
+ a| 
+Porta 4
+ a| 
+Grid Network
+
+|===
+** Se si intende utilizzare la modalità aggregate port bond, collegare una o più porte di rete a uno o più switch. È necessario collegare almeno due delle quattro porte per evitare un singolo punto di errore. Se si utilizzano più switch per un singolo collegamento LACP, gli switch devono supportare MLAG o equivalente.
+
+
+. Se si intende utilizzare la rete di amministrazione per StorageGRID, collegare la porta della rete di amministrazione dell'appliance alla rete di amministrazione utilizzando un cavo Ethernet.
+

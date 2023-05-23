@@ -1,0 +1,172 @@
+---
+permalink: ilm/manage-erasure-coding-profiles.html 
+sidebar: sidebar 
+keywords: rename erasure coding profile, ec profile 
+summary: Se necessario, è possibile rinominare un profilo di erasure coding. È possibile disattivare un profilo di erasure coding se non è attualmente utilizzato in alcuna regola ILM. 
+---
+= Gestire i profili di erasure coding
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se necessario, è possibile rinominare un profilo di erasure coding. È possibile disattivare un profilo di erasure coding se non è attualmente utilizzato in alcuna regola ILM.
+
+
+
+== Rinominare un profilo di erasure coding
+
+È possibile rinominare un profilo di erasure coding per rendere più ovvia la funzione del profilo.
+
+.Prima di iniziare
+* Hai effettuato l'accesso a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* Hai il link:../admin/admin-group-permissions.html["autorizzazioni di accesso richieste"].
+
+
+.Fasi
+. Selezionare *ILM* > *Erasure coding*.
+. Selezionare il profilo che si desidera rinominare.
+. Selezionare *Rinomina*.
+. Immettere un nome univoco per il profilo di erasure coding.
++
+Il nome del profilo di erasure coding viene aggiunto al nome del pool di storage nelle istruzioni di posizionamento per una regola ILM.
+
++
+
+NOTE: I nomi dei profili di erasure coding devono essere univoci. Si verifica un errore di convalida se si utilizza il nome di un profilo esistente, anche se tale profilo è stato disattivato.
+
+. Selezionare *Salva*.
+
+
+
+
+== Disattivare un profilo di erasure coding
+
+È possibile disattivare un profilo di erasure coding se non si prevede più di utilizzarlo e se il profilo non è attualmente utilizzato in alcuna regola ILM.
+
+.Prima di iniziare
+* Hai effettuato l'accesso a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* Hai il link:../admin/admin-group-permissions.html["autorizzazioni di accesso richieste"].
+* Hai confermato che non sono in corso operazioni di riparazione dei dati codificati per la cancellazione o procedure di decommissionamento. Se si tenta di disattivare un profilo di erasure coding mentre è in corso una di queste operazioni, viene visualizzato un messaggio di errore.
+
+
+.A proposito di questa attività
+Quando si disattiva un profilo di erasure coding, il profilo continua a essere visualizzato nella pagina Erasure coding Profiles, ma il suo stato è *Disattivato*.
+
+image::../media/deactivated_ec_profile.png[Profilo EC disattivato]
+
+Non è più possibile utilizzare un profilo di erasure coding disattivato. Un profilo disattivato non viene visualizzato quando si creano le istruzioni di posizionamento per una regola ILM. Non puoi riattivare un profilo disattivato.
+
+StorageGRID impedisce di disattivare un profilo di erasure coding se si verifica una delle seguenti condizioni:
+
+* Il profilo di erasure coding è attualmente utilizzato in una regola ILM.
+* Il profilo di erasure coding non viene più utilizzato in alcuna regola ILM, ma i dati degli oggetti e i frammenti di parità per il profilo esistono ancora.
+
+
+.Fasi
+. Selezionare *ILM* > *Erasure coding*.
+. Controllare la colonna *Status* per verificare che il profilo di erasure coding che si desidera disattivare non sia utilizzato in alcuna regola ILM.
++
+Non è possibile disattivare un profilo di erasure coding se utilizzato in qualsiasi regola ILM. Nell'esempio, il profilo *2+1 Data Center 1* viene utilizzato in almeno una regola ILM.
+
++
+image::../media/ec_profile_used_in_ilm_rule.png[Profilo EC utilizzato nella regola ILM]
+
+. Se il profilo viene utilizzato in una regola ILM, attenersi alla seguente procedura:
++
+.. Selezionare *ILM* > *regole*.
+.. Selezionare ciascuna regola e consultare il diagramma di conservazione per determinare se la regola utilizza il profilo di erasure coding che si desidera disattivare.
+.. Se la regola ILM utilizza il profilo di erasure coding che si desidera disattivare, determinare se la regola viene utilizzata nel criterio ILM attivo o in un criterio proposto.
+.. Completare i passaggi aggiuntivi della tabella, in base alla posizione in cui viene utilizzato il profilo di erasure coding.
++
+[cols="2a,4a,1a"]
+|===
+| Dove è stato utilizzato il profilo? | Ulteriori passaggi da eseguire prima di disattivare il profilo | Fare riferimento a queste istruzioni aggiuntive 
+
+
+ a| 
+Mai utilizzato in nessuna regola ILM
+ a| 
+Non sono necessari passaggi aggiuntivi. Continuare con questa procedura.
+ a| 
+_Nessuno_
+
+
+
+ a| 
+In una regola ILM che non è mai stata utilizzata in alcun criterio ILM
+ a| 
+... Modificare o eliminare tutte le regole ILM interessate. Se si modifica la regola, rimuovere tutte le posizioni che utilizzano il profilo di erasure coding.
+... Continuare con questa procedura.
+
+ a| 
+link:working-with-ilm-rules-and-ilm-policies.html["Utilizzare le regole ILM e i criteri ILM"]
+
+
+
+ a| 
+In una regola ILM attualmente nel criterio ILM attivo
+ a| 
+... Clonare il criterio attivo.
+... Rimuovere la regola ILM che utilizza il profilo di erasure coding.
+... Aggiungere una o più nuove regole ILM per garantire la protezione degli oggetti.
+... Salvare, simulare e attivare la nuova policy.
+... Attendere che il nuovo criterio venga applicato e che gli oggetti esistenti vengano spostati in nuove posizioni in base alle nuove regole aggiunte.
++
+*Nota:* a seconda del numero di oggetti e delle dimensioni del sistema StorageGRID, potrebbero essere necessarie settimane o addirittura mesi per le operazioni ILM per spostare gli oggetti in nuove posizioni, in base alle nuove regole ILM.
+
++
+Anche se è possibile tentare in modo sicuro di disattivare un profilo di erasure coding mentre è ancora associato ai dati, l'operazione di disattivazione non riesce. Se il profilo non è ancora pronto per la disattivazione, viene visualizzato un messaggio di errore.
+
+... Modificare o eliminare la regola rimossa dal criterio. Se si modifica la regola, rimuovere tutte le posizioni che utilizzano il profilo di erasure coding.
+... Continuare con questa procedura.
+
+ a| 
+link:creating-ilm-policy.html["Creare un criterio ILM"]
+
+link:working-with-ilm-rules-and-ilm-policies.html["Utilizzare le regole ILM e i criteri ILM"]
+
+
+
+ a| 
+In una regola ILM attualmente in un criterio ILM proposto
+ a| 
+... Modificare la policy proposta.
+... Rimuovere la regola ILM che utilizza il profilo di erasure coding.
+... Aggiungere una o più nuove regole ILM per garantire la protezione di tutti gli oggetti.
+... Salvare la policy proposta.
+... Modificare o eliminare la regola rimossa dal criterio. Se si modifica la regola, rimuovere tutte le posizioni che utilizzano il profilo di erasure coding.
+... Continuare con questa procedura.
+
+ a| 
+link:creating-ilm-policy.html["Creare un criterio ILM"]
+
+link:working-with-ilm-rules-and-ilm-policies.html["Utilizzare le regole ILM e i criteri ILM"]
+
+
+
+ a| 
+In una regola ILM che si trova in una policy ILM storica
+ a| 
+... Modificare o eliminare la regola. Se si modifica la regola, rimuovere tutte le posizioni che utilizzano il profilo di erasure coding. (La regola verrà ora visualizzata come regola storica nella policy storica).
+... Continuare con questa procedura.
+
+ a| 
+link:working-with-ilm-rules-and-ilm-policies.html["Utilizzare le regole ILM e i criteri ILM"]
+
+|===
+.. Aggiornare la pagina Erasure Coding Profiles per assicurarsi che il profilo non venga utilizzato in una regola ILM.
+
+
+. Se il profilo non viene utilizzato in una regola ILM, selezionare il pulsante di opzione e selezionare *Disattiva*.
++
+Viene visualizzata la finestra di dialogo Disattiva profilo EC.
+
+. Se sei sicuro di voler disattivare il profilo, seleziona *Disattiva*.
++
+** Se StorageGRID è in grado di disattivare il profilo di erasure coding, il suo stato è *Disattivato*. Non è più possibile selezionare questo profilo per nessuna regola ILM.
+** Se StorageGRID non è in grado di disattivare il profilo, viene visualizzato un messaggio di errore. Ad esempio, se i dati dell'oggetto sono ancora associati a questo profilo, viene visualizzato un messaggio di errore. Potrebbe essere necessario attendere alcune settimane prima di provare di nuovo il processo di disattivazione.
+
+
+

@@ -1,0 +1,37 @@
+---
+permalink: upgrade/changes-to-grid-management-api.html 
+sidebar: sidebar 
+keywords: grid management api, api, api version, swagger, rest api 
+summary: 'StorageGRID 11.7 utilizza la versione 3 dell"API per la gestione dei grid. La versione 3 è obsoleta della versione 2; tuttavia, la versione 1 e la versione 2 sono ancora supportate.' 
+---
+= Modifiche all'API Grid Management
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 11.7 utilizza la versione 3 dell'API per la gestione dei grid. La versione 3 è obsoleta della versione 2; tuttavia, la versione 1 e la versione 2 sono ancora supportate.
+
+
+IMPORTANT: È possibile continuare a utilizzare la versione 1 e la versione 2 dell'API di gestione con StorageGRID 11.7; tuttavia, il supporto per queste versioni dell'API verrà rimosso in una release futura di StorageGRID. Dopo l'aggiornamento a StorageGRID 11.7, le API v1 e v2 obsolete possono essere disattivate utilizzando `PUT /grid/config/management` API.
+
+Per ulteriori informazioni, visitare il sito Web all'indirizzo link:../admin/using-grid-management-api.html["Utilizzare l'API Grid Management"].
+
+
+
+== I nomi visualizzati sono ora inclusi nelle risposte alle richieste di integrità dei nodi
+
+Relativo al nuovo link:../maintain/rename-grid-site-node-overview.html["Procedura di ridenominazione di griglia, siti e nodi"], Dopo aver rinominato un sito o un nodo, il nome dell'elemento (il nome del sistema) e il nome visualizzato vengono entrambi restituiti dall'API *node-Health*.
+
+
+
+== Può creare bucket e chiavi di accesso per il nuovo tenant S3
+
+Novità `s3Bucket` e. `s3AccessKey` Le opzioni sono state aggiunte all'API *account*. Quando si crea un account tenant S3 utilizzando l'API Grid Management, è possibile creare un bucket per quel tenant, oltre all'ID della chiave di accesso e alla chiave segreta per l'utente root del tenant.
+
+
+
+== Può modificare lo stato dello storage per Storage Node
+
+È possibile utilizzare i nuovi endpoint API *node-storage-state* per determinare e modificare lo stato dello storage in un nodo di storage (online, offline, di sola lettura).

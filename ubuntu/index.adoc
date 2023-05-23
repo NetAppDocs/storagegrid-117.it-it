@@ -1,0 +1,51 @@
+---
+permalink: ubuntu/index.html 
+sidebar: sidebar 
+keywords: about ubuntu, ubuntu overview 
+summary: 'L"installazione di un sistema StorageGRID in un ambiente Ubuntu o Debian include tre passaggi principali.' 
+---
+= Installare Ubuntu o Debian: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'installazione di un sistema StorageGRID in un ambiente Ubuntu o Debian include tre passaggi principali.
+
+. *Preparazione*: Durante la pianificazione e la preparazione, si eseguono le seguenti attività:
++
+** Scopri i requisiti hardware e storage per StorageGRID.
+** Scopri le specifiche di link:../network/index.html["Networking StorageGRID"] in modo da poter configurare la rete in modo appropriato.
+** Identificare e preparare i server fisici o virtuali che si intende utilizzare per ospitare i nodi grid StorageGRID.
+** Sui server preparati:
++
+*** Installare Linux
+*** Configurare la rete host
+*** Configurare lo storage host
+*** Installare Docker
+*** Installare i servizi host di StorageGRID
+
+
+
+
+. *Implementazione*: Implementare i nodi grid utilizzando l'interfaccia utente appropriata. Quando si implementano nodi grid, questi vengono creati come parte del sistema StorageGRID e connessi a una o più reti.
++
+.. Utilizzare la riga di comando di Linux e i file di configurazione dei nodi per implementare i nodi virtual grid sugli host preparati al punto 1.
+.. Utilizzare il programma di installazione dell'appliance StorageGRID per implementare i nodi dell'appliance StorageGRID.
++
+
+NOTE: Le istruzioni di installazione e integrazione specifiche dell'hardware non sono incluse nella procedura di installazione di StorageGRID. Per informazioni su come installare le appliance StorageGRID, consultare link:../installconfig/index.html["Avvio rapido per l'installazione dell'hardware"] per individuare le istruzioni relative all'apparecchio.
+
+
+
+. *Configurazione*: Una volta implementati tutti i nodi, utilizzare Grid Manager per configurare la griglia e completare l'installazione.
+
+
+Queste istruzioni consigliano un approccio standard per la distribuzione e la configurazione di un sistema StorageGRID in un ambiente Ubuntu o Debian. Vedere anche le informazioni sui seguenti approcci alternativi:
+
+* Utilizzare un framework di orchestrazione standard come Ansible, Puppet o Chef per installare Ubuntu o Debian, configurare il networking e lo storage, installare Docker e il servizio host StorageGRID e distribuire nodi virtual grid.
+* Automatizzare la distribuzione e la configurazione del sistema StorageGRID utilizzando uno script di configurazione Python (fornito nell'archivio di installazione).
+* Automatizza l'implementazione e la configurazione dei nodi grid dell'appliance con uno script di configurazione Python (disponibile dall'archivio di installazione o dal programma di installazione dell'appliance StorageGRID).
+* Se sei uno sviluppatore avanzato di implementazioni StorageGRID, utilizza le API REST di installazione per automatizzare l'installazione dei nodi grid StorageGRID.
+

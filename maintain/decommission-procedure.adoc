@@ -1,0 +1,29 @@
+---
+permalink: maintain/decommission-procedure.html 
+sidebar: sidebar 
+keywords: how to decommission 
+summary: È possibile eseguire una procedura di decommissionamento per rimuovere in modo permanente i nodi della griglia o un intero sito dal sistema StorageGRID. 
+---
+= Procedura di decommissionamento: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile eseguire una procedura di decommissionamento per rimuovere in modo permanente i nodi della griglia o un intero sito dal sistema StorageGRID.
+
+Per rimuovere un nodo della griglia o un sito, eseguire una delle seguenti procedure di decommissionamento:
+
+* Eseguire una link:grid-node-decommissioning.html["decommissionare il nodo di rete"] per rimuovere uno o più nodi, che possono trovarsi in uno o più siti. I nodi rimossi possono essere online e connessi al sistema StorageGRID oppure offline e disconnessi.
+* Eseguire una link:site-decommissioning.html["decommissionare il sito"] per rimuovere un sito. Se tutti i nodi sono connessi a StorageGRID, viene eseguita la *decommissionazione del sito connesso*. Se tutti i nodi sono disconnessi da StorageGRID, viene eseguita una *decommissionazione sito disconnessa*.
++
+
+IMPORTANT: Prima di eseguire la decommissionazione di un sito disconnesso, è necessario contattare il rappresentante commerciale NetApp. NetApp esaminerà i tuoi requisiti prima di attivare tutte le fasi della procedura guidata Decommission Site. Non tentare di decommissionare un sito disconnesso se si ritiene possibile ripristinare il sito o i dati degli oggetti dal sito.
+
+
+
+Se un sito contiene una combinazione diimage:../media/icon_alert_green_checkmark.png["Icona Avviso segno di spunta verde"]) e nodi disconnessi (image:../media/icon_alarm_gray_administratively_down.png["Icona Alarm Grey amministrativamente in basso"] oppure image:../media/icon_alarm_blue_unknown.png["Icona allarme blu sconosciuto"]), è necessario riportare tutti i nodi offline in linea.
+
+
+NOTE: Se è necessario eseguire una seconda procedura di manutenzione, è possibile link:pausing-and-resuming-decommission-process-for-storage-nodes.html["Mettere in pausa la procedura di decommissionamento mentre i nodi di storage vengono rimossi"]. Il pulsante *Pause* (Pausa) viene attivato solo quando vengono raggiunte le fasi di decommissionamento dei dati con codifica di cancellazione o valutazione ILM; tuttavia, la valutazione ILM (migrazione dei dati) continuerà a essere eseguita in background. Una volta completata la seconda procedura di manutenzione, è possibile riprendere la decommissionamento.

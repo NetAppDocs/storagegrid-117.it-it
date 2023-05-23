@@ -1,0 +1,49 @@
+---
+permalink: tenant/use-s3-console.html 
+sidebar: sidebar 
+keywords: how to use s3 console 
+summary: È possibile utilizzare S3 Console per visualizzare gli oggetti in un bucket S3. 
+---
+= Utilizzare la console S3 sperimentale
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare S3 Console per visualizzare gli oggetti in un bucket S3.
+
+È inoltre possibile utilizzare la console S3 per effettuare le seguenti operazioni:
+
+* Aggiungere ed eliminare oggetti, versioni di oggetti e cartelle
+* Rinominare gli oggetti
+* Spostare e copiare oggetti tra bucket e cartelle
+* Gestire tag di oggetti
+* Visualizzare i metadati degli oggetti
+* Scarica oggetti
+
+
+
+NOTE: La console S3 è contrassegnata come "sperimentale" perché non è ancora completa o approvata per l'utilizzo in un ambiente di produzione. I tenant devono utilizzare la console S3 solo quando eseguono funzioni per un numero limitato di oggetti, ad esempio durante il caricamento di oggetti per simulare una nuova policy ILM, la risoluzione dei problemi di acquisizione o l'utilizzo di griglie proof-of-concept o non di produzione.
+
+.Prima di iniziare
+* Hai effettuato l'accesso al tenant manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* L'utente appartiene a un gruppo di utenti che dispone dell'autorizzazione di accesso Root o che dispone sia di Manage All bucket che di Manage Objects with S3 Console link:tenant-management-permissions.html["permessi"].
++
+
+NOTE: Gli utenti che dispongono dell'autorizzazione Manage Objects with S3 Console (Gestisci oggetti con S3 Console) ma che non dispongono dell'autorizzazione Manage All bucket (Gestisci tutti i bucket) possono comunque accedere direttamente alla console Experimental S3.
+
+* Hai creato un bucket.
+* Per l'utente è stato configurato un criterio Gruppo S3 o bucket.
+* Conosci l'ID della chiave di accesso dell'utente e la chiave di accesso segreta. Se si desidera, si dispone di un `.csv` file contenente queste informazioni. Vedere link:creating-your-own-s3-access-keys.html["istruzioni per la creazione delle chiavi di accesso"].
+
+
+.Fasi
+. Selezionare *Bucket*.
+. Selezionare image:../media/s3_console_link.png["Collegamento alla console S3"]. Puoi anche accedere a questo link dalla pagina dei dettagli del bucket.
+. Nella pagina di accesso alla console S3 sperimentale, incollare l'ID della chiave di accesso e la chiave di accesso segreta nei campi. In caso contrario, selezionare *carica chiavi di accesso* e selezionare il `.csv` file.
+. Selezionare *Accedi*.
+. Gestire gli oggetti in base alle esigenze.
+
+
+image::../media/s3_console_example.png[Esempio di console S3]

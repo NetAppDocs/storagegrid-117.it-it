@@ -1,0 +1,20 @@
+= 
+:allow-uri-read: 
+
+
+.Prima di iniziare
+* È necessario accedere a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* È necessario disporre dell'autorizzazione di accesso root o di altra configurazione della griglia.
+
+
+.Fasi
+. Selezionare *SUPPORTO* > *Strumenti* > *AutoSupport*.
+. Nella scheda *Impostazioni*, selezionare *Invia AutoSupport attivato dall'utente*.
++
+StorageGRID tenta di inviare un messaggio AutoSupport al supporto tecnico. Se il tentativo ha esito positivo, i valori *risultato più recente* e *tempo ultimo successo* nella scheda *risultati* vengono aggiornati. In caso di problemi, il valore *risultato più recente* viene aggiornato a "non riuscito" e StorageGRID non tenta di inviare nuovamente il messaggio AutoSupport.
+
++
+
+NOTE: Dopo aver inviato un messaggio AutoSupport attivato dall'utente, aggiornare la pagina AutoSupport del browser dopo 1 minuto per accedere ai risultati più recenti.
+
+

@@ -1,0 +1,55 @@
+---
+permalink: sg6000/reinstalling-sg6000-cn-controller-into-cabinet-or-rack.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, install, installing, installation, cabinet, rack, controller, sg6000-cn 
+summary: 'Una volta completata la manutenzione dell"hardware, reinstallare il controller in un cabinet o rack.' 
+---
+= Reinstallare il controller SG6000-CN nel cabinet o nel rack
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Una volta completata la manutenzione dell'hardware, reinstallare il controller in un cabinet o rack.
+
+.Prima di iniziare
+Il coperchio del controller è stato reinstallato.
+
+link:reinstalling-sg6000-cn-controller-cover.html["Reinstallare il coperchio del controller SG6000-CN"]
+
+.Fasi
+. Premere la guida blu per rilasciare contemporaneamente entrambe le guide del rack e far scorrere il controller SG6000-CN nel rack fino a posizionarlo completamente.
++
+Se non è possibile spostare ulteriormente il controller, tirare i fermi blu su entrambi i lati dello chassis per farlo scorrere completamente all'interno.
+
++
+image::../media/sg6000_cn_rails_blue_button.gif[SG6000 scorrevole sulle guide]
+
++
+
+NOTE: Non collegare il pannello anteriore fino a quando non si accende il controller.
+
+. Serrare le viti di fissaggio sul pannello anteriore del controller per fissare il controller nel rack.
++
+image::../media/sg6060_rack_retaining_screws.png[Viti di fissaggio del rack SG6060]
+
+. Avvolgere l'estremità del braccialetto ESD intorno al polso e fissare l'estremità del fermaglio a una messa a terra metallica per evitare scariche elettrostatiche.
+. Ricollegare i cavi dati del controller e i ricetrasmettitori SFP+ o SFP28.
++
+
+IMPORTANT: Per evitare prestazioni degradate, non attorcigliare, piegare, pizzicare o salire sui cavi.
+
++
+link:../installconfig/cabling-appliance-sg6000.html["Apparecchio via cavo (SG6000)"]
+
+. Ricollegare i cavi di alimentazione del controller.
++
+link:../installconfig/connecting-power-cords-and-applying-power-sg6000.html["Collegamento dei cavi di alimentazione e alimentazione (SG6000)"]
+
+
+
+.Al termine
+Il controller può essere riavviato.
+
+link:powering-on-sg6000-cn-controller-and-verifying-operation.html["Accendere il controller SG6000-CN e verificarne il funzionamento"]

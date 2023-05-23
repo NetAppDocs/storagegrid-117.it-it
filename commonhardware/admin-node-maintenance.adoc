@@ -1,0 +1,12 @@
+---
+sidebar: sidebar 
+permalink: commonhardware/admin-node-maintenance.html 
+keywords: admin Node maintenance 
+summary: Manutenzione nodo amministratore. 
+---
+= Manutenzione nodo amministratore
+:allow-uri-read: 
+
+
+[role="lead"]
+Esistono argomenti di manutenzione specifici per tutti i nodi di amministrazione?

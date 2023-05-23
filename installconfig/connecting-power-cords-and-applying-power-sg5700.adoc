@@ -1,0 +1,33 @@
+---
+permalink: installconfig/connecting-power-cords-and-applying-power-sg5700.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, wire, wiring, cabling, cable, Connecting, connect, power cords, power, applying power, apply power, turn on, power up, ac, ac power 
+summary: 'Quando si alimenta l"appliance, entrambi i controller si avviano.' 
+---
+= Collegamento dei cavi di alimentazione e alimentazione (SG5700)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si alimenta l'appliance, entrambi i controller si avviano.
+
+.Prima di iniziare
+Entrambi gli interruttori di alimentazione dell'apparecchio devono essere spenti prima di collegare l'alimentazione.
+
+
+CAUTION: *Rischio di scosse elettriche* -- prima di collegare i cavi di alimentazione, assicurarsi che i due interruttori di alimentazione dell'apparecchio siano spenti.
+
+.Fasi
+. Verificare che i due interruttori di alimentazione dell'apparecchio siano spenti.
+. Collegare i due cavi di alimentazione all'apparecchio.
+. Collegare i due cavi di alimentazione a diverse unità di distribuzione dell'alimentazione (PDU) nell'armadio o nel rack.
+. Accendere i due interruttori di alimentazione dell'apparecchio.
++
+** Non spegnere gli interruttori di alimentazione durante il processo di accensione.
+** Le ventole sono molto rumorose al primo avvio. Il rumore forte durante l'avvio è normale.
+
+
+. Dopo l'avvio dei controller, controllare i display a sette segmenti.
+

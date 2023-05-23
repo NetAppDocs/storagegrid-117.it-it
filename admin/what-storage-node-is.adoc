@@ -1,0 +1,125 @@
+---
+permalink: admin/what-storage-node-is.html 
+sidebar: sidebar 
+keywords: what is a storage node, how many storage nodes 
+summary: 'I nodi di storage gestiscono e memorizzano i dati e i metadati degli oggetti. Ogni sistema StorageGRID deve avere almeno tre nodi di storage. Se si dispone di più siti, ogni sito all"interno del sistema StorageGRID deve avere anche tre nodi di storage.' 
+---
+= Che cos'è un nodo di storage?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I nodi di storage gestiscono e memorizzano i dati e i metadati degli oggetti. Ogni sistema StorageGRID deve avere almeno tre nodi di storage. Se si dispone di più siti, ogni sito all'interno del sistema StorageGRID deve avere anche tre nodi di storage.
+
+Un nodo di storage include i servizi e i processi necessari per memorizzare, spostare, verificare e recuperare i dati degli oggetti e i metadati sul disco. È possibile visualizzare informazioni dettagliate sui nodi di storage nella pagina *NODI*.
+
+
+
+== Che cos'è il servizio ADC?
+
+Il servizio ADC (Administrative Domain Controller) autentica i nodi della griglia e le relative connessioni tra loro. Il servizio ADC è ospitato su ciascuno dei primi tre nodi di storage di un sito.
+
+Il servizio ADC mantiene le informazioni sulla topologia, inclusa la posizione e la disponibilità dei servizi. Quando un nodo della griglia richiede informazioni da un altro nodo della griglia o un'azione da eseguire da un altro nodo della griglia, contatta un servizio ADC per trovare il nodo della griglia migliore per elaborare la sua richiesta. Inoltre, il servizio ADC conserva una copia dei bundle di configurazione dell'implementazione StorageGRID, consentendo a qualsiasi nodo grid di recuperare le informazioni di configurazione correnti. È possibile visualizzare le informazioni ADC per un nodo di storage nella pagina topologia griglia (*SUPPORTO* > *topologia griglia*).
+
+Per facilitare le operazioni distribuite e islanded, ciascun servizio ADC sincronizza certificati, bundle di configurazione e informazioni sui servizi e sulla topologia con gli altri servizi ADC nel sistema StorageGRID.
+
+In generale, tutti i nodi di rete mantengono una connessione ad almeno un servizio ADC. In questo modo, i nodi della griglia accedono sempre alle informazioni più recenti. Quando i nodi di rete si connettono, memorizzano nella cache i certificati` degli altri nodi di rete, consentendo ai sistemi di continuare a funzionare con nodi di rete noti anche quando un servizio ADC non è disponibile. I nuovi nodi di rete possono stabilire connessioni solo utilizzando un servizio ADC.
+
+La connessione di ciascun nodo di rete consente al servizio ADC di raccogliere informazioni sulla topologia. Queste informazioni sul nodo della griglia includono il carico della CPU, lo spazio su disco disponibile (se dotato di storage), i servizi supportati e l'ID del sito del nodo della griglia. Altri servizi richiedono al servizio ADC informazioni sulla topologia tramite query sulla topologia. Il servizio ADC risponde a ogni richiesta con le informazioni più recenti ricevute dal sistema StorageGRID.
+
+
+
+== Che cos'è il servizio DDS?
+
+Ospitato da un nodo di storage, il servizio DDS (Distributed Data Store) si interfaccia con il database Cassandra per eseguire attività in background sui metadati degli oggetti memorizzati nel sistema StorageGRID.
+
+
+
+=== Numero di oggetti
+
+Il servizio DDS tiene traccia del numero totale di oggetti acquisiti nel sistema StorageGRID e del numero totale di oggetti acquisiti attraverso ciascuna delle interfacce supportate dal sistema (S3 o Swift).
+
+È possibile visualizzare il numero totale di oggetti nella pagina nodi > scheda oggetti per qualsiasi nodo di storage.
+
+image::../media/dds_object_counts_queries.png[Pagina Panoramica DDS]
+
+
+
+=== Query
+
+È possibile identificare il tempo medio necessario per eseguire una query sull'archivio di metadati tramite il servizio DDS specifico, il numero totale di query riuscite e il numero totale di query non riuscite a causa di un problema di timeout.
+
+È possibile rivedere le informazioni sulle query per monitorare lo stato dell'archivio di metadati, Cassandra, che influisce sulle prestazioni di acquisizione e recupero del sistema. Ad esempio, se la latenza di una query media è lenta e il numero di query non riuscite a causa dei timeout è elevato, l'archivio di metadati potrebbe riscontrare un carico maggiore o eseguire un'altra operazione.
+
+È inoltre possibile visualizzare il numero totale di query non riuscite a causa di errori di coerenza. Gli errori del livello di coerenza derivano da un numero insufficiente di archivi di metadati disponibili nel momento in cui viene eseguita una query attraverso il servizio DDS specifico.
+
+È possibile utilizzare la pagina Diagnostics (Diagnostica) per ottenere ulteriori informazioni sullo stato corrente della griglia. Vedere link:../monitor/running-diagnostics.html["Eseguire la diagnostica"].
+
+
+
+=== Garanzie e controlli di coerenza
+
+StorageGRID garantisce la coerenza di lettura dopo scrittura per gli oggetti appena creati. Qualsiasi operazione GET successiva a un'operazione PUT completata con successo sarà in grado di leggere i dati appena scritti. Le sovrascritture degli oggetti esistenti, gli aggiornamenti dei metadati e le eliminazioni rimangono alla fine coerenti.
+
+
+
+== Che cos'è il servizio LDR?
+
+Ospitato da ciascun nodo di storage, il servizio router di distribuzione locale (LDR) gestisce il trasporto dei contenuti per il sistema StorageGRID. Il trasporto dei contenuti comprende molte attività, tra cui storage dei dati, routing e gestione delle richieste. Il servizio LDR esegue la maggior parte del duro lavoro del sistema StorageGRID gestendo i carichi di trasferimento dei dati e le funzioni di traffico dei dati.
+
+Il servizio LDR gestisce le seguenti attività:
+
+* Query
+* Attività ILM (Information Lifecycle Management)
+* Eliminazione di oggetti
+* Storage di dati a oggetti
+* Trasferimenti di dati a oggetti da un altro servizio LDR (nodo di storage)
+* Gestione dello storage dei dati
+* Interfacce di protocollo (S3 e Swift)
+
+
+Il servizio LDR gestisce inoltre la mappatura degli oggetti S3 e Swift sugli univoci "`content handle`" (UUID) assegnati dal sistema StorageGRID a ciascun oggetto acquisito.
+
+
+
+=== Query
+
+Le query LDR includono query per la posizione degli oggetti durante le operazioni di recupero e archiviazione. È possibile identificare il tempo medio necessario per eseguire una query, il numero totale di query riuscite e il numero totale di query non riuscite a causa di un problema di timeout.
+
+È possibile rivedere le informazioni sulle query per monitorare lo stato dell'archivio di metadati, che influisce sulle prestazioni di acquisizione e recupero del sistema. Ad esempio, se la latenza di una query media è lenta e il numero di query non riuscite a causa dei timeout è elevato, l'archivio di metadati potrebbe riscontrare un carico maggiore o eseguire un'altra operazione.
+
+È inoltre possibile visualizzare il numero totale di query non riuscite a causa di errori di coerenza. Gli errori del livello di coerenza derivano da un numero insufficiente di archivi di metadati disponibili nel momento in cui viene eseguita una query attraverso il servizio LDR specifico.
+
+È possibile utilizzare la pagina Diagnostics (Diagnostica) per ottenere ulteriori informazioni sullo stato corrente della griglia. Vedere link:../monitor/running-diagnostics.html["Eseguire la diagnostica"].
+
+
+
+=== Attività ILM
+
+Le metriche ILM (Information Lifecycle Management) consentono di monitorare la velocità di valutazione degli oggetti per l'implementazione ILM. Puoi visualizzare queste metriche nella dashboard o in *NODE* > *_Storage Node_* > *ILM*.
+
+
+
+=== Archivi di oggetti
+
+Lo storage dei dati sottostante di un servizio LDR è diviso in un numero fisso di archivi a oggetti (noti anche come volumi di storage). Ogni archivio di oggetti è un punto di montaggio separato.
+
+È possibile visualizzare gli archivi di oggetti per un nodo di storage nella pagina nodi > scheda Storage.
+
+image::../media/object_stores.png[Archivi di oggetti]
+
+Gli archivi di oggetti in un nodo di storage sono identificati da un numero esadecimale compreso tra 0000 e 002F, noto come ID del volume. Lo spazio è riservato nel primo archivio di oggetti (volume 0) per i metadati degli oggetti in un database Cassandra; qualsiasi spazio rimanente in tale volume viene utilizzato per i dati degli oggetti. Tutti gli altri archivi di oggetti vengono utilizzati esclusivamente per i dati degli oggetti, che includono copie replicate e frammenti con codifica di cancellazione.
+
+Per garantire un utilizzo uniforme dello spazio per le copie replicate, i dati degli oggetti per un determinato oggetto vengono memorizzati in un archivio di oggetti in base allo spazio di storage disponibile. Quando uno o più archivi di oggetti riempiono la capacità, gli archivi di oggetti rimanenti continuano a memorizzare gli oggetti fino a quando non c'è più spazio nel nodo di storage.
+
+
+
+=== Protezione dei metadati
+
+I metadati degli oggetti sono informazioni correlate o una descrizione di un oggetto, ad esempio il tempo di modifica dell'oggetto o la posizione di storage. StorageGRID memorizza i metadati degli oggetti in un database Cassandra, che si interfaccia con il servizio LDR.
+
+Per garantire la ridondanza e quindi la protezione contro la perdita, vengono conservate tre copie dei metadati degli oggetti in ogni sito. Questa replica non è configurabile ed è eseguita automaticamente.
+
+link:managing-object-metadata-storage.html["Gestire lo storage dei metadati degli oggetti"]

@@ -1,0 +1,95 @@
+---
+permalink: upgrade/removed-or-deprecated-features.html 
+sidebar: sidebar 
+keywords: features, removed, deprecated 
+summary: 'Alcune funzionalità sono state rimosse o obsolete in questa release. Esaminare questi elementi per capire se è necessario aggiornare le applicazioni client o modificare la configurazione prima di eseguire l"aggiornamento.' 
+---
+= Funzionalità rimosse o obsolete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Alcune funzionalità sono state rimosse o obsolete in questa release. Esaminare questi elementi per capire se è necessario aggiornare le applicazioni client o modificare la configurazione prima di eseguire l'aggiornamento.
+
+
+
+== Servizio di bilanciamento del carico di connessione (CLB) rimosso
+
+Il servizio bilanciamento del carico di connessione (CLB) sui nodi gateway è stato obsoleto in StorageGRID 11.4 ed è stato ora completamente rimosso dal software. Per distribuire le connessioni di rete in entrata dalle applicazioni client ai nodi di storage, è possibile configurare gli endpoint del bilanciamento del carico per il servizio Load Balancer, incluso in tutti i nodi Admin e Gateway, oppure è possibile integrare un bilanciamento del carico di terze parti. Vedere link:../admin/managing-load-balancing.html["Considerazioni per il bilanciamento del carico"].
+
+Se sono stati impostati certificati personalizzati per l'API S3 o Swift nella versione StorageGRID esistente, le porte CLB 8082, 8083, 8084 e 8085 verranno automaticamente convertite in endpoint del bilanciamento del carico durante l'aggiornamento a StorageGRID 11.7.
+
+
+
+== L'appliance SG5600 è terminata
+
+L'appliance SG5600 ha raggiunto la fine del supporto. Contatta il tuo rappresentante commerciale NetApp per le opzioni di aggiornamento dell'hardware.
+
+Se è necessario eseguire le procedure di manutenzione sull'hardware SG5600, utilizzare https://docs.netapp.com/us-en/storagegrid-116/sg5600/maintaining-sg5600-appliance.html["Istruzioni per StorageGRID 11.6"^].
+
+
+
+== Supporto Swift obsoleto
+
+A partire dalla release StorageGRID 11.7, il supporto per le applicazioni client Swift è stato obsoleto. L'interfaccia utente e le API che supportano le applicazioni client Swift verranno rimosse in una release futura.
+
+
+
+== Supporto di Archive Node obsoleto
+
+Il supporto per i nodi di archiviazione (sia per l'archiviazione nel cloud utilizzando l'API S3 che per l'archiviazione su nastro utilizzando il middleware TSM) è obsoleto e verrà rimosso in una release futura. Lo spostamento di oggetti da un nodo di archiviazione a un sistema storage di archiviazione esterno è stato sostituito da pool di storage cloud ILM, che offrono maggiori funzionalità.
+
+Vedere:
+
+* link:../admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html["Migrare gli oggetti in un pool di storage cloud"]
+* link:../ilm/what-cloud-storage-pool-is.html["Utilizza i Cloud Storage Pools"]
+
+
+Inoltre, è necessario rimuovere i nodi di archiviazione dal criterio ILM attivo in StorageGRID 11.7 o versioni precedenti. La rimozione dei dati degli oggetti memorizzati nei nodi di archiviazione semplificherà gli aggiornamenti futuri. Vedere link:../ilm/working-with-ilm-rules-and-ilm-policies.html["Utilizzo delle regole ILM e delle policy ILM"].
+
+
+
+== Esportazione audit tramite CIFS/Samba rimossa
+
+L'esportazione dell'audit tramite CIFS/Samba è stata obsoleta in StorageGRID webscale 11.1 ed è stata rimossa. Se necessario, è possibile link:../monitor/considerations-for-external-syslog-server.html["utilizzare un server syslog esterno"] oppure link:../admin/configuring-audit-client-access.html["Configurare l'accesso client di audit per NFS"].
+
+
+
+== Opzione per specificare un pool di storage come posizione temporanea rimossa
+
+In precedenza, quando si creava una regola ILM con un posizionamento degli oggetti che include un singolo pool di storage, veniva richiesto di specificare un secondo pool di storage da utilizzare come posizione temporanea. A partire da StorageGRID 11.7, questa opzione è stata rimossa.
+
+
+
+== Opzioni di Grid Manager spostate o rimosse
+
+Diverse opzioni di Grid Manager sono state spostate o rimosse.
+
+* Il link:../admin/configuring-stored-object-compression.html["Compressione degli oggetti memorizzati"] L'opzione è stata spostata in *CONFIGURAZIONE* > *sistema* > *compressione oggetto*.
+* L'impostazione di connessione interna *Network Transfer Encryption* è stata rimossa e sostituita da link:../admin/manage-tls-ssh-policy.html["Policy TLS e SSH"] Nella nuova scheda *CONFIGURAZIONE* > *sicurezza* > *Impostazioni di sicurezza*.
++
+
+NOTE: L'opzione AES256-SHA era l'impostazione predefinita in StorageGRID 11.6 ed è l'unica impostazione disponibile in StorageGRID 11.7. Il valore AES128-SHA viene ignorato nell'API Grid Management. Durante l'aggiornamento di StorageGRID 11.7, l'algoritmo di crittografia per il trasferimento di rete viene impostato su AES256-SHA.
+
+* Le opzioni *Stored Object Encryption*, *Impedisci modifica client* e *Enable HTTP for Storage Node Connections* sono state spostate in link:../admin/changing-network-options-object-encryption.html["Scheda rete e oggetti"] Nella nuova pagina *CONFIGURATION* > *Security* > *Security settings*.
+* Il link:../admin/changing-browser-session-timeout-interface.html["Timeout di inattività del browser"] L'opzione è stata spostata nella nuova pagina *CONFIGURATION* > *Security* > *Security settings*.
+* Il link:../admin/manage-link-costs.html["Costo del collegamento"] L'opzione è stata spostata in *SUPPORT* > *Other* > *link Cost*.
+* L'elenco delle entità NMS è stato spostato in *SUPPORT* > *Other* > *NMS entities*.
+* L'opzione *stored object hashing* è stata rimossa. Le impostazioni *SHA-1* e *SHA-256* non vengono più utilizzate per la verifica interna in background, in quanto richiedono risorse CPU aggiuntive su MD5 e controllo CRC32 a pacchetto.
+* L'opzione *Preferred sender* (mittente preferito) è stata rimossa. Se l'implementazione di StorageGRID include più nodi di amministrazione, il nodo di amministrazione primario è il mittente preferito per le notifiche di avviso, i messaggi AutoSupport, le trap SNMP e le informazioni e le notifiche di allarme legacy. Se il nodo di amministrazione primario non è più disponibile, le notifiche vengono inviate temporaneamente da altri nodi di amministrazione. Vedere link:../admin/what-admin-node-is.html["Che cos'è un nodo amministratore?"].
+* Il link:../admin/configure-firewall-controls.html#untrusted-client-network["Impostazioni di rete client non attendibili"] Sono stati spostati in *CONFIGURAZIONE* > *controllo firewall*.
+
+
+
+
+== Limitazioni del formato dei nomi di dominio degli endpoint S3
+
+L'utilizzo degli indirizzi IP come nomi di dominio degli endpoint non è supportato. Le versioni future impediranno la configurazione. Se è necessario utilizzare gli indirizzi IP per i nomi di dominio degli endpoint, contattare il supporto tecnico. Vedere link:../admin/configuring-s3-api-endpoint-domain-names.html["Nomi di dominio degli endpoint S3"].
+
+
+
+== Comando Volume Lost avviato dall'utente rimosso
+
+Il `proc/CMSI/Volume_Lost` è stato rimosso. Utilizzare `repair-data start-replicated-volume-repair` comando per ripristinare i dati replicati per un volume.

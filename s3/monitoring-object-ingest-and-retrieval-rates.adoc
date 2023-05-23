@@ -1,0 +1,51 @@
+---
+permalink: s3/monitoring-object-ingest-and-retrieval-rates.html 
+sidebar: sidebar 
+keywords: monitor object ingest rates, view object ingest rates, monitor object retrieval rates, view object retrieval rates 
+summary: È possibile monitorare i tassi di acquisizione e recupero degli oggetti, nonché le metriche per i conteggi degli oggetti, le query e la verifica. È possibile visualizzare il numero di tentativi riusciti e non riusciti da parte delle applicazioni client di lettura, scrittura e modifica degli oggetti nel sistema StorageGRID. 
+---
+= Monitorare le velocità di acquisizione e recupero degli oggetti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile monitorare i tassi di acquisizione e recupero degli oggetti, nonché le metriche per i conteggi degli oggetti, le query e la verifica. È possibile visualizzare il numero di tentativi riusciti e non riusciti da parte delle applicazioni client di lettura, scrittura e modifica degli oggetti nel sistema StorageGRID.
+
+.Fasi
+. Accedere a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+. Nella dashboard, selezionare *Performance* > *S3 Operations* o *Performance* > *Swift Operations*.
++
+In questa sezione viene riepilogato il numero di operazioni client eseguite dal sistema StorageGRID. Le velocità dei protocolli vengono calcolate in media negli ultimi due minuti.
+
+. Selezionare *NODI*.
+. Dalla home page dei nodi (livello di implementazione), fare clic sulla scheda *Load Balancer*.
++
+I grafici mostrano i trend di tutto il traffico client diretto agli endpoint del bilanciamento del carico all'interno della griglia. È possibile selezionare un intervallo di tempo in ore, giorni, settimane, mesi o anni, in alternativa, è possibile applicare un intervallo personalizzato.
+
+. Dalla home page dei nodi (livello di implementazione), fare clic sulla scheda *oggetti*.
++
+Il grafico mostra le velocità di acquisizione e recupero dell'intero sistema StorageGRID in byte al secondo e byte totali. È possibile selezionare un intervallo di tempo in ore, giorni, settimane, mesi o anni, in alternativa, è possibile applicare un intervallo personalizzato.
+
+. Per visualizzare le informazioni relative a un nodo di storage specifico, selezionarlo dall'elenco a sinistra e fare clic sulla scheda *oggetti*.
++
+Il grafico mostra le velocità di acquisizione e recupero degli oggetti per questo nodo di storage. La scheda include anche metriche per il conteggio degli oggetti, le query e la verifica. È possibile fare clic sulle etichette per visualizzare le definizioni di queste metriche.
+
++
+image::../media/nodes_storage_node_objects_help.png[Schermata dei nodi > _Storage Node_ > oggetti > Guida attributi]
+
+. Se desideri ulteriori dettagli:
++
+.. Selezionare *SUPPORT* > *Tools* > *Grid topology*.
+.. Selezionare *_Site_* > *Overview* > *Main*.
++
+La sezione API Operations (operazioni API) visualizza informazioni riepilogative per l'intera griglia.
+
+.. Selezionare *_Storage Node_* > *LDR* > *_client application_* > *Overview* > *Main*
++
+La sezione Operations (operazioni) visualizza informazioni riepilogative per il nodo di storage selezionato.
+
+
+
+

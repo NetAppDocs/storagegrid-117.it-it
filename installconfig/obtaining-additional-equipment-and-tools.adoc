@@ -1,0 +1,237 @@
+---
+permalink: installconfig/obtaining-additional-equipment-and-tools.html 
+sidebar: sidebar 
+keywords: equipment to install appliance, tools for installation 
+summary: 'Prima di installare un"appliance StorageGRID, verificare di disporre di tutte le apparecchiature e gli strumenti aggiuntivi necessari.' 
+---
+= Procurarsi attrezzature e strumenti aggiuntivi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare un'appliance StorageGRID, verificare di disporre di tutte le apparecchiature e gli strumenti aggiuntivi necessari.
+
+
+
+== Tutti gli appliance
+
+Per installare e configurare tutte le appliance sono necessarie le seguenti apparecchiature.
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Cacciaviti
+ a| 
+image::../media/screwdrivers.gif[Due cacciaviti]
+
+* Phillips No. 2 cacciaviti
+* Cacciavite medio a lama piatta
+
+
+
+
+ a| 
+Braccialetto antistatico
+ a| 
+image::../media/appliance_wriststrap.gif[Braccialetto antistatico]
+
+
+
+ a| 
+Laptop di assistenza
+ a| 
+image::../media/sam_management_client.gif[Laptop di assistenza]
+
+* link:web-browser-requirements.html["Browser Web supportato"]
+* Client SSH, ad esempio putty
+* Porta 1-GbE (RJ-45)
+
+
+
+NOTE: Alcune porte potrebbero non supportare velocità Ethernet 10/100.
+
+
+
+ a| 
+Strumenti opzionali
+ a| 
+image::../media/optional_tools.gif[Perforatrice e torcia elettrica]
+
+* Trapano elettrico con punta Phillips
+* Torcia
+
+
+|===
+
+
+== SGF6112
+
+Per installare e configurare l'hardware SGF6112, sono necessarie le seguenti apparecchiature aggiuntive.
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Cavi ottici e ricetrasmettitori
+ a| 
+image::../media/fc_cable_and_sfp.gif[Cavo ottico e ricetrasmettitore QSFP+]
+
+* Da uno a quattro di questi tipi di cavi:
++
+** Twinax/rame
+** Fibra ottica
+
+
+* Da uno a quattro di ciascuno di questi ricetrasmettitori/adattatori in base alla velocità di collegamento (velocità miste non supportate):
++
+** SFP+ da 10 GbE
+** SFP28 a 25 GbE
+
+
+
+
+
+
+ a| 
+Cavi Ethernet RJ-45 (Cat5/Cat5e/Cat6/Cat6a)
+ a| 
+image::../media/ethernet_cables.png[Cavo Ethernet]
+
+|===
+
+
+== SG6000
+
+Per installare e configurare l'hardware SG6000 sono necessarie le seguenti apparecchiature aggiuntive.
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Cavi ottici e ricetrasmettitori SFP
+ a| 
+image::../media/fc_cable_and_sfp.gif[Cavo ottico e ricetrasmettitore SFP+]
+
+* Da uno a quattro di questi tipi di cavi:
++
+** Twinax/rame
+** Fibra ottica
+
+
+* Da uno a quattro di ciascuno di questi ricetrasmettitori/adattatori, in base alla velocità di collegamento (velocità miste non supportate):
++
+** SFP+ da 10 GbE
+** SFP28 a 25 GbE
+
+
+
+
+
+
+ a| 
+Cavi Ethernet RJ-45 (Cat5/Cat5e/Cat6)
+ a| 
+image::../media/ethernet_cables.png[Cavi Ethernet]
+
+
+
+ a| 
+Strumenti opzionali
+ a| 
+Sollevatore meccanizzato per shelf da 60 dischi
+
+|===
+
+
+== SG5700
+
+Per installare e configurare l'hardware SG5700 sono necessarie le seguenti apparecchiature aggiuntive.
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Cavi ottici e ricetrasmettitori SFP
+ a| 
+image::../media/fc_cable_and_sfp.gif[Cavo ottico e ricetrasmettitore SFP+]
+
+* Cavi ottici per le porte 10/25-GbE che si intende utilizzare
+* Opzionale: Ricetrasmettitori SFP28 se si desidera utilizzare la velocità di collegamento a 25 GbE
+
+
+
+
+ a| 
+Cavi Ethernet
+ a| 
+image::../media/ethernet_cables.png[Cavi Ethernet]
+
+
+
+ a| 
+Strumenti opzionali
+ a| 
+Sollevatore meccanizzato per SG5760
+
+|===
+
+
+== SG100 e SG1000
+
+Per installare e configurare l'hardware SG100 e SG1000 sono necessarie le seguenti apparecchiature aggiuntive.
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Cavi ottici e ricetrasmettitori
+ a| 
+image::../media/fc_cable_and_sfp.gif[Cavo ottico e ricetrasmettitore QSFP+]
+
+* Da uno a quattro di questi tipi di cavo:
++
+** Twinax/rame
+** Fibra ottica
+
+
+* Da uno a quattro di ciascuno di questi ricetrasmettitori/adattatori in base alla velocità di collegamento (velocità miste non supportate):
++
+** SG100:
++
+*** SFP+ da 10 GbE
+*** SFP28 a 25 GbE
+
+
+** SG1000:
++
+*** Adattatore 10-GbE da QSFP a SFP (QSA) e SFP+
+*** Adattatore 25-GbE QSFP-SFP (QSA) e SFP28
+*** QSFP+ da 40 GbE
+*** QFSP28 a 100 GbE
+
+
+
+
+
+
+
+
+ a| 
+Cavi Ethernet RJ-45 (Cat5/Cat5e/Cat6/Cat6a)
+ a| 
+image::../media/ethernet_cables.png[Cavo Ethernet]
+
+|===

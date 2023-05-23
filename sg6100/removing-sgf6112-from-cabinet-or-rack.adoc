@@ -1,0 +1,54 @@
+---
+permalink: sg6100/removing-sgf6112-from-cabinet-or-rack.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6100, storage node, storage appliance, remove, removing, removal, cabinet, rack, appliance, sgf6112 
+summary: 'Rimuovere il dispositivo SGF6112 da un cabinet o rack per accedere al coperchio superiore o per spostare l"apparecchio in una posizione diversa.' 
+---
+= Rimuovere SGF6112 dal cabinet o dal rack
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Rimuovere il dispositivo SGF6112 da un cabinet o rack per accedere al coperchio superiore o per spostare l'apparecchio in una posizione diversa.
+
+.Prima di iniziare
+* Sono presenti etichette per identificare ciascun cavo collegato a SGF6112.
+* Il sistema SGF6112 è stato fisicamente posizionato in cui si esegue la manutenzione nel data center.
++
+link:locating-sgf6112-in-data-center.html["Individuare SGF6112 nel data center"]
+
+* SGF6112 è stato spento.
++
+link:shut-down-sgf6112.html["Arrestare SGF6112"]
+
++
+
+CAUTION: Non spegnere l'apparecchio utilizzando l'interruttore di alimentazione.
+
+
+
+.Fasi
+. Etichettare e scollegare i cavi di alimentazione dell'apparecchio.
+. Avvolgere l'estremità del braccialetto ESD intorno al polso e fissare l'estremità del fermaglio a una messa a terra metallica per evitare scariche elettrostatiche.
+. Etichettare e scollegare i cavi dati dell'appliance e i ricetrasmettitori SFP+ o SFP28.
++
+
+IMPORTANT: Per evitare prestazioni degradate, non attorcigliare, piegare, pizzicare o salire sui cavi.
+
+. Allentare le due viti di fissaggio sul pannello anteriore dell'apparecchio.
++
+image::../media/sg6060_rack_retaining_screws.png[Viti di fissaggio del rack SGF6112]
+
+. Far scorrere l'unità SGF6112 in avanti per estrarla dal rack fino a quando le guide di montaggio non sono completamente estese e i fermi su entrambi i lati scattano.
++
+Il coperchio superiore dell'apparecchio è accessibile.
+
+. Opzionale: Se si sta rimuovendo completamente l'apparecchio dall'armadietto o dal rack, seguire le istruzioni del kit di guide per rimuovere l'apparecchio dalle guide.
+
+
+Dopo aver sostituito il componente, restituire il componente guasto a NetApp, come descritto nelle istruzioni RMA fornite con il kit. Vedere https://mysupport.netapp.com/site/info/rma["Parti restituita  sostituzioni"^] per ulteriori informazioni.
+
+.Informazioni correlate
+link:removing-sgf6112-cover.html["Rimuovere il coperchio SGF6112"]

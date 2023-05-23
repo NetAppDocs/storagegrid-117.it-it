@@ -1,0 +1,18 @@
+---
+permalink: maintain/site-decommissioning.html 
+sidebar: sidebar 
+keywords: site decommission 
+summary: Potrebbe essere necessario rimuovere un sito del data center dal sistema StorageGRID. Per rimuovere un sito, è necessario decommissionarlo. 
+---
+= Decommissionamento del sito: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario rimuovere un sito del data center dal sistema StorageGRID. Per rimuovere un sito, è necessario decommissionarlo.
+
+Il diagramma di flusso mostra le fasi di alto livello per la disattivazione di un sito.
+
+image::../media/overview_decommission_site.png[Panoramica: Decommissionare il sito]

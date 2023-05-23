@@ -1,0 +1,246 @@
+---
+permalink: swift/configuring-tenant-accounts-and-connections.html 
+sidebar: sidebar 
+keywords: swift configure tenant account, swift configure tenant connection 
+summary: La configurazione di StorageGRID per accettare connessioni da applicazioni client richiede la creazione di uno o più account tenant e la configurazione delle connessioni. 
+---
+= Configurare gli account e le connessioni del tenant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La configurazione di StorageGRID per accettare connessioni da applicazioni client richiede la creazione di uno o più account tenant e la configurazione delle connessioni.
+
+
+
+== Creare e configurare gli account tenant Swift
+
+È necessario un account tenant Swift prima che i client API Swift possano memorizzare e recuperare oggetti su StorageGRID. Ogni account tenant dispone di un proprio ID account, di gruppi e utenti, nonché di container e oggetti.
+
+Gli account del tenant Swift vengono creati da un amministratore del grid StorageGRID utilizzando il grid manager o l'API di gestione del grid.
+
+Quando link:../swift/configuring-tenant-accounts-and-connections.html["Creazione di un account tenant Swift"], l'amministratore della griglia specifica le seguenti informazioni:
+
+* link:../admin/editing-tenant-account.html["Visualizza il nome del tenant"] (L'ID account del tenant viene assegnato automaticamente e non può essere modificato)
+* Facoltativamente, un link:../admin/editing-tenant-account.html["quota di storage per l'account tenant"] -- numero massimo di gigabyte, terabyte o petabyte disponibili per gli oggetti del tenant. La quota di storage di un tenant rappresenta una quantità logica (dimensione dell'oggetto), non una quantità fisica (dimensione sul disco).
+* Se link:../admin/configuring-sso.html["SSO (Single Sign-on)"] Non è in uso per il sistema StorageGRID, sia che l'account tenant utilizzi la propria origine di identità o condivida l'origine di identità della griglia e la password iniziale per l'utente root locale del tenant.
+* Se SSO è attivato, quale gruppo federato dispone dell'autorizzazione di accesso root per configurare l'account tenant.
+
+
+Una volta creato un account tenant Swift, gli utenti con l'autorizzazione di accesso root possono accedere a Tenant Manager per eseguire attività come le seguenti:
+
+* Impostazione della federazione delle identità (a meno che l'origine delle identità non sia condivisa con la griglia) e creazione di gruppi e utenti locali
+* Monitoraggio dell'utilizzo dello storage
+
+
+
+IMPORTANT: Gli utenti Swift devono disporre dell'autorizzazione di accesso root per link:../tenant/signing-in-to-tenant-manager.html["Accedere a Tenant Manager"]. Tuttavia, l'autorizzazione di accesso root non consente agli utenti di autenticarsi nell'API REST di Swift per creare container e acquisire oggetti. Gli utenti devono disporre dell'autorizzazione di amministratore Swift per autenticarsi nell'API DI Swift REST.
+
+
+
+== Come configurare le connessioni client
+
+Un amministratore di grid effettua scelte di configurazione che influiscono sul modo in cui i client Swift si connettono a StorageGRID per memorizzare e recuperare i dati. Le informazioni specifiche necessarie per effettuare una connessione dipendono dalla configurazione scelta.
+
+Le applicazioni client possono memorizzare o recuperare oggetti connettendosi al servizio Load Balancer sui nodi Admin o Gateway o, facoltativamente, all'indirizzo IP virtuale di un gruppo ha (High Availability) di nodi Admin o Gateway.
+
+
+NOTE: Tutte le applicazioni che dipendono da StorageGRID per fornire il bilanciamento del carico devono connettersi utilizzando il servizio bilanciamento del carico.
+
+* Nodi di storage, con o senza bilanciamento del carico esterno
+
+
+Durante la configurazione di StorageGRID, un amministratore della griglia può utilizzare il gestore della griglia o l'API di gestione della griglia per eseguire le seguenti operazioni, tutte facoltative:
+
+. Configurare gli endpoint per il servizio Load Balancer.
++
+È necessario configurare gli endpoint per utilizzare il servizio Load Balancer. Il servizio Load Balancer sui nodi di amministrazione o gateway distribuisce le connessioni di rete in entrata dalle applicazioni client ai nodi di storage. Quando si crea un endpoint di bilanciamento del carico, l'amministratore di StorageGRID specifica un numero di porta, se l'endpoint accetta connessioni HTTP o HTTPS, il tipo di client (S3 o Swift) che utilizzerà l'endpoint e il certificato da utilizzare per le connessioni HTTPS (se applicabile). Swift li supporta link:supported-swift-api-endpoints.html["tipi di endpoint"].
+
+. Configurare reti client non attendibili.
++
+Se un amministratore di StorageGRID configura una rete client di un nodo come non attendibile, il nodo accetta solo connessioni in entrata sulla rete client su porte esplicitamente configurate come endpoint del bilanciamento del carico.
+
+. Configurare i gruppi ad alta disponibilità.
++
+Se un amministratore crea un gruppo ha, le interfacce di rete di più nodi Admin o nodi Gateway vengono inserite in una configurazione di backup attivo. Le connessioni client vengono effettuate utilizzando l'indirizzo IP virtuale del gruppo ha.
+
+
+
+Vedere link:../admin/configuration-options-for-ha-groups.html["Opzioni di configurazione per i gruppi ha"] per ulteriori informazioni.
+
+
+
+=== Riepilogo: Indirizzi IP e porte per le connessioni client
+
+Le applicazioni client si connettono a StorageGRID utilizzando l'indirizzo IP di un nodo Grid e il numero di porta di un servizio su tale nodo. Se sono configurati gruppi ad alta disponibilità (ha), le applicazioni client possono connettersi utilizzando l'indirizzo IP virtuale del gruppo ha.
+
+
+
+==== Informazioni necessarie per stabilire connessioni client
+
+La tabella riassume i diversi modi in cui i client possono connettersi a StorageGRID e gli indirizzi IP e le porte utilizzati per ciascun tipo di connessione. Vedere link:../admin/summary-ip-addresses-and-ports-for-client-connections.html["Indirizzi IP e porte per le connessioni client"] In alternativa, contattare l'amministratore di StorageGRID per ulteriori informazioni.
+
+|===
+| Dove viene stabilita la connessione | Servizio a cui si connette il client | Indirizzo IP | Porta 
+
+
+ a| 
+Gruppo HA
+ a| 
+Bilanciamento del carico
+ a| 
+Indirizzo IP virtuale di un gruppo ha
+ a| 
+* Porta endpoint del bilanciamento del carico
+
+
+
+
+ a| 
+Nodo Admin
+ a| 
+Bilanciamento del carico
+ a| 
+Indirizzo IP del nodo di amministrazione
+ a| 
+* Porta endpoint del bilanciamento del carico
+
+
+
+
+ a| 
+Nodo gateway
+ a| 
+Bilanciamento del carico
+ a| 
+Indirizzo IP del nodo gateway
+ a| 
+* Porta endpoint del bilanciamento del carico
+
+
+
+
+ a| 
+Nodo di storage
+ a| 
+LDR
+ a| 
+Indirizzo IP del nodo di storage
+ a| 
+Porte Swift predefinite:
+
+* HTTPS: 18083
+* HTTP: 18085
+
+
+|===
+
+
+==== Esempio
+
+Per connettere un client Swift all'endpoint Load Balancer di un gruppo ha di nodi gateway, utilizzare un URL strutturato come mostrato di seguito:
+
+* `https://_VIP-of-HA-group:LB-endpoint-port_`
+
+
+Ad esempio, se l'indirizzo IP virtuale del gruppo ha è 192.0.2.6 e il numero di porta di un endpoint di bilanciamento del carico di Swift è 10444, un client Swift potrebbe utilizzare il seguente URL per connettersi a StorageGRID:
+
+* `\https://192.0.2.6:10444`
+
+
+È possibile configurare un nome DNS per l'indirizzo IP utilizzato dai client per la connessione a StorageGRID. Contattare l'amministratore di rete locale.
+
+
+
+=== Decidere di utilizzare connessioni HTTPS o HTTP
+
+Quando le connessioni client vengono eseguite utilizzando un endpoint Load Balancer, le connessioni devono essere effettuate utilizzando il protocollo (HTTP o HTTPS) specificato per tale endpoint. Per utilizzare HTTP per le connessioni client ai nodi di storage, è necessario abilitarne l'utilizzo.
+
+Per impostazione predefinita, quando le applicazioni client si connettono ai nodi di storage, devono utilizzare HTTPS crittografato per tutte le connessioni. Se si desidera, è possibile attivare connessioni HTTP meno sicure selezionando link:../admin/changing-network-options-object-encryption.html["Abilitare HTTP per le connessioni dei nodi di storage"] In Grid Manager. Ad esempio, un'applicazione client potrebbe utilizzare il protocollo HTTP quando si verifica la connessione a un nodo di storage in un ambiente non di produzione.
+
+
+IMPORTANT: Prestare attenzione quando si attiva HTTP per una griglia di produzione perché le richieste e le risposte verranno inviate senza crittografia.
+
+Se l'opzione *Enable HTTP for Storage Node Connections* (attiva HTTP per connessioni nodo di storage) è selezionata, i client devono utilizzare porte HTTP diverse da quelle utilizzate per HTTPS.
+
+
+
+== Verificare la connessione nella configurazione dell'API Swift
+
+È possibile utilizzare l'interfaccia utente di Swift per verificare la connessione al sistema StorageGRID e per verificare che sia possibile leggere e scrivere oggetti nel sistema.
+
+.Prima di iniziare
+* Devi aver scaricato e installato python-swiftclient, il client della riga di comando di Swift.
++
+https://platform.swiftstack.com/docs/integration/python-swiftclient.html["SwiftStack: python-swiftclient"^]
+
+* È necessario disporre di un account tenant Swift nel sistema StorageGRID.
+
+
+.A proposito di questa attività
+Se la protezione non è stata configurata, è necessario aggiungere `--insecure` contrassegnare ciascuno di questi comandi.
+
+.Fasi
+. Eseguire una query sull'URL delle informazioni per l'implementazione di StorageGRID Swift:
++
+[listing]
+----
+swift
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/info
+capabilities
+----
++
+Ciò è sufficiente per verificare che l'implementazione di Swift sia funzionale. Per verificare ulteriormente la configurazione dell'account memorizzando un oggetto, continuare con i passaggi aggiuntivi.
+
+. Inserire un oggetto nel contenitore:
++
+[listing]
+----
+touch test_object
+swift
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/auth/v1.0
+upload test_container test_object
+--object-name test_object
+----
+. Ottenere il container per verificare l'oggetto:
++
+[listing]
+----
+swift
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/auth/v1.0
+list test_container
+----
+. Eliminare l'oggetto:
++
+[listing]
+----
+swift
+-U <Tenant_Account_ID:Account_User_Name>
+-K <User_Password>
+-A https://<FQDN | IP>:<Port>/auth/v1.0
+delete test_container test_object
+----
+. Eliminare il contenitore:
++
+[listing]
+----
+swift
+-U `<_Tenant_Account_ID:Account_User_Name_>`
+-K `<_User_Password_>`
+-A `\https://<_FQDN_ | _IP_>:<_Port_>/auth/v1.0'
+delete test_container
+----
+
+
+.Informazioni correlate
+link:configuring-tenant-accounts-and-connections.html["Creare e configurare gli account tenant Swift"]
+
+link:configuring-security-for-rest-api.html["Configurare la sicurezza per l'API REST"]

@@ -1,0 +1,76 @@
+---
+permalink: maintain/step-4-remove-ilm-references.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, remove ilm reference 
+summary: Dalla fase 4 della procedura guidata Decommission Site, è possibile rimuovere la policy proposta, se esistente, ed eliminare o modificare eventuali regole ILM inutilizzate che fanno ancora riferimento al sito. 
+---
+= Fase 4: Rimuovere i riferimenti ILM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dalla fase 4 (Rimuovi riferimenti ILM) della procedura guidata Decommission Site, è possibile rimuovere la policy proposta, se esistente, ed eliminare o modificare eventuali regole ILM inutilizzate che fanno ancora riferimento al sito.
+
+.A proposito di questa attività
+Non è possibile avviare la procedura di decommissionamento del sito nei seguenti casi:
+
+* Esiste una policy ILM proposta. Se si dispone di una policy proposta, è necessario eliminarla.
+* Qualsiasi regola ILM si riferisce al sito, anche se tale regola non viene utilizzata in alcun criterio ILM. È necessario eliminare o modificare tutte le regole che fanno riferimento al sito.
+
+
+.Fasi
+. Se viene elencato un criterio proposto, rimuoverlo.
++
+.. Selezionare *Delete Proposed Policy* (Elimina policy proposte).
+.. Selezionare *OK* nella finestra di dialogo di conferma.
+
+
+. Determinare se eventuali regole ILM inutilizzate fanno riferimento al sito.
++
+image::../media/decommission_site_step_4_ilm_rules.png[Decommissionare le regole ILM fase 4 del sito]
+
++
+Tutte le regole ILM elencate fanno ancora riferimento al sito ma non vengono utilizzate in alcuna policy. Nell'esempio:
+
++
+** La regola *Crea 2 copie* utilizza il pool di storage *tutti i nodi di storage* (StorageGRID 11.6 e versioni precedenti), che utilizza il sito *tutti i siti*.
+** La regola *3 copie inutilizzate per il tenant S3* si riferisce al pool di storage *Raleigh*.
+** La regola *2 copy 2 siti non utilizzati per oggetti di piccole dimensioni* si riferisce al pool di storage *Raleigh*.
+** Le regole *EC larger objects* inutilizzate utilizzano il sito Raleigh nel profilo di erasure coding *All 3 Sites*.
+** Se non sono elencate regole ILM, selezionare *Avanti* per passare a. link:step-5-resolve-node-conflicts.html["Fase 5: Risolvere i conflitti dei nodi (e avviare la decommissionazione)"].
++
+
+NOTE: Quando StorageGRID decommissiona il sito, disattiva automaticamente i profili di erasure coding inutilizzati che fanno riferimento al sito e elimina automaticamente i pool di storage inutilizzati che fanno riferimento al sito. Il pool di storage All Storage Node (StorageGRID 11.6 e versioni precedenti) viene rimosso perché utilizza il sito All Sites.
+
+** Se sono elencate una o più regole ILM, passare alla fase successiva.
+
+
+. Modificare o eliminare ogni regola inutilizzata:
++
+** Per modificare una regola, accedere alla pagina delle regole ILM e aggiornare tutte le posizioni che utilizzano un profilo di erasure coding o un pool di storage che fa riferimento al sito. Quindi, tornare al *Passo 4 (Rimozione dei riferimenti ILM)*.
++
+
+NOTE: Per ulteriori informazioni, consulta le istruzioni per la gestione degli oggetti con la gestione del ciclo di vita delle informazioni.
+
+** Per eliminare una regola, selezionare l'icona del cestino image:../media/icon_trash_can.png["Il Cestino delle icone può"] E selezionare *OK*.
++
+
+IMPORTANT: È necessario eliminare la regola *Make 2 copies* prima di poter decommissionare un sito.
+
+
+
+. Verificare che non esista alcun criterio ILM proposto, che non vi siano regole ILM inutilizzate relative al sito e che il pulsante *Avanti* sia attivato.
++
+image::../media/decommission_site_step_4_no_policy_or_rules.png[Decommissionare il sito fase 4 Nessun criterio o regolamento]
+
+. Selezionare *Avanti*.
++
+
+NOTE: Gli eventuali pool di storage rimanenti e i profili di erasure coding che fanno riferimento al sito non saranno più validi quando il sito viene rimosso. Quando StorageGRID decommissiona il sito, disattiva automaticamente i profili di erasure coding inutilizzati che fanno riferimento al sito e elimina automaticamente i pool di storage inutilizzati che fanno riferimento al sito. Il pool di storage All Storage Node (StorageGRID 11.6 e versioni precedenti) viene rimosso perché utilizza il sito All Sites.
+
++
+Viene visualizzato il punto 5 (Risolvi conflitti di nodi).
+
+

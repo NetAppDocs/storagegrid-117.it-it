@@ -1,0 +1,136 @@
+---
+permalink: swift/monitoring-and-auditing-operations.html 
+sidebar: sidebar 
+keywords: monitor operations, audit operations 
+summary: 'È possibile monitorare i carichi di lavoro e le efficienze per le operazioni dei client visualizzando le tendenze delle transazioni per l"intero grid o per nodi specifici. È possibile utilizzare i messaggi di audit per monitorare le operazioni e le transazioni dei client.' 
+---
+= Monitorare e controllare le operazioni
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile monitorare i carichi di lavoro e le efficienze per le operazioni dei client visualizzando le tendenze delle transazioni per l'intero grid o per nodi specifici. È possibile utilizzare i messaggi di audit per monitorare le operazioni e le transazioni dei client.
+
+
+
+== Monitorare le velocità di acquisizione e recupero degli oggetti
+
+È possibile monitorare i tassi di acquisizione e recupero degli oggetti, nonché le metriche per i conteggi degli oggetti, le query e la verifica. È possibile visualizzare il numero di tentativi riusciti e non riusciti da parte delle applicazioni client di lettura, scrittura e modifica degli oggetti nel sistema StorageGRID.
+
+.Fasi
+. Accedere a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+. Nella dashboard, selezionare *Performance* > *S3 Operations* o *Performance* > *Swift Operations*.
++
+In questa sezione viene riepilogato il numero di operazioni client eseguite dal sistema StorageGRID. Le velocità dei protocolli vengono calcolate in media negli ultimi due minuti.
+
+. Selezionare *NODI*.
+. Dalla home page dei nodi (livello di implementazione), fare clic sulla scheda *Load Balancer*.
++
+I grafici mostrano i trend di tutto il traffico client diretto agli endpoint del bilanciamento del carico all'interno della griglia. È possibile selezionare un intervallo di tempo in ore, giorni, settimane, mesi o anni, in alternativa, è possibile applicare un intervallo personalizzato.
+
+. Dalla home page dei nodi (livello di implementazione), fare clic sulla scheda *oggetti*.
++
+Il grafico mostra le velocità di acquisizione e recupero dell'intero sistema StorageGRID in byte al secondo e byte totali. È possibile selezionare un intervallo di tempo in ore, giorni, settimane, mesi o anni, in alternativa, è possibile applicare un intervallo personalizzato.
+
+. Per visualizzare le informazioni relative a un nodo di storage specifico, selezionarlo dall'elenco a sinistra e fare clic sulla scheda *oggetti*.
++
+Il grafico mostra le velocità di acquisizione e recupero degli oggetti per questo nodo di storage. La scheda include anche metriche per il conteggio degli oggetti, le query e la verifica. È possibile fare clic sulle etichette per visualizzare le definizioni di queste metriche.
+
++
+image::../media/nodes_storage_node_objects_help.png[Schermata dei nodi > _Storage Node_ > oggetti > Guida attributi]
+
+. Se desideri ulteriori dettagli:
++
+.. Selezionare *SUPPORT* > *Tools* > *Grid topology*.
+.. Selezionare *_Site_* > *Overview* > *Main*.
++
+La sezione API Operations (operazioni API) visualizza informazioni riepilogative per l'intera griglia.
+
+.. Selezionare *_Storage Node_* > *LDR* > *_client application_* > *Overview* > *Main*
++
+La sezione Operations (operazioni) visualizza informazioni riepilogative per il nodo di storage selezionato.
+
+
+
+
+
+
+
+== Accesso e revisione dei registri di audit
+
+I messaggi di audit vengono generati dai servizi StorageGRID e memorizzati in file di log di testo. I messaggi di audit specifici delle API nei registri di audit forniscono dati critici di sicurezza, funzionamento e monitoraggio delle performance che possono aiutare a valutare lo stato di salute del sistema.
+
+.Prima di iniziare
+* È necessario disporre di autorizzazioni di accesso specifiche.
+* È necessario disporre di `Passwords.txt` file.
+* È necessario conoscere l'indirizzo IP di un nodo amministratore.
+
+
+.A proposito di questa attività
+Il link:../audit/audit-message-flow-and-retention.html["file di log di audit attivo"] è denominato `audit.log`E viene memorizzato nei nodi di amministrazione.
+
+Una volta al giorno, il file audit.log attivo viene salvato e viene avviato un nuovo file audit.log. Il nome del file salvato indica quando è stato salvato, nel formato `yyyy-mm-dd.txt`.
+
+Dopo un giorno, il file salvato viene compresso e rinominato, nel formato `yyyy-mm-dd.txt.gz`, che conserva la data originale.
+
+Questo esempio mostra il file audit.log attivo, il file del giorno precedente (2018-04-15.txt) e il file compresso del giorno precedente (`2018-04-14.txt.gz`).
+
+[listing]
+----
+audit.log
+2018-04-15.txt
+2018-04-14.txt.gz
+----
+.Fasi
+. Accedere a un nodo amministratore:
++
+.. Immettere il seguente comando: `ssh admin@_primary_Admin_Node_IP_`
+.. Immettere la password elencata in `Passwords.txt` file.
+.. Immettere il seguente comando per passare a root: `su -`
+.. Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+. Accedere alla directory contenente i file di log di controllo:``cd /var/local/audit/export``
+. Visualizzare il file di log di audit corrente o salvato, secondo necessità.
+
+
+
+
+=== Operazioni rapide monitorate nei registri di audit
+
+Tutte le operazioni di ELIMINAZIONE, GET, HEAD, POST e PUT dello storage di successo vengono monitorate in link:../audit/audit-messages-main.html["Registro di controllo di StorageGRID"]. Gli errori non vengono registrati, né sono richieste di informazioni, auth o OPZIONI.
+
+Le informazioni vengono monitorate per le seguenti operazioni Swift.
+
+
+
+==== Operazioni dell'account
+
+* link:account-operations.html["OTTIENI un account"]
+* link:account-operations.html["Conto PRINCIPALE"]
+
+
+
+
+==== Operazioni container
+
+* link:container-operations.html["ELIMINA contenitore"]
+* link:container-operations.html["OTTIENI container"]
+* link:container-operations.html["CONTENITORE DI TESTA"]
+* link:container-operations.html["METTI container"]
+
+
+
+
+==== Operazioni a oggetti
+
+* link:object-operations.html["ELIMINA oggetto"]
+* link:object-operations.html["OTTIENI oggetto"]
+* link:object-operations.html["Oggetto TESTA"]
+* link:object-operations.html["METTI oggetto"]
+

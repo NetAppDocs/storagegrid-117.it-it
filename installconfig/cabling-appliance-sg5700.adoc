@@ -1,0 +1,197 @@
+---
+permalink: installconfig/cabling-appliance-sg5700.html 
+sidebar: sidebar 
+keywords: storagegrid, sg5700, storage node, storage appliance, cabling, wiring, connecting, cable, wire, connect 
+summary: I due controller vengono collegati tra loro, le porte di gestione di ciascun controller e le porte 10/25-GbE del controller E5700SG vengono collegate alla rete di rete e alla rete client opzionale per StorageGRID. 
+---
+= Apparecchio via cavo (SG5700)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I due controller vengono collegati tra loro, le porte di gestione di ciascun controller e le porte 10/25-GbE del controller E5700SG vengono collegate alla rete di rete e alla rete client opzionale per StorageGRID.
+
+.Prima di iniziare
+* Sono stati disimballati i seguenti componenti, inclusi nell'apparecchio:
++
+** Due cavi di alimentazione.
+** Due cavi ottici per le porte di interconnessione FC dei controller.
+** Otto ricetrasmettitori SFP+ che supportano FC a 10 GbE o 16 Gbps. I ricetrasmettitori possono essere utilizzati con le due porte di interconnessione su entrambi i controller e con le quattro porte di rete 10/25-GbE sul controller E5700SG, supponendo che si desideri che le porte di rete utilizzino una velocità di collegamento di 10-GbE.
+
+
+* Sono stati ottenuti i seguenti elementi, non inclusi nell'apparecchio:
++
+** Da uno a quattro cavi ottici per le porte 10/25-GbE che si intende utilizzare.
+** Da uno a quattro ricetrasmettitori SFP28, se si intende utilizzare la velocità di collegamento a 25 GbE.
+** Cavi Ethernet per il collegamento delle porte di gestione.
+
+
+
+
+
+CAUTION: *Rischio di esposizione alle radiazioni laser* -- non smontare o rimuovere alcuna parte di un ricetrasmettitore SFP. L'utente potrebbe essere esposto alle radiazioni laser.
+
+.A proposito di questa attività
+Le figure mostrano i due controller di SG5760 e SG5760X, con il controller storage della serie E2800 nella parte superiore e il controller E5700SG nella parte inferiore. Nei modelli SG5712 e SG5712X, il controller storage della serie E2800 si trova a sinistra del controller E5700SG quando viene visualizzato dal retro.
+
+Connessioni SG5760:
+
+image::../media/sg5760_connections.gif[Connessioni sull'appliance SG5760]
+
+Connessioni SG5760X:
+
+image::../media/sg5760X_connections.png[Connessioni sull'appliance SG5760X]
+
+[cols="1a,2a,2a,2a"]
+|===
+| Didascalia | Porta | Tipo di porta | Utilizzare 
+
+
+ a| 
+1
+ a| 
+Due porte di interconnessione su ciascun controller
+ a| 
+SFP+ ottico FC da 16 GB/s.
+ a| 
+Collegare tra loro i due controller.
+
+
+
+ a| 
+2
+ a| 
+Porta di gestione 1 sul controller della serie E2800
+ a| 
+1 GbE (RJ-45)
+ a| 
+Si connette alla rete da cui si accede a Gestore di sistema di SANtricity. È possibile utilizzare la rete di amministrazione per StorageGRID o una rete di gestione indipendente.
+
+
+
+ a| 
+2
+ a| 
+Porta di gestione 2 sul controller della serie E2800
+ a| 
+1 GbE (RJ-45)
+ a| 
+Riservato al supporto tecnico.
+
+
+
+ a| 
+3
+ a| 
+Porta di gestione 1 sul controller E5700SG
+ a| 
+1 GbE (RJ-45)
+ a| 
+Collega il controller E5700SG alla rete di amministrazione per StorageGRID.
+
+
+
+ a| 
+3
+ a| 
+Porta di gestione 2 sul controller E5700SG
+ a| 
+1 GbE (RJ-45)
+ a| 
+* Può essere collegato alla porta di gestione 1 se si desidera una connessione ridondante alla rete di amministrazione.
+* Può essere lasciato non cablato e disponibile per l'accesso locale temporaneo (IP 169.254.0.1).
+* Durante l'installazione, può essere utilizzato per collegare il controller E5700SG a un laptop di servizio se gli indirizzi IP assegnati da DHCP non sono disponibili.
+
+
+
+
+ a| 
+4
+ a| 
+Porte 10/25-GbE 1-4 sul controller E5700SG
+ a| 
+10 GbE o 25 GbE
+
+*Nota:* i ricetrasmettitori SFP+ inclusi nell'appliance supportano velocità di collegamento a 10 GbE. Se si desidera utilizzare velocità di collegamento a 25 GbE per le quattro porte di rete, è necessario fornire ricetrasmettitori SFP28.
+ a| 
+Connettersi alla rete griglia e alla rete client per StorageGRID. Vedere link:port-bond-modes-for-e5700sg-controller-ports.html["Modalità Port Bond (controller E5700SG)"].
+
+|===
+.Fasi
+. Collegare il controller E2800 al controller E5700SG utilizzando due cavi ottici e quattro degli otto ricetrasmettitori SFP+.
++
+[cols="1a,1a"]
+|===
+| Connetti questa porta... | A questa porta... 
+
+
+ a| 
+Porta di interconnessione 1 sul controller E2800
+ a| 
+Porta di interconnessione 1 sul controller E5700SG
+
+
+
+ a| 
+Porta di interconnessione 2 sul controller E2800
+ a| 
+Porta di interconnessione 2 sul controller E5700SG
+
+|===
+. Se si intende utilizzare Gestore di sistema SANtricity, collegare la porta di gestione 1 (P1) del controller E2800 (la porta RJ-45 a sinistra) alla rete di gestione per Gestore di sistema SANtricity, utilizzando un cavo Ethernet.
++
+Non utilizzare la porta di gestione 2 (P2) sul controller E2800 (la porta RJ-45 a destra). Questa porta è riservata al supporto tecnico.
+
+. Se si intende utilizzare la rete di amministrazione per StorageGRID, collegare la porta di gestione 1 del controller E5700SG (la porta RJ-45 a sinistra) alla rete di amministrazione, utilizzando un cavo Ethernet.
++
+Se si intende utilizzare la modalità bond di rete Active-backup per la rete amministrativa, collegare la porta di gestione 2 del controller E5700SG (la porta RJ-45 a destra) alla rete amministrativa, utilizzando un cavo Ethernet.
+
+. Collegare le porte 10/25-GbE del controller E5700SG agli switch di rete appropriati, utilizzando cavi ottici e ricetrasmettitori SFP+ o SFP28.
++
+
+NOTE: Tutte le porte devono utilizzare la stessa velocità di collegamento. Installare i ricetrasmettitori SFP+ se si prevede di utilizzare velocità di collegamento a 10 GbE. Installare i ricetrasmettitori SFP28 se si intende utilizzare velocità di collegamento 25 GbE.
+
++
+** Se si prevede di utilizzare la modalità Fixed Port Bond (connessione porta fissa) (impostazione predefinita), collegare le porte alla rete StorageGRID e alle reti client, come mostrato nella tabella.
++
+[cols="1a,1a"]
+|===
+| Porta | Si connette a... 
+
+
+ a| 
+Porta 1
+ a| 
+Rete client (opzionale)
+
+
+
+ a| 
+Porta 2
+ a| 
+Grid Network
+
+
+
+ a| 
+Porta 3
+ a| 
+Rete client (opzionale)
+
+
+
+ a| 
+Porta 4
+ a| 
+Grid Network
+
+|===
+** Se si intende utilizzare la modalità aggregate port bond, collegare una o più porte di rete a uno o più switch. È necessario collegare almeno due delle quattro porte per evitare un singolo punto di errore. Se si utilizzano più switch per un singolo collegamento LACP, gli switch devono supportare MLAG o equivalente.
+
+
+
+
+.Informazioni correlate
+link:accessing-storagegrid-appliance-installer.html["Accedere al programma di installazione dell'appliance StorageGRID"]

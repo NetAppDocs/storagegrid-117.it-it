@@ -1,0 +1,121 @@
+---
+permalink: installconfig/port-bond-modes-for-sgf6112.html 
+sidebar: sidebar 
+keywords: sgf6112, sg6100, port bond, Network bonding, fixed, Aggregate, independent, active-backup, active backup, management port 
+summary: 'Quando si configurano i collegamenti di rete per l"appliance SGF6112, è possibile utilizzare il bonding delle porte per la connessione alla rete Grid e alla rete client opzionale e per le porte di gestione da 1/10-GbE per la connessione alla rete amministrativa opzionale. Il port bonding consente di proteggere i dati fornendo percorsi ridondanti tra le reti StorageGRID e l"appliance.' 
+---
+= Modalità di port bond (SGF6112)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando link:configuring-network-links.html["configurazione dei collegamenti di rete"] Per l'appliance SGF6112, è possibile utilizzare il bonding di porta per le porte che si collegano alla rete Grid e alla rete client opzionale e per le porte di gestione da 1/10-GbE che si collegano alla rete amministrativa opzionale. Il port bonding consente di proteggere i dati fornendo percorsi ridondanti tra le reti StorageGRID e l'appliance.
+
+
+
+== Network Bond
+
+Le porte di rete dell'appliance supportano la modalità Fixed Port Bond o aggregate Port Bond per le connessioni Grid Network e Client Network.
+
+
+
+=== Modalità fissa port bond
+
+Fixed port bond mode è la configurazione predefinita per le porte di rete.
+
+image::../media/sgf6112_fixed_port.png[SGF6112 Fixed Port Bond Mode]
+
+[cols="1a,3a"]
+|===
+| Didascalia | Quali porte sono collegate 
+
+
+ a| 
+C.
+ a| 
+Le porte 1 e 3 sono collegate tra loro per la rete client, se viene utilizzata questa rete.
+
+
+
+ a| 
+G
+ a| 
+Le porte 2 e 4 sono collegate tra loro per la rete Grid.
+
+|===
+Quando si utilizza la modalità Fixed Port Bond, è possibile collegare le porte utilizzando la modalità Active-backup o la modalità link Aggregation Control Protocol (LACP 802.3ad).
+
+* In modalità Active-backup (impostazione predefinita), è attiva una sola porta alla volta. In caso di guasto della porta attiva, la relativa porta di backup fornisce automaticamente una connessione di failover. La porta 4 fornisce un percorso di backup per la porta 2 (rete griglia), mentre la porta 3 fornisce un percorso di backup per la porta 1 (rete client).
+* In modalità LACP, ciascuna coppia di porte forma un canale logico tra l'appliance e la rete, consentendo un throughput più elevato. In caso di guasto di una porta, l'altra porta continua a fornire il canale. Il throughput viene ridotto, ma la connettività non viene influenzata.
+
+
+
+NOTE: Se non sono necessarie connessioni ridondanti, è possibile utilizzare una sola porta per ciascuna rete. Tuttavia, tenere presente che l'avviso *link down* dell'appliance di storage potrebbe essere attivato in Grid Manager dopo l'installazione di StorageGRID, a indicare che un cavo è scollegato. È possibile disattivare questa regola di avviso in modo sicuro.
+
+
+
+=== Modalità aggregate port bond
+
+La modalità aggregate port bond aumenta significativamente il throughput per ciascuna rete StorageGRID e fornisce percorsi di failover aggiuntivi.
+
+image::../media/sgf6112_aggregate_ports.png[Modalità aggregate port bond SGF6100]
+
+[cols="1a,3a"]
+|===
+| Didascalia | Quali porte sono collegate 
+
+
+ a| 
+1
+ a| 
+Tutte le porte connesse sono raggruppate in un unico collegamento LACP, consentendo l'utilizzo di tutte le porte per il traffico di rete Grid Network e Client Network.
+
+|===
+Se si intende utilizzare la modalità aggregate port bond:
+
+* È necessario utilizzare la modalità di collegamento di rete LACP.
+* È necessario specificare un tag VLAN univoco per ciascuna rete. Questo tag VLAN verrà aggiunto a ciascun pacchetto di rete per garantire che il traffico di rete venga instradato alla rete corretta.
+* Le porte devono essere collegate a switch in grado di supportare VLAN e LACP. Se nel bond LACP partecipano più switch, questi devono supportare gruppi MLAG (Multi-chassis link Aggregation groups) o equivalenti.
+* Si comprende come configurare gli switch per l'utilizzo di VLAN, LACP e MLAG o equivalente.
+
+
+Se non si desidera utilizzare tutte e quattro le porte, è possibile utilizzare una, due o tre porte. L'utilizzo di più porte aumenta al massimo la possibilità che una parte della connettività di rete rimanga disponibile in caso di guasto di una delle porte.
+
+
+NOTE: Se si sceglie di utilizzare meno di quattro porte di rete, è possibile che venga attivato un avviso *Services appliance link down* in Grid Manager dopo l'installazione del nodo appliance, che indica che un cavo è scollegato. È possibile disattivare questa regola di avviso per l'avviso attivato.
+
+
+
+== Network bond mode per le porte di gestione
+
+Per le due porte di gestione 1/10-GbE, è possibile scegliere la modalità Independent network bond o la modalità Active-Backup network bond per connettersi alla rete amministrativa opzionale.
+
+image::../media/sgf6112_bonded_management_ports.png[Porte di gestione della rete]
+
+In modalità indipendente, solo la porta di gestione a sinistra è connessa alla rete di amministrazione. Questa modalità non fornisce un percorso ridondante. La porta di gestione a destra è disconnessa e disponibile per le connessioni locali temporanee (utilizza l'indirizzo IP 169.254.0.1).
+
+In modalità Active-Backup, entrambe le porte di gestione sono collegate alla rete di amministrazione. È attiva una sola porta alla volta. In caso di guasto della porta attiva, la relativa porta di backup fornisce automaticamente una connessione di failover. L'Unione di queste due porte fisiche in una porta di gestione logica fornisce un percorso ridondante alla rete di amministrazione.
+
+
+NOTE: Se è necessario effettuare una connessione locale temporanea all'appliance quando le porte di gestione 1/10-GbE sono configurate per la modalità Active-Backup, rimuovere i cavi da entrambe le porte di gestione, collegare il cavo temporaneo alla porta di gestione a destra e accedere all'appliance utilizzando l'indirizzo IP 169.254.0.1.
+
+[cols="1a,3a"]
+|===
+| Didascalia | Network bond mode (modalità bond di 
+
+
+ a| 
+R
+ a| 
+Modalità Active-Backup. Entrambe le porte di gestione sono collegate a una porta di gestione logica collegata alla rete di amministrazione.
+
+
+
+ a| 
+IO
+ a| 
+Modalità indipendente. La porta a sinistra è collegata alla rete di amministrazione. La porta a destra è disponibile per le connessioni locali temporanee (indirizzo IP 169.254.0.1).
+
+|===

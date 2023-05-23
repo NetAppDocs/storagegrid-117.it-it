@@ -1,0 +1,6 @@
+= 
+:allow-uri-read: 
+
+
+
+NOTE: È possibile attivare o disattivare l'accesso IPMI remoto per tutte le appliance che contengono un BMC utilizzando l'endpoint privato dell'API di gestione, PUT /private/bmc.

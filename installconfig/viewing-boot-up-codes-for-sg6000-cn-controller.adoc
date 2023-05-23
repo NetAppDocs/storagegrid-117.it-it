@@ -1,0 +1,163 @@
+---
+permalink: installconfig/viewing-boot-up-codes-for-sg6000-cn-controller.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, boot codes, boot-up codes, start codes, codes, boot, start, sg6000-cn 
+summary: 'Quando si alimenta l"appliance, il BMC registra una serie di codici di avvio per il controller SG6000-CN. È possibile visualizzare questi codici in diversi modi.' 
+---
+= Visualizzazione dei codici di avvio (controller SG6000-CN)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando si alimenta l'appliance, il BMC registra una serie di codici di avvio per il controller SG6000-CN. È possibile visualizzare questi codici in diversi modi.
+
+.Prima di iniziare
+* Sai come accedere alla dashboard BMC.
+* Se si desidera utilizzare Serial-over-LAN (Sol), si ha esperienza nell'utilizzo delle applicazioni della console IPMI Sol.
+
+
+.Fasi
+. Selezionare uno dei seguenti metodi per visualizzare i codici di avvio del controller dell'appliance e raccogliere l'apparecchiatura richiesta.
++
+[cols="1a,2a"]
+|===
+| Metodo | Attrezzatura necessaria 
+
+
+ a| 
+Console VGA
+ a| 
+** Monitor con supporto VGA
+** Cavo VGA
+
+
+
+
+ a| 
+KVM
+ a| 
+** Cavo RJ-45
+
+
+
+
+ a| 
+Porta seriale
+ a| 
+** CAVO seriale DB-9
+** Terminale seriale virtuale
+
+
+
+
+ a| 
+SOL
+ a| 
+** Terminale seriale virtuale
+
+
+|===
+. Se si utilizza una console VGA, attenersi alla seguente procedura:
++
+.. Collegare un monitor VGA alla porta VGA sul retro dell'apparecchio.
+.. Visualizzare i codici visualizzati sul monitor.
+
+
+. Se si utilizza BMC KVM, attenersi alla seguente procedura:
++
+.. Connettersi alla porta di gestione BMC e accedere all'interfaccia Web BMC.
+.. Selezionare *telecomando*.
+.. Avviare il KVM.
+.. Visualizzare i codici sul monitor virtuale.
+
+
+. Se si utilizza una porta seriale e un terminale, attenersi alla seguente procedura:
++
+.. Collegare alla porta seriale DB-9 sul retro dell'appliance.
+.. Utilizzare le impostazioni `115200 8-N-1`.
+.. Visualizzare i codici stampati sul terminale seriale.
+
+
+. Se si utilizza Sol, attenersi alla seguente procedura:
++
+.. Connettersi a IPMI Sol utilizzando l'indirizzo IP BMC e le credenziali di accesso.
++
+`ipmitool -I lanplus -H _BMC_Port_IP_ -U root -P _Password_ sol activate`
+
+.. Visualizzare i codici sul terminale seriale virtuale.
+
+
+. Utilizza la tabella per cercare i codici dell'apparecchio.
++
+[cols="1a,3a"]
+|===
+| Codice | Indica 
+
+
+ a| 
+CIAO
+ a| 
+Lo script di boot master è stato avviato.
+
+
+
+ a| 
+HP
+ a| 
+Il sistema sta verificando se il firmware della scheda di interfaccia di rete (NIC) deve essere aggiornato.
+
+
+
+ a| 
+RB
+ a| 
+Il sistema viene riavviato dopo l'applicazione degli aggiornamenti del firmware.
+
+
+
+ a| 
+FP
+ a| 
+I controlli di aggiornamento del firmware del sottosistema hardware sono stati completati. Avvio dei servizi di comunicazione tra controller in corso.
+
+
+
+ a| 
+LUI
+ a| 
+Solo per un nodo di storage dell'appliance:
+
+Il sistema è in attesa di connettività con i controller di storage e di sincronizzazione con il sistema operativo SANtricity.
+
+*Nota:* se la procedura di avvio non procede oltre questa fase, eseguire le seguenti operazioni:
+
+.. Verificare che i quattro cavi di interconnessione tra il controller SG6000-CN e i due controller storage siano collegati correttamente.
+.. Se necessario, sostituire uno o più cavi e riprovare.
+.. Se il problema persiste, contattare il supporto tecnico.
+
+
+
+
+ a| 
+HC
+ a| 
+Il sistema sta verificando la presenza di dati di installazione di StorageGRID.
+
+
+
+ a| 
+HO
+ a| 
+Il programma di installazione dell'appliance StorageGRID è in esecuzione.
+
+
+
+ a| 
+HA
+ a| 
+StorageGRID è in esecuzione.
+
+|===
+

@@ -1,0 +1,27 @@
+---
+permalink: admin/grid-federation-workflow.html 
+sidebar: sidebar 
+keywords: grid federation workflow, cross-grid replication, account clone, cgr, disaster recovery 
+summary: 'In qualità di amministratore di grid, è necessario coordinarsi strettamente con gli utenti tenant per stabilire e utilizzare una connessione a federazione di grid tra due sistemi StorageGRID per il clone dell"account e la replica cross-grid.' 
+---
+= Workflow di federazione di grid
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In qualità di amministratore di grid, è necessario coordinarsi strettamente con gli utenti tenant per stabilire e utilizzare una connessione a federazione di grid tra due sistemi StorageGRID per il clone dell'account e la replica cross-grid.
+
+Il diagramma del flusso di lavoro mostra i passaggi di alto livello che gli amministratori di grid e gli utenti tenant dovranno eseguire per stabilire una connessione a federazione di grid tra due grid e per impostare il clone dell'account e la replica cross-grid.
+
+Dopo aver creato una connessione a federazione di griglie tra due griglie, l'amministratore della griglia crea uno o più nuovi account tenant e assegna un'autorizzazione per determinare chi può utilizzare la connessione. Quando il nuovo tenant viene salvato, StorageGRID crea automaticamente un tenant identico sull'altro grid.
+
+Una volta che il nuovo tenant è disponibile su entrambe le griglie, gli utenti del tenant possono eseguire le seguenti operazioni:
+
+* Dalla griglia di origine del tenant, creare nuovi utenti e gruppi tenant, che vengono clonati automaticamente nella griglia di destinazione del tenant.
+* Dalla griglia di origine del tenant, creare nuove chiavi di accesso S3, che possono essere eventualmente clonate nella griglia di destinazione del tenant.
+* Crea nuovi bucket su entrambe le griglie e, facoltativamente, abilita la replica cross-grid in una direzione o in entrambe le direzioni.
+
+
+image:../media/grid-federation-workflow.png["Workflow di federazione di grid"]

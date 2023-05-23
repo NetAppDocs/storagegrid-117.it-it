@@ -1,0 +1,34 @@
+---
+permalink: sg6000/reinstalling-sg6000-cn-controller-cover.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, sg6000-cn, controller, cover, install, installing, installation, reinstall, reinstalling, reinstallation 
+summary: 'Al termine della manutenzione dell"hardware interno, reinstallare il coperchio del controller.' 
+---
+= Reinstallare il coperchio del controller SG6000-CN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Al termine della manutenzione dell'hardware interno, reinstallare il coperchio del controller.
+
+.Prima di iniziare
+Tutte le procedure di manutenzione all'interno del controller sono state completate.
+
+.Fasi
+. Con la chiusura a scatto del coperchio aperta, tenere il coperchio sopra il telaio e allineare il foro nella chiusura a scatto del coperchio superiore con il perno nel telaio. Una volta allineato il coperchio, abbassarlo sul telaio.
++
+image::../media/sg6060_cover_latch_alignment_pin.jpg[Perno di allineamento del fermo del coperchio SG6060]
+
+. Ruotare il dispositivo di chiusura del coperchio in avanti e in basso fino a quando non si arresta e il coperchio non si inserisce completamente nel telaio. Verificare che non vi siano spazi vuoti lungo il bordo anteriore del coperchio.
++
+Se il coperchio non è inserito completamente, potrebbe non essere possibile far scorrere il controller SG6000-CN nel rack.
+
+. Opzionale: Ruotare di un quarto di giro il fermo di plastica blu nella direzione di blocco, come mostrato sul fermo, per bloccarlo.
+
+
+.Al termine
+Reinstallare il controller nel cabinet o nel rack.
+
+link:reinstalling-sg6000-cn-controller-into-cabinet-or-rack.html["Reinstallare il controller SG6000-CN nel cabinet o nel rack"]

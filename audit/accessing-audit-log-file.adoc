@@ -1,0 +1,39 @@
+---
+permalink: audit/accessing-audit-log-file.html 
+sidebar: sidebar 
+keywords: storagegrid, audit, log, log file, access, accessing 
+summary: 'La condivisione dell"audit contiene il file audit.log attivo ed eventuali file di log dell"audit compressi. Per un facile accesso ai registri di audit, è possibile configurare l"accesso client per controllare le condivisioni per NFS. È inoltre possibile accedere ai file di log di audit direttamente dalla riga di comando del nodo di amministrazione.' 
+---
+= Accedere al file di log di audit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La condivisione di audit contiene il attivo `audit.log` file ed eventuali file di log di audit compressi. Per un facile accesso ai registri di controllo, è possibile link:../admin/configuring-audit-client-access.html["Configurare l'accesso client di audit per NFS"]. È inoltre possibile accedere ai file di log di audit direttamente dalla riga di comando del nodo di amministrazione.
+
+.Prima di iniziare
+* È necessario disporre di autorizzazioni di accesso specifiche.
+* È necessario disporre di `Passwords.txt` file.
+* È necessario conoscere l'indirizzo IP di un nodo amministratore.
+
+
+.Fasi
+. Accedere a un nodo amministratore:
++
+.. Immettere il seguente comando: `ssh admin@_primary_Admin_Node_IP_`
+.. Immettere la password elencata in `Passwords.txt` file.
+.. Immettere il seguente comando per passare a root: `su -`
+.. Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+. Accedere alla directory contenente i file di log di controllo:
++
+`cd /var/local/audit/export`
+
+. Visualizzare il file di log di audit corrente o salvato, secondo necessità.
+

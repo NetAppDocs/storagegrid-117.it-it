@@ -1,0 +1,54 @@
+---
+permalink: ilm/activating-ilm-policy.html 
+sidebar: sidebar 
+keywords: activate ilm policy, information lifecycle policy 
+summary: Dopo aver aggiunto le regole ILM a un criterio ILM proposto, aver simulato il criterio e aver confermato che si comporta come previsto, è possibile attivare il criterio proposto. 
+---
+= Attivare il criterio ILM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver aggiunto le regole ILM a un criterio ILM proposto, aver simulato il criterio e aver confermato che si comporta come previsto, è possibile attivare il criterio proposto.
+
+.Prima di iniziare
+* Hai effettuato l'accesso a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* Lo hai fatto link:../admin/admin-group-permissions.html["autorizzazioni di accesso specifiche"].
+* La policy ILM proposta è stata salvata e simulata.
+
+
+
+CAUTION: Gli errori in un criterio ILM possono causare una perdita di dati irrecuperabile. Esaminare attentamente e simulare la policy prima di attivarla per confermare che funzionerà come previsto. + quando si attiva un nuovo criterio ILM, StorageGRID lo utilizza per gestire tutti gli oggetti, inclusi quelli esistenti e quelli appena acquisiti. Prima di attivare un nuovo criterio ILM, esaminare le eventuali modifiche apportate al posizionamento degli oggetti replicati e codificati in cancellazione esistenti. La modifica della posizione di un oggetto esistente potrebbe causare problemi di risorse temporanee quando i nuovi posizionamenti vengono valutati e implementati.
+
+.A proposito di questa attività
+Quando si attiva un criterio ILM, il sistema distribuisce il nuovo criterio a tutti i nodi. Tuttavia, il nuovo criterio attivo potrebbe non essere effettivo fino a quando tutti i nodi della griglia non saranno disponibili per ricevere il nuovo criterio. In alcuni casi, il sistema attende l'implementazione di una nuova policy attiva per garantire che gli oggetti Grid non vengano rimossi accidentalmente.
+
+* Se si apportano modifiche alle policy che aumentano la ridondanza o la durata dei dati, tali modifiche vengono implementate immediatamente. Ad esempio, se si attiva un nuovo criterio che include una regola di tre copie invece di una regola di due copie, tale criterio verrà implementato immediatamente perché aumenta la ridondanza dei dati.
+* Se si apportano modifiche alle policy che potrebbero ridurre la ridondanza o la durata dei dati, tali modifiche non verranno implementate fino a quando non saranno disponibili tutti i nodi della griglia. Ad esempio, se si attiva un nuovo criterio che utilizza una regola di due copie invece di una regola di tre copie, il nuovo criterio viene visualizzato nella scheda criterio attivo, ma non avrà effetto fino a quando tutti i nodi non saranno online e disponibili.
+
+
+.Fasi
+. Quando si è pronti ad attivare una policy proposta, selezionare *ILM policy* > *proposed policy*, quindi selezionare *activate*.
++
+Viene visualizzato un messaggio di avviso che richiede di confermare l'attivazione della policy proposta.
+
++
+Se la regola predefinita non mantiene gli oggetti per sempre, nel messaggio di avviso viene visualizzato un messaggio. In questo esempio, il diagramma di conservazione mostra che la regola predefinita elimina gli oggetti dopo 730 giorni (2 anni). È necessario digitare *730* nella casella di testo per confermare che gli oggetti non corrispondenti a un'altra regola del criterio verranno rimossi da StorageGRID dopo 730 giorni.
+
++
+image::../media/ilm_policy_default_rule_not_forever_prompt.png[La regola predefinita del criterio ILM non viene richiesta]
+
+. Selezionare *OK*.
+
+
+.Risultato
+Quando viene attivata una nuova policy ILM:
+
+* Il criterio viene visualizzato nella scheda criterio attivo. La voce Data di inizio indica la data e l'ora di attivazione della policy.
+* Il criterio precedentemente attivo viene visualizzato nella scheda Cronologia criteri. Le voci Data di inizio e Data di fine indicano quando il criterio è diventato attivo e quando non è più in vigore.
+
+
+.Informazioni correlate
+link:example-6-changing-ilm-policy.html["Esempio 6: Modifica di un criterio ILM"]

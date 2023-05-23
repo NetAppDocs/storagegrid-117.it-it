@@ -1,0 +1,62 @@
+---
+permalink: admin/configuring-storage-proxy-settings.html 
+sidebar: sidebar 
+keywords: storage proxy, non-transparent proxy, platform service endpoint 
+summary: 'Se si utilizzano servizi di piattaforma o Cloud Storage Pool, è possibile configurare un proxy non trasparente tra i nodi di storage e gli endpoint S3 esterni. Ad esempio, potrebbe essere necessario un proxy non trasparente per consentire l"invio dei messaggi dei servizi della piattaforma a endpoint esterni, ad esempio un endpoint su Internet.' 
+---
+= Configurare le impostazioni del proxy di storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si utilizzano servizi di piattaforma o Cloud Storage Pool, è possibile configurare un proxy non trasparente tra i nodi di storage e gli endpoint S3 esterni. Ad esempio, potrebbe essere necessario un proxy non trasparente per consentire l'invio dei messaggi dei servizi della piattaforma a endpoint esterni, ad esempio un endpoint su Internet.
+
+.Prima di iniziare
+* Si dispone di autorizzazioni di accesso specifiche.
+* Hai effettuato l'accesso a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+
+
+.A proposito di questa attività
+È possibile configurare le impostazioni per un singolo Storage Proxy.
+
+.Fasi
+. Selezionare *CONFIGURAZIONE* > *sicurezza* > *Impostazioni proxy*.
++
+Viene visualizzata la pagina Storage Proxy Settings (Impostazioni proxy storage). Per impostazione predefinita, nel menu della barra laterale è selezionata l'opzione *Storage*.
+
++
+image::../media/proxy_settings_menu_storage.png[Menu Proxy Settings - Storage (Impostazioni proxy - archiviazione)]
+
+. Selezionare la casella di controllo *Enable Storage Proxy* (attiva proxy storage).
++
+Vengono visualizzati i campi per la configurazione di un proxy di storage.
+
++
+image::../media/proxy_settings_storage.png[Schermata della finestra di dialogo Storage Proxy Settings (Impostazioni proxy storage)]
+
+. Selezionare il protocollo per il proxy dello storage non trasparente.
+. Immettere il nome host o l'indirizzo IP del server proxy.
+. Facoltativamente, inserire la porta utilizzata per connettersi al server proxy.
++
+È possibile lasciare vuoto questo campo se si utilizza la porta predefinita per il protocollo: 80 per HTTP o 1080 per SOCKS5.
+
+. Selezionare *Salva*.
++
+Una volta salvato il proxy dello storage, è possibile configurare e testare i nuovi endpoint per i servizi della piattaforma o i pool di cloud storage.
+
++
+
+NOTE: Le modifiche del proxy possono richiedere fino a 10 minuti.
+
+. Controllare le impostazioni del server proxy per assicurarsi che i messaggi relativi al servizio della piattaforma da StorageGRID non vengano bloccati.
+
+
+.Al termine
+Se è necessario disattivare un proxy di storage, deselezionare la casella di controllo *Enable Storage Proxy* (attiva proxy di storage) e selezionare *Save* (Salva).
+
+.Informazioni correlate
+* link:networking-and-ports-for-platform-services.html["Rete e porte per i servizi della piattaforma"]
+* link:../ilm/index.html["Gestire gli oggetti con ILM"]
+

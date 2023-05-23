@@ -1,0 +1,31 @@
+---
+permalink: installconfig/connecting-power-cords-and-applying-power-sgf6112.html 
+sidebar: sidebar 
+keywords: storagegrid, sgf6112, wire, wiring, cabling, cable, Connecting, connect, power cords, power, applying power, apply power, turn on, power up, ac, ac power 
+summary: 'Dopo aver collegato i cavi di rete, è possibile alimentare l"apparecchio.' 
+---
+= Collegamento dei cavi di alimentazione e alimentazione (SGF6112)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Dopo aver collegato i cavi di rete, è possibile alimentare l'apparecchio.
+
+.Fasi
+. Collegare un cavo di alimentazione a ciascuna delle due unità di alimentazione dell'apparecchio.
+. Collegare questi due cavi di alimentazione a due diverse unità di distribuzione dell'alimentazione (PDU) nell'armadio o nel rack.
+. Se il pulsante di accensione sulla parte anteriore dell'apparecchio non è illuminato in blu, premerlo per accendere l'apparecchio.
++
+Non premere di nuovo il pulsante di alimentazione durante il processo di accensione.
+
++
+Il LED sull'alimentatore deve essere acceso in verde senza lampeggiare.
+
+. In caso di errori, correggere eventuali problemi.
+. Se rimosso, collegate il pannello anteriore all'apparecchio.
+
+
+.Informazioni correlate
+link:viewing-status-indicators.html["Visualizzare gli indicatori di stato"]

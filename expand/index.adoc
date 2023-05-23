@@ -1,0 +1,37 @@
+---
+permalink: expand/index.html 
+sidebar: sidebar 
+keywords: expand grid 
+summary: Utilizzare queste istruzioni per espandere la capacità o le funzionalità del sistema StorageGRID senza interrompere le operazioni del sistema. 
+---
+= Espandi la tua griglia: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Utilizzare queste istruzioni per espandere la capacità o le funzionalità del sistema StorageGRID senza interrompere le operazioni del sistema.
+
+
+
+== A proposito di queste istruzioni
+
+Queste istruzioni descrivono come eseguire un'espansione StorageGRID per aggiungere volumi di storage a nodi di storage, nuovi nodi grid a un sito esistente o a un intero nuovo sito.
+
+Queste istruzioni sono destinate al personale tecnico responsabile della configurazione e del supporto del sistema StorageGRID dopo l'installazione.
+
+
+
+== Workflow di espansione
+
+Il motivo dell'espansione determina il numero di nuovi nodi di ciascun tipo da aggiungere e la posizione dei nuovi nodi. Ad esempio, se si esegue un'espansione per aumentare la capacità dello storage, aggiungere la capacità dei metadati o aggiungere ridondanza o nuove funzionalità, esistono diversi requisiti dei nodi.
+
+Come illustrato nel flusso di lavoro, i passaggi per eseguire un'espansione dipendono dall'aggiunta di volumi di storage a un nodo di storage, dall'aggiunta di nuovi nodi a un sito esistente o dall'aggiunta di un nuovo sito. In tutti i casi, è possibile eseguire l'espansione senza interrompere il funzionamento del sistema corrente.
+
+La procedura per l'aggiunta di nodi dipende anche dall'aggiunta di appliance StorageGRID o di host che eseguono VMware o Linux.
+
+
+NOTE: "`Linux`" si riferisce a una distribuzione Red Hat® Enterprise Linux®, Ubuntu®, CentOS o Debian®. Utilizzare https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp (IMT)"^] per ottenere un elenco delle versioni supportate.
+
+image::../media/expansion_workflow.png[diagramma di flusso che mostra una panoramica del processo di espansione]

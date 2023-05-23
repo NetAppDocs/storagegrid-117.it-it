@@ -1,0 +1,37 @@
+---
+permalink: maintain/considerations-for-decommissioning-storage-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission 
+summary: 'Se si prevede di decommissionare un nodo di storage, è necessario comprendere come StorageGRID gestisce i dati e i metadati dell"oggetto su tale nodo.' 
+---
+= Considerazioni per la decommissionazione del nodo di storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si prevede di decommissionare un nodo di storage, è necessario comprendere come StorageGRID gestisce i dati e i metadati dell'oggetto su tale nodo.
+
+Le seguenti considerazioni e restrizioni si applicano quando si decommissiona nodi di storage:
+
+* Il sistema deve sempre includere un numero sufficiente di nodi di storage per soddisfare i requisiti operativi, inclusi il quorum ADC e la policy ILM attiva. Per soddisfare questa restrizione, potrebbe essere necessario aggiungere un nuovo nodo di storage in un'operazione di espansione prima di poter decommissionare un nodo di storage esistente.
+* Se il nodo di storage viene disconnesso quando viene decommissionato, il sistema deve ricostruire i dati utilizzando i dati dei nodi di storage connessi, con conseguente perdita di dati.
+* Quando si rimuove un nodo di storage, è necessario trasferire grandi volumi di dati a oggetti sulla rete. Sebbene questi trasferimenti non debbano influire sulle normali operazioni di sistema, possono avere un impatto sulla quantità totale di larghezza di banda di rete consumata dal sistema StorageGRID.
+* Le attività associate allo smantellamento del nodo di storage hanno una priorità inferiore rispetto alle attività associate alle normali operazioni di sistema. Ciò significa che lo smantellamento non interferisce con le normali operazioni del sistema StorageGRID e non deve essere pianificato per un periodo di inattività del sistema. Poiché lo smantellamento viene eseguito in background, è difficile stimare il tempo necessario per il completamento del processo. In generale, lo smantellamento termina più rapidamente quando il sistema non funziona correttamente o se viene rimosso un solo nodo di storage alla volta.
+* La decommissionazione di un nodo di storage potrebbe richiedere giorni o settimane. Pianificare questa procedura di conseguenza. Sebbene il processo di decommissionamento sia progettato per non influire sulle operazioni del sistema, può limitare altre procedure. In generale, prima di rimuovere i nodi di rete, è necessario eseguire eventuali upgrade o espansioni del sistema pianificati.
+* Le procedure di decommissionamento che coinvolgono i nodi di storage possono essere messe in pausa durante determinate fasi per consentire l'esecuzione di altre procedure di manutenzione, se necessario, e ripristinarle una volta completate.
+* Non è possibile eseguire operazioni di riparazione dei dati su nodi grid quando è in esecuzione un'attività di decommissionamento.
+* Non apportare modifiche al criterio ILM durante la disattivazione di un nodo di storage.
+* Quando si rimuove un nodo di storage, i dati sul nodo vengono migrati in altri nodi griglia; tuttavia, questi dati non vengono completamente rimossi dal nodo griglia decommissionata. Per rimuovere i dati in modo permanente e sicuro, è necessario cancellare i dischi del nodo della griglia decommissionata al termine della procedura di decommissionamento.
+* Quando si decommissiona un nodo di storage, è possibile che vengano generati i seguenti avvisi e allarmi e che si ricevano notifiche e-mail e SNMP correlate:
++
+** *Impossibile comunicare con l'avviso Node*. Questo avviso viene attivato quando si decommissiona un nodo di storage che include il servizio ADC. L'avviso viene risolto al termine dell'operazione di decommissionamento.
+** Allarme VSTU (Object Verification Status). Questo allarme a livello di avviso indica che il nodo di storage sta entrando in modalità di manutenzione durante il processo di decommissionamento.
+** Allarme CASA (Data Store Status). Questo allarme di livello maggiore indica che il database Cassandra è in stato di inattività a causa dell'interruzione dei servizi.
+
+
+
+
+.Informazioni correlate
+link:restoring-object-data-to-storage-volume.html["Ripristinare i dati dell'oggetto nel volume di storage"]

@@ -1,0 +1,51 @@
+---
+permalink: s3/s3-operations-tracked-in-audit-logs.html 
+sidebar: sidebar 
+keywords: audit log actions tracked 
+summary: Nei registri di audit di StorageGRID vengono registrate diverse operazioni bucket e operazioni a oggetti. 
+---
+= Operazioni S3 registrate nei registri di audit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nei registri di audit di StorageGRID vengono registrate diverse operazioni bucket e operazioni a oggetti.
+
+
+
+== Operazioni bucket registrate nei registri di audit
+
+* ELIMINA bucket
+* ELIMINA tag bucket
+* ELIMINARE più oggetti
+* OTTIENI bucket (Elenca oggetti)
+* SCARICA le versioni degli oggetti bucket
+* OTTIENI il contrassegno bucket
+* BENNA PER LA TESTA
+* METTI bucket
+* METTI la compliance del bucket
+* INSERIRE il contrassegno bucket
+* METTERE il bucket in versione
+
+
+
+
+== Operazioni a oggetti registrate nei registri di audit
+
+* Caricamento multiparte completo
+* Parte di caricamento (quando la regola ILM utilizza comportamenti di acquisizione bilanciati o rigorosi)
+* Parte di caricamento - Copia (quando la regola ILM utilizza comportamenti di acquisizione rigorosi o bilanciati)
+* ELIMINA oggetto
+* OTTIENI oggetto
+* Oggetto TESTA
+* RIPRISTINO POST-oggetto
+* METTI oggetto
+* METTI oggetto - Copia
+
+
+.Informazioni correlate
+link:operations-on-buckets.html["Operazioni sui bucket"]
+
+link:operations-on-objects.html["Operazioni sugli oggetti"]

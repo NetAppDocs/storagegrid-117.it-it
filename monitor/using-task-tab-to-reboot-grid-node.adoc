@@ -1,0 +1,67 @@
+---
+permalink: monitor/using-task-tab-to-reboot-grid-node.html 
+sidebar: sidebar 
+keywords: task tab 
+summary: 'La scheda Task (attività) consente di riavviare il nodo selezionato. Viene visualizzata la scheda Task (attività) per tutti i nodi.' 
+---
+= Utilizzare la scheda Task (attività) per riavviare un nodo Grid
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+La scheda Task (attività) consente di riavviare il nodo selezionato. Viene visualizzata la scheda Task (attività) per tutti i nodi.
+
+.Prima di iniziare
+* Hai effettuato l'accesso a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* Si dispone dell'autorizzazione di accesso Maintenance o Root.
+* Si dispone della passphrase di provisioning.
+
+
+.A proposito di questa attività
+È possibile utilizzare la scheda Task (attività) per riavviare un nodo. Per i nodi appliance, è possibile utilizzare la scheda Task (attività) per impostare la modalità di manutenzione dell'appliance.
+
+* Il riavvio di un nodo Grid dalla scheda Task (attività) genera il comando reboot sul nodo di destinazione. Quando si riavvia un nodo, questo si spegne e si riavvia. Tutti i servizi vengono riavviati automaticamente.
++
+Se si intende riavviare un nodo di storage, tenere presente quanto segue:
+
++
+** Se una regola ILM specifica un comportamento di acquisizione di doppio commit o la regola specifica Balanced (bilanciato) e non è possibile creare immediatamente tutte le copie richieste, StorageGRID commuta immediatamente tutti gli oggetti acquisiti di recente su due nodi di storage sullo stesso sito e valuta ILM in un secondo momento. Se si desidera riavviare due o più nodi di storage su un determinato sito, potrebbe non essere possibile accedere a questi oggetti per la durata del riavvio.
+** Per garantire l'accesso a tutti gli oggetti durante il riavvio di un nodo di storage, interrompere l'acquisizione di oggetti in un sito per circa un'ora prima di riavviare il nodo.
+
+
+* Potrebbe essere necessario attivare la modalità di manutenzione di un'appliance StorageGRID per eseguire determinate procedure, ad esempio la modifica della configurazione del collegamento o la sostituzione di un controller di storage. Per istruzioni, vedere link:../commonhardware/placing-appliance-into-maintenance-mode.html["Impostare l'apparecchio in modalità di manutenzione"].
++
+
+NOTE: In rari casi, l'attivazione della modalità di manutenzione di un'appliance StorageGRID potrebbe rendere l'appliance non disponibile per l'accesso remoto.
+
+
+
+.Fasi
+. Selezionare *NODI*.
+. Selezionare il nodo della griglia che si desidera riavviare.
+. Selezionare la scheda *Tasks*.
++
+image::../media/maintenance_mode.png[Nodi > attività > pulsante Riavvia]
+
+. Selezionare *Reboot* (Riavvia).
++
+Viene visualizzata una finestra di dialogo di conferma.
+
++
+image::../media/nodes_tasks_reboot.png[Nodi > attività > pulsante Riavvia]
+
++
+
+NOTE: Se si sta riavviando il nodo di amministrazione primario, la finestra di dialogo di conferma ricorda che la connessione del browser a Grid Manager viene temporaneamente persa quando i servizi vengono arrestati.
+
+. Inserire la passphrase di provisioning e selezionare *OK*.
+. Attendere il riavvio del nodo.
++
+L'arresto dei servizi potrebbe richiedere del tempo.
+
++
+Quando il nodo viene riavviato, l'icona grigia (amministrativamente in basso) viene visualizzata sul lato sinistro della pagina *Nodes*. Quando tutti i servizi sono stati riavviati e il nodo è connesso correttamente alla griglia, la pagina *Nodes* dovrebbe visualizzare uno stato normale (nessuna icona a sinistra del nome del nodo), a indicare che nessun avviso è attivo e che il nodo è connesso alla griglia.
+
+

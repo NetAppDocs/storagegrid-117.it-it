@@ -1,0 +1,59 @@
+---
+permalink: ubuntu/required-materials.html 
+sidebar: sidebar 
+keywords: installation materials ubuntu debian 
+summary: Prima di installare StorageGRID, è necessario raccogliere e preparare il materiale necessario. 
+---
+= Materiali richiesti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare StorageGRID, è necessario raccogliere e preparare il materiale necessario.
+
+|===
+| Elemento | Note 
+
+
+ a| 
+Licenza NetApp StorageGRID
+ a| 
+È necessario disporre di una licenza NetApp valida con firma digitale.
+
+*Nota*: Una licenza non di produzione, che può essere utilizzata per il test e le griglie di prova, è inclusa nell'archivio di installazione di StorageGRID.
+
+
+
+ a| 
+Archivio di installazione di StorageGRID
+ a| 
+È necessario link:downloading-and-extracting-storagegrid-installation-files.html["Scaricare l'archivio di installazione di StorageGRID ed estrarre i file"].
+
+
+
+ a| 
+Laptop di assistenza
+ a| 
+Il sistema StorageGRID viene installato tramite un laptop di assistenza.
+
+Il laptop di assistenza deve disporre di:
+
+* Porta di rete
+* Client SSH (ad esempio, putty)
+* link:../admin/web-browser-requirements.html["Browser Web supportato"]
+
+
+
+
+ a| 
+Documentazione StorageGRID
+ a| 
+* link:../release-notes/index.html["Note di rilascio"]
+* link:../admin/index.html["Istruzioni per l'amministrazione di StorageGRID"]
+
+
+|===
+.Informazioni correlate
+https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^]

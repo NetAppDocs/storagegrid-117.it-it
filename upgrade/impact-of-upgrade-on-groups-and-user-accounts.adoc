@@ -1,0 +1,35 @@
+---
+permalink: upgrade/impact-of-upgrade-on-groups-and-user-accounts.html 
+sidebar: sidebar 
+keywords: upgrade, permissions 
+summary: 'È necessario comprendere l"impatto dell"aggiornamento di StorageGRID, in modo da poter aggiornare i gruppi e gli account utente in modo appropriato una volta completato l"aggiornamento.' 
+---
+= Impatto di un aggiornamento su gruppi e account utente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario comprendere l'impatto dell'aggiornamento di StorageGRID, in modo da poter aggiornare i gruppi e gli account utente in modo appropriato una volta completato l'aggiornamento.
+
+
+
+== Modifiche alle autorizzazioni e alle opzioni del gruppo
+
+Dopo aver eseguito l'aggiornamento a StorageGRID 11.7, è possibile assegnare la seguente nuova autorizzazione ai gruppi di utenti tenant.
+
+[cols="1a,2a"]
+|===
+| Permesso | Descrizione 
+
+
+ a| 
+Tenant Manager > Gestisci oggetti con la console S3
+ a| 
+Se combinata con l'autorizzazione Manage All bucket, questa autorizzazione consente agli utenti di accedere a. link:../tenant/use-s3-console.html["Console S3 sperimentale"] Dalla pagina Bucket.
+
+Gli utenti che dispongono di questa autorizzazione ma che non dispongono dell'autorizzazione Manage All bucket possono comunque accedere direttamente alla console Experimental S3.
+
+|===
+Vedere link:../tenant/tenant-management-permissions.html["Permessi di gestione del tenant"].

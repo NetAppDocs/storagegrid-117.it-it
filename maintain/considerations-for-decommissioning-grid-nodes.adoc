@@ -1,0 +1,31 @@
+---
+permalink: maintain/considerations-for-decommissioning-grid-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission 
+summary: Prima di iniziare questa procedura per decommissionare uno o più nodi, è necessario comprendere le implicazioni della rimozione di ciascun tipo di nodo. Una volta decommissionato correttamente un nodo, i relativi servizi verranno disattivati e il nodo verrà automaticamente arrestato. 
+---
+= Considerazioni generali per la decommissionazione del nodo grid
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di iniziare questa procedura per decommissionare uno o più nodi, è necessario comprendere le implicazioni della rimozione di ciascun tipo di nodo. Una volta decommissionato correttamente un nodo, i relativi servizi verranno disattivati e il nodo verrà automaticamente arrestato.
+
+Non è possibile decommissionare un nodo se così facendo StorageGRID viene lasciato in uno stato non valido. Vengono applicate le seguenti regole:
+
+* Impossibile decommissionare il nodo di amministrazione primario.
+* Impossibile decommissionare i nodi di archiviazione.
+* Non è possibile decommissionare un nodo Admin o un nodo Gateway se una delle sue interfacce di rete fa parte di un gruppo ad alta disponibilità (ha).
+* Non è possibile decommissionare un nodo di storage se la sua rimozione influirebbe sul quorum di ADC.
+* Non è possibile decommissionare un nodo di storage se richiesto per il criterio ILM attivo.
+* Non è consigliabile decommissionare più di 10 nodi di storage in una singola procedura Decommission Node.
+* Non è possibile decommissionare un nodo connesso se la griglia include nodi disconnessi (nodi il cui stato di salute è sconosciuto o amministrativamente inattivo). È necessario prima decommissionare o ripristinare i nodi disconnessi.
+* Se la griglia contiene più nodi disconnessi, il software richiede di decommissionarli tutti contemporaneamente, aumentando il potenziale di risultati imprevisti.
+* Se non è possibile rimuovere un nodo disconnesso (ad esempio, un nodo di storage necessario per il quorum ADC), non è possibile rimuovere nessun altro nodo disconnesso.
+* Se si desidera sostituire un'appliance precedente con un'appliance più recente, prendere in considerazione l'opzione link:../commonhardware/how-appliance-node-cloning-works.html["clonare il nodo appliance"] invece di smantellare il vecchio nodo e aggiungere il nuovo nodo in un'espansione.
+
+
+
+IMPORTANT: Non rimuovere la macchina virtuale o altre risorse di un nodo di griglia fino a quando non viene richiesto nelle procedure di decommissionamento.

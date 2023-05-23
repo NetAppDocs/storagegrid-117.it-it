@@ -1,0 +1,29 @@
+---
+permalink: maintain/grid-node-decommissioning.html 
+sidebar: sidebar 
+keywords: storagegrid, decommission 
+summary: È possibile utilizzare la procedura di decommissionamento dei nodi per rimuovere uno o più nodi di storage, nodi gateway o nodi di amministrazione non primari in uno o più siti. Non è possibile decommissionare il nodo di amministrazione primario o un nodo di archivio. 
+---
+= Decommissionare il nodo Grid: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile utilizzare la procedura di decommissionamento dei nodi per rimuovere uno o più nodi di storage, nodi gateway o nodi di amministrazione non primari in uno o più siti. Non è possibile decommissionare il nodo di amministrazione primario o un nodo di archivio.
+
+In generale, è necessario decommissionare i nodi della griglia solo mentre sono connessi al sistema StorageGRID e tutti i nodi sono in condizioni normali (sono presenti icone verdi sulle pagine *NODI* e sulla pagina *nodi di decommissionazione*). Tuttavia, se necessario, è possibile decommissionare un nodo di rete scollegato. Prima di rimuovere un nodo disconnesso, assicurarsi di comprendere le implicazioni e le restrizioni di tale processo.
+
+Utilizzare la procedura di decommissionamento del nodo quando si verifica una delle seguenti condizioni:
+
+* È stato aggiunto un nodo di storage più grande al sistema e si desidera rimuovere uno o più nodi di storage più piccoli, preservando al contempo gli oggetti.
+* Richiede meno storage totale.
+* Non è più necessario un nodo gateway.
+* Non è più necessario un nodo di amministrazione non primario.
+* La griglia include un nodo disconnesso che non è possibile ripristinare o ripristinare online.
+
+
+Il diagramma di flusso mostra le fasi di alto livello per la disattivazione dei nodi della griglia.
+
+image::../media/overview_decommission_nodes.png[diagramma di flusso di alto livello delle fasi di decommissionamento]

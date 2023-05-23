@@ -1,0 +1,46 @@
+---
+permalink: sg6000/reinstalling-fibre-channel-hba.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, sg6000-cn, hba, host bus adapter, fibre channel, fiber channel, install, installing, installation, reinstall, reinstalling, reinstallation 
+summary: 'L"HBA Fibre Channel sostitutivo viene installato nella stessa posizione di quello rimosso.' 
+---
+= Reinstallare l'HBA Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'HBA Fibre Channel sostitutivo viene installato nella stessa posizione di quello rimosso.
+
+.Prima di iniziare
+* Si dispone dell'HBA Fibre Channel sostitutivo corretto.
+* L'HBA Fibre Channel esistente è stato rimosso.
++
+link:removing-fibre-channel-hba.html["Rimuovere l'HBA Fibre Channel"]
+
+
+
+.Fasi
+. Avvolgere l'estremità del braccialetto ESD intorno al polso e fissare l'estremità del fermaglio a una messa a terra metallica per evitare scariche elettrostatiche.
+. Rimuovere l'HBA Fibre Channel sostitutivo dalla confezione.
+. Con il dispositivo di chiusura blu dell'adattatore in posizione aperta, allineare l'HBA Fibre Channel con il relativo connettore sul gruppo riser, quindi premere con cautela l'adattatore nel connettore fino a inserirlo completamente.
++
+image::../media/sg6060_fc_hba_location.jpg[HBA Fibre Channel SG6060 nel gruppo riser]
+
++
+Nel gruppo riser sono presenti due adattatori: Un HBA Fibre Channel e un adattatore di rete Ethernet. L'HBA Fibre Channel è indicato nell'illustrazione.
+
+. Individuare il foro di allineamento sul gruppo riser (cerchiato) che si allinea con un perno guida sulla scheda di sistema per garantire il corretto posizionamento del gruppo riser.
++
+image::../media/sg6060_riser_alignment_hole.jpg[Foro di allineamento sul gruppo riser SG6060]
+
+. Posizionare il gruppo riser nello chassis, assicurandosi che sia allineato con il connettore e il perno guida sulla scheda di sistema, quindi inserire il gruppo riser.
+. Premere con cautela il gruppo riser in posizione lungo la linea centrale, accanto ai fori blu, fino a posizionarlo completamente.
+. Rimuovere i cappucci di protezione dalle porte HBA Fibre Channel in cui verranno reinstallati i cavi.
+
+
+.Al termine
+Se non si dispone di altre procedure di manutenzione da eseguire nel controller, reinstallare il coperchio del controller.
+
+link:reinstalling-sg6000-cn-controller-cover.html["Reinstallare il coperchio del controller SG6000-CN"]

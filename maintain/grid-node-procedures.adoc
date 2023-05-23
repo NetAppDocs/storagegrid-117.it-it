@@ -1,0 +1,22 @@
+---
+permalink: maintain/grid-node-procedures.html 
+sidebar: sidebar 
+keywords: storagegrid, grid node procedure 
+summary: 'Potrebbe essere necessario eseguire procedure su un nodo di griglia specifico. Sebbene sia possibile eseguire alcune di queste procedure da Grid Manager, la maggior parte delle procedure richiede l"accesso a Server Manager dalla riga di comando.' 
+---
+= Procedure del nodo Grid: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario eseguire procedure su un nodo di griglia specifico. Sebbene sia possibile eseguire alcune di queste procedure da Grid Manager, la maggior parte delle procedure richiede l'accesso a Server Manager dalla riga di comando del nodo.
+
+Server Manager viene eseguito su ogni nodo grid per supervisionare l'avvio e l'arresto dei servizi e per garantire che i servizi si uniscano e abbandonino correttamente il sistema StorageGRID. Server Manager monitora inoltre i servizi su ogni nodo grid e tenta automaticamente di riavviare tutti i servizi che segnalano gli errori.
+
+
+IMPORTANT: L'accesso a Server Manager deve essere effettuato solo se il supporto tecnico lo ha richiesto.
+
+
+NOTE: Al termine dell'operazione con Server Manager, chiudere la sessione corrente della shell dei comandi e disconnettersi. Inserire: `exit`

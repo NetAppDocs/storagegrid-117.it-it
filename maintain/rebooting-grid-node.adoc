@@ -1,0 +1,22 @@
+---
+permalink: maintain/rebooting-grid-node.html 
+sidebar: sidebar 
+keywords: reboot grid node 
+summary: È possibile riavviare un nodo Grid da Grid Manager o dalla shell dei comandi del nodo. 
+---
+= Nodo reboot grid: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile riavviare un nodo Grid da Grid Manager o dalla shell dei comandi del nodo.
+
+Quando si riavvia un nodo Grid, il nodo si spegne e si riavvia. Tutti i servizi vengono riavviati automaticamente.
+
+Se si prevede di riavviare i nodi di storage, tenere presente quanto segue:
+
+* Se una regola ILM specifica un comportamento di acquisizione di doppio commit o bilanciato e non è possibile creare immediatamente tutte le copie richieste, StorageGRID commuta immediatamente tutti gli oggetti acquisiti di recente su due nodi di storage sullo stesso sito e valuta ILM in un secondo momento. Se si desidera riavviare due o più nodi di storage su un determinato sito, potrebbe non essere possibile accedere a questi oggetti per la durata del riavvio.
+* Per garantire l'accesso a tutti gli oggetti durante il riavvio di un nodo di storage, interrompere l'acquisizione di oggetti in un sito per circa un'ora prima di riavviare il nodo.
+

@@ -1,0 +1,53 @@
+---
+permalink: admin/troubleshooting-autosupport-messages.html 
+sidebar: sidebar 
+keywords: troubleshoot autosupport, asup message 
+summary: Se un tentativo di inviare un messaggio AutoSupport non riesce, il sistema StorageGRID esegue diverse azioni a seconda del tipo di messaggio AutoSupport. Puoi controllare lo stato dei messaggi AutoSupport selezionando supporto > Strumenti > AutoSupport > risultati. 
+---
+= Risolvere i problemi relativi ai messaggi AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se un tentativo di inviare un messaggio AutoSupport non riesce, il sistema StorageGRID esegue diverse azioni a seconda del tipo di messaggio AutoSupport. Puoi controllare lo stato dei messaggi AutoSupport selezionando *SUPPORT* > *Tools* > *AutoSupport* > *Results*.
+
+Quando il messaggio AutoSupport non viene inviato, nella scheda *Results* della pagina *AutoSupport* viene visualizzato "`Failed`".
+
+image::../media/autosupport_results_tab.png[Errore invio messaggio AutoSupport]
+
+
+
+== Errore settimanale del messaggio AutoSupport
+
+Se un messaggio AutoSupport settimanale non viene inviato, il sistema StorageGRID esegue le seguenti operazioni:
+
+. Aggiorna l'attributo dei risultati più recenti in Riprova.
+. Tenta di inviare nuovamente il messaggio AutoSupport 15 volte ogni quattro minuti per un'ora.
+. Dopo un'ora di errori di invio, aggiorna l'attributo dei risultati più recenti su non riuscito.
+. Tenta di inviare nuovamente un messaggio AutoSupport all'ora successiva pianificata.
+. Mantiene la normale pianificazione AutoSupport se il messaggio non riesce perché il servizio NMS non è disponibile e se un messaggio viene inviato prima del termine di sette giorni.
+. Quando il servizio NMS è nuovamente disponibile, invia immediatamente un messaggio AutoSupport se non viene inviato alcun messaggio per almeno sette giorni.
+
+
+
+
+== Errore messaggio AutoSupport attivato dall'utente o attivato da evento
+
+Se un messaggio AutoSupport attivato dall'utente o attivato da un evento non viene inviato, il sistema StorageGRID esegue le seguenti operazioni:
+
+. Visualizza un messaggio di errore se l'errore è noto. Ad esempio, se un utente seleziona il protocollo SMTP senza fornire le corrette impostazioni di configurazione dell'e-mail, viene visualizzato il seguente messaggio di errore: `AutoSupport messages cannot be sent using SMTP protocol due to incorrect settings on the E-mail Server page.`
+. Non tenta di inviare nuovamente il messaggio.
+. Registra l'errore in `nms.log`.
+
+
+Se si verifica un errore e SMTP è il protocollo selezionato, verificare che il server e-mail del sistema StorageGRID sia configurato correttamente e che il server e-mail sia in esecuzione (*SUPPORT* > *Alarms (legacy)* > *> Configurazione e-mail legacy*). Nella pagina AutoSupport potrebbe essere visualizzato il seguente messaggio di errore: `AutoSupport messages cannot be sent using SMTP protocol due to incorrect settings on the E-mail Server page.`
+
+Scopri come link:../monitor/email-alert-notifications.html["configurare le impostazioni del server di posta elettronica"].
+
+
+
+== Correggere un errore di messaggio AutoSupport
+
+Se si verifica un errore e il protocollo SMTP è selezionato, verificare che il server e-mail del sistema StorageGRID sia configurato correttamente e che il server e-mail sia in esecuzione. Nella pagina AutoSupport potrebbe essere visualizzato il seguente messaggio di errore: `AutoSupport messages cannot be sent using SMTP protocol due to incorrect settings on the E-mail Server page.`

@@ -1,0 +1,25 @@
+---
+permalink: upgrade/changes-to-tenant-management-api.html 
+sidebar: sidebar 
+keywords: tenant management api, api, api version, swagger, rest api 
+summary: 'StorageGRID 11.7 utilizza la versione 3 dell"API di gestione dei tenant. La versione 3 è obsoleta della versione 2; tuttavia, la versione 1 e la versione 2 sono ancora supportate.' 
+---
+= Modifiche all'API di gestione del tenant
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+StorageGRID 11.7 utilizza la versione 3 dell'API di gestione dei tenant. La versione 3 è obsoleta della versione 2; tuttavia, la versione 1 e la versione 2 sono ancora supportate.
+
+
+IMPORTANT: È possibile continuare a utilizzare la versione 1 e la versione 2 dell'API di gestione con StorageGRID 11.7; tuttavia, il supporto per queste versioni dell'API verrà rimosso in una release futura di StorageGRID. Dopo l'aggiornamento a StorageGRID 11.7, le API v1 e v2 obsolete possono essere disattivate utilizzando `PUT /grid/config/management` API.
+
+
+
+== Nuovi endpoint per la federazione di grid
+
+È possibile utilizzare gli endpoint API *grid-Federation-connections* per elencare le connessioni della federazione di griglia per il tenant corrente e per eliminare l'ultimo errore di replica cross-grid per il tenant corrente e la connessione della federazione di griglia selezionata.
+
+Per ulteriori informazioni, visitare il sito Web all'indirizzo link:../tenant/understanding-tenant-management-api.html["Comprendere l'API di gestione dei tenant"].

@@ -1,0 +1,63 @@
+---
+permalink: s3/support-for-storagegrid-platform-services.html 
+sidebar: sidebar 
+keywords: platform services, cloudmirror replication, notifications, search integration 
+summary: 'I servizi della piattaforma StorageGRID consentono agli account tenant di StorageGRID di sfruttare servizi esterni come un bucket S3 remoto, un endpoint SNS (Simple Notification Service) o un cluster Elasticsearch per estendere i servizi forniti da un grid.' 
+---
+= Supporto per i servizi della piattaforma StorageGRID
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I servizi della piattaforma StorageGRID consentono agli account tenant StorageGRID di sfruttare servizi esterni come un bucket S3 remoto, un endpoint SNS (Simple Notification Service) o un cluster Elasticsearch per estendere i servizi forniti da un grid.
+
+Nella tabella seguente sono riepilogati i servizi della piattaforma disponibili e le API S3 utilizzate per configurarli.
+
+[cols="1a,2a,1a"]
+|===
+| Servizio di piattaforma | Scopo | S3 API utilizzata per configurare il servizio 
+
+
+ a| 
+Replica di CloudMirror
+ a| 
+Replica gli oggetti da un bucket StorageGRID di origine al bucket S3 remoto configurato.
+ a| 
+METTI la replica del bucket (vedere link:operations-on-buckets.html["Operazioni sui bucket"])
+
+
+
+ a| 
+Notifiche
+ a| 
+Invia notifiche sugli eventi in un bucket StorageGRID di origine a un endpoint configurato per il servizio di notifica semplice (SNS).
+ a| 
+NOTIFICA DEL bucket (vedere link:operations-on-buckets.html["Operazioni sui bucket"])
+
+
+
+ a| 
+Integrazione della ricerca
+ a| 
+Invia i metadati degli oggetti memorizzati in un bucket StorageGRID a un indice Elasticsearch configurato.
+ a| 
+link:put-bucket-metadata-notification-configuration-request.html["INSERIRE la configurazione della notifica dei metadati del bucket"]
+
+*Nota:* questa è un'API S3 personalizzata di StorageGRID.
+
+|===
+Un amministratore di grid deve abilitare l'utilizzo dei servizi della piattaforma per un account tenant prima di poter essere utilizzato. Vedere link:../admin/index.html["Amministrare StorageGRID"]. Quindi, un amministratore del tenant deve creare un endpoint che rappresenti il servizio remoto nell'account tenant. Questa fase è necessaria prima di poter configurare un servizio. Vedere link:../tenant/index.html["Utilizzare un account tenant"].
+
+
+
+== Consigli per l'utilizzo dei servizi della piattaforma
+
+Prima di utilizzare i servizi della piattaforma, è necessario conoscere i seguenti consigli:
+
+* NetApp consiglia di non consentire più di 100 tenant attivi con richieste S3 che richiedono la replica CloudMirror, le notifiche e l'integrazione della ricerca. La presenza di più di 100 tenant attivi può rallentare le performance del client S3.
+* Se un bucket S3 nel sistema StorageGRID ha attivato sia la versione che la replica CloudMirror, NetApp consiglia di abilitare anche il controllo delle versioni del bucket S3 per l'endpoint di destinazione. Ciò consente alla replica di CloudMirror di generare versioni di oggetti simili sull'endpoint.
+* La replica di CloudMirror non è supportata se il bucket di origine ha attivato il blocco oggetti S3.
+* La replica di CloudMirror non riesce e viene visualizzato un errore AccessDenied se nel bucket di destinazione è attivata la conformità legacy.
+

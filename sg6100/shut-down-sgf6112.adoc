@@ -1,0 +1,54 @@
+---
+permalink: sg6100/shut-down-sgf6112.html 
+sidebar: sidebar 
+keywords: storagegrid, sgf6112, power off, turn off, shut off, shutdown, shut down, 
+summary: 'Spegnere l"appliance per eseguire la manutenzione dell"hardware.' 
+---
+= Spegnere l'appliance SGF6112
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Spegnere l'appliance per eseguire la manutenzione dell'hardware.
+
+.Prima di iniziare
+* Lo hai fatto link:locating-sgf6112-in-data-center.html["posizionato fisicamente l'apparecchio"].
+
+
+.A proposito di questa attività
+Per evitare interruzioni del servizio, spegnere l'apparecchio durante una finestra di manutenzione programmata quando si prevedono periodi di interruzione del servizio.
+
+.Fasi
+. Spegnere l'apparecchio:
++
+
+CAUTION: È necessario eseguire uno spegnimento controllato dell'apparecchio immettendo i comandi specificati di seguito. È consigliabile eseguire un arresto controllato quando possibile per evitare avvisi non necessari, garantire la disponibilità di registri completi ed evitare interruzioni del servizio.
+
++
+.. Se non hai ancora effettuato l'accesso al nodo grid, effettua l'accesso utilizzando putty o un altro client ssh:
++
+... Immettere il seguente comando: `ssh admin@_grid_node_IP_`
+... Immettere la password elencata in `Passwords.txt` file.
+... Immettere il seguente comando per passare a root: `su -`
+... Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+.. Spegnere l'apparecchio: +
+`*shutdown -h now*`
++
+Il completamento di questo comando potrebbe richiedere fino a 10 minuti.
+
+
+
+. Utilizzare uno dei seguenti metodi per verificare che l'apparecchio sia spento:
++
+** Controllare il LED di alimentazione sulla parte anteriore dell'apparecchio e verificare che sia spento.
+** Controllare la pagina Power Control dell'interfaccia BMC per verificare che l'apparecchio sia spento.
+
+
+

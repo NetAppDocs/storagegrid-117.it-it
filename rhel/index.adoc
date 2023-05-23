@@ -1,0 +1,51 @@
+---
+permalink: rhel/index.html 
+sidebar: sidebar 
+keywords: red hat enterprise linux, rhel, centos linux 
+summary: 'L"installazione di un sistema StorageGRID in un ambiente Red Hat Enterprise Linux (RHEL) o CentOS Linux include tre passaggi principali.' 
+---
+= Installazione di Red Hat Enterprise Linux o CentOS: Panoramica
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+L'installazione di un sistema StorageGRID in un ambiente Red Hat Enterprise Linux (RHEL) o CentOS Linux include tre passaggi principali.
+
+. *Preparazione*: Durante la pianificazione e la preparazione, si eseguono le seguenti attività:
++
+** Scopri i requisiti hardware e storage per StorageGRID.
+** Scopri le specifiche di link:../network/index.html["Networking StorageGRID"] in modo da poter configurare la rete in modo appropriato.
+** Identificare e preparare i server fisici o virtuali che si intende utilizzare per ospitare i nodi grid StorageGRID.
+** Sui server preparati:
++
+*** Installare Linux
+*** Configurare la rete host
+*** Configurare lo storage host
+*** Installare il motore per container
+*** Installare i servizi host di StorageGRID
+
+
+
+
+. *Implementazione*: Implementare i nodi grid utilizzando l'interfaccia utente appropriata. Quando si implementano nodi grid, questi vengono creati come parte del sistema StorageGRID e connessi a una o più reti.
++
+.. Utilizzare la riga di comando di Linux e i file di configurazione dei nodi per implementare i nodi grid basati su software sugli host preparati al punto 1.
+.. Utilizzare il programma di installazione dell'appliance StorageGRID per implementare i nodi dell'appliance StorageGRID.
++
+
+NOTE: Le istruzioni di installazione e integrazione specifiche dell'hardware non sono incluse nella procedura di installazione di StorageGRID. Per informazioni su come installare le appliance StorageGRID, consultare link:../installconfig/index.html["Avvio rapido per l'installazione dell'hardware"] per individuare le istruzioni relative all'apparecchio.
+
+
+
+. *Configurazione*: Una volta implementati tutti i nodi, utilizzare Grid Manager per configurare la griglia e completare l'installazione.
+
+
+Queste istruzioni consigliano un approccio standard per l'implementazione e la configurazione di un sistema StorageGRID. Vedere anche le informazioni sui seguenti approcci alternativi:
+
+* Utilizzare un framework di orchestrazione standard come Ansible, Puppet o Chef per installare RHEL o CentOS, configurare networking e storage, installare il motore container e il servizio host StorageGRID e implementare nodi virtual grid.
+* Automatizzare la distribuzione e la configurazione del sistema StorageGRID utilizzando uno script di configurazione Python (fornito nell'archivio di installazione).
+* Automatizza l'implementazione e la configurazione dei nodi grid dell'appliance con uno script di configurazione Python (disponibile dall'archivio di installazione o dal programma di installazione dell'appliance StorageGRID).
+* Se sei uno sviluppatore avanzato di implementazioni StorageGRID, utilizza le API REST di installazione per automatizzare l'installazione dei nodi grid StorageGRID.
+

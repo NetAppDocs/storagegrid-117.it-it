@@ -1,0 +1,63 @@
+---
+permalink: vmware/required-materials.html 
+sidebar: sidebar 
+keywords: installation materials vmware 
+summary: Prima di installare StorageGRID, è necessario raccogliere e preparare il materiale necessario. 
+---
+= Materiali richiesti
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare StorageGRID, è necessario raccogliere e preparare il materiale necessario.
+
+[cols="1a,2a"]
+|===
+| Elemento | Note 
+
+
+ a| 
+Licenza NetApp StorageGRID
+ a| 
+È necessario disporre di una licenza NetApp valida con firma digitale.
+
+*Nota*: L'archivio di installazione di StorageGRID include una licenza gratuita che non fornisce alcun diritto di supporto per il prodotto.
+
+
+
+ a| 
+Archivio di installazione di StorageGRID
+ a| 
+È necessario link:downloading-and-extracting-storagegrid-installation-files.html["Scaricare l'archivio di installazione di StorageGRID ed estrarre i file"].
+
+
+
+ a| 
+Software e documentazione VMware
+ a| 
+Durante l'installazione, si utilizza VMware vSphere Web Client per implementare nodi virtual grid su macchine virtuali. Per le versioni supportate, vedere https://imt.netapp.com/matrix/#welcome["Tool di matrice di interoperabilità NetApp"^].
+
+
+
+ a| 
+Laptop di assistenza
+ a| 
+Il sistema StorageGRID viene installato tramite un taglioIl laptop di assistenza deve disporre di:
+
+* Porta di rete
+* Client SSH (ad esempio, putty)
+* link:../admin/web-browser-requirements.html["Browser Web supportato"]
+
+
+
+
+ a| 
+Documentazione StorageGRID
+ a| 
+* link:../release-notes/index.html["Note di rilascio"]
+* link:../admin/index.html["Istruzioni per l'amministrazione di StorageGRID"]
+
+
+|===

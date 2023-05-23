@@ -1,0 +1,70 @@
+= 
+:allow-uri-read: 
+
+
+La tabella seguente mostra i servizi primari per i nodi di amministrazione; tuttavia, questa tabella non elenca tutti i servizi dei nodi.
+
+[cols="1a,2a"]
+|===
+| Servizio | Funzione dei tasti 
+
+
+ a| 
+Sistema di gestione dell'audit (AMS)
+ a| 
+Tiene traccia dell'attività e degli eventi del sistema.
+
+
+
+ a| 
+Nodo di gestione della configurazione (CMN)
+ a| 
+Gestisce la configurazione a livello di sistema. Solo nodo amministratore primario.
+
+
+
+ a| 
+Management Application Program Interface (Mgmt-api)
+ a| 
+Elabora le richieste provenienti dall'API Grid Management e dall'API Tenant Management.
+
+
+
+ a| 
+Alta disponibilità
+ a| 
+Gestisce gli indirizzi IP virtuali ad alta disponibilità per gruppi di nodi di amministrazione e nodi gateway.
+
+*Nota:* questo servizio si trova anche sui nodi gateway.
+
+
+
+ a| 
+Bilanciamento del carico
+ a| 
+Fornisce il bilanciamento del carico del traffico S3 e Swift dai client ai nodi di storage.
+
+*Nota:* questo servizio si trova anche sui nodi gateway.
+
+
+
+ a| 
+NMS (Network Management System)
+ a| 
+Fornisce funzionalità per Grid Manager.
+
+
+
+ a| 
+Prometheus
+ a| 
+Raccoglie e memorizza le metriche delle serie temporali dai servizi su tutti i nodi.
+
+
+
+ a| 
+Server Status Monitor (SSM)
+ a| 
+Monitora il sistema operativo e l'hardware sottostante.
+
+|===

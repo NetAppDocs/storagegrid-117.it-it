@@ -1,0 +1,195 @@
+---
+permalink: admin/configure-autosupport-grid-manager.html 
+sidebar: sidebar 
+keywords: how to configure autosupport, what is autosupport-on-demand 
+summary: È possibile attivare la funzione AutoSupport e le singole opzioni AutoSupport quando si installa StorageGRID per la prima volta oppure attivarle in un secondo momento. 
+---
+= Configurare AutoSupport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile attivare la funzione AutoSupport e le singole opzioni AutoSupport quando si installa StorageGRID per la prima volta oppure attivarle in un secondo momento.
+
+.Prima di iniziare
+* Hai effettuato l'accesso a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* Si dispone dell'autorizzazione di accesso root o di altra configurazione della griglia.
+* Se si utilizza HTTPS per l'invio di messaggi AutoSupport, è stato fornito l'accesso a Internet in uscita al nodo di amministrazione primario, direttamente o link:configuring-admin-proxy-settings.html["utilizzando un server proxy"] (non sono richieste connessioni in entrata).
+* Se nella pagina StorageGRID AutoSupport è selezionato HTTP, è stato configurato un server proxy per l'inoltro dei messaggi AutoSupport come HTTPS. I server AutoSupport di NetApp rifiuteranno i messaggi inviati tramite HTTP.
+* Se si utilizza SMTP come protocollo per i messaggi AutoSupport, è stato configurato un server di posta SMTP. La stessa configurazione del server di posta viene utilizzata per le notifiche e-mail di allarme (sistema legacy).
+
+
+
+
+== Specificare il protocollo per i messaggi AutoSupport
+
+Per inviare messaggi AutoSupport è possibile utilizzare uno dei seguenti protocolli:
+
+* *HTTPS*: Impostazione predefinita e consigliata per le nuove installazioni. Questo protocollo utilizza la porta 443. Se lo si desidera <<Attiva AutoSupport on Demand,Attivare la funzione AutoSupport on Demand>>, È necessario utilizzare HTTPS.
+* *HTTP*: Se si seleziona HTTP, è necessario configurare un server proxy per l'inoltro dei messaggi AutoSupport come HTTPS. I server AutoSupport di NetApp rifiutano i messaggi inviati tramite HTTP. Questo protocollo utilizza la porta 80.
+* *SMTP*: Utilizzare questa opzione se si desidera che i messaggi AutoSupport vengano inviati tramite e-mail. Se si utilizza il protocollo SMTP come protocollo per i messaggi AutoSupport, è necessario configurare un server di posta SMTP nella pagina Configurazione posta elettronica legacy (*SUPPORT* > *Alarms (legacy)* > *Configurazione posta elettronica legacy*).
++
+
+NOTE: SMTP era l'unico protocollo disponibile per i messaggi AutoSupport prima della release di StorageGRID 11.2. Se inizialmente è stata installata una versione precedente di StorageGRID, il protocollo selezionato potrebbe essere SMTP.
+
+
+
+Il protocollo impostato viene utilizzato per l'invio di tutti i tipi di messaggi AutoSupport.
+
+.Fasi
+. Selezionare *SUPPORTO* > *Strumenti* > *AutoSupport*.
++
+Viene visualizzata la pagina AutoSupport (Impostazioni) e viene selezionata la scheda *Settings* (Impostazioni).
+
++
+image::../media/autosupport_settings_tab.png[Pagina AutoSupport con scheda Impostazioni selected.png]
+
+. Selezionare il protocollo che si desidera utilizzare per inviare messaggi AutoSupport.
+. Se si seleziona *HTTPS*, selezionare se utilizzare un certificato TLS per proteggere la connessione al server di supporto NetApp.
++
+** *Usa il certificato di supporto NetApp* (impostazione predefinita): La convalida del certificato garantisce la sicurezza della trasmissione dei messaggi AutoSupport. Il certificato di supporto NetApp è già installato con il software StorageGRID.
+** *Non verificare il certificato*: Selezionare questa opzione solo se si dispone di un buon motivo per non utilizzare la convalida del certificato, ad esempio quando si verifica un problema temporaneo con un certificato.
+
+
+. Selezionare *Salva*.
++
+Tutti i messaggi settimanali, attivati dall'utente e attivati dagli eventi vengono inviati utilizzando il protocollo selezionato.
+
+
+
+
+
+== Disattiva i messaggi AutoSupport settimanali
+
+Per impostazione predefinita, il sistema StorageGRID è configurato per inviare un messaggio AutoSupport al supporto NetApp una volta alla settimana.
+
+Per determinare quando verrà inviato il messaggio AutoSupport settimanale, accedere alla scheda *AutoSupport* > *Results*. Nella sezione *Weekly AutoSupport*, esaminare il valore di *Next Scheduled Time* (ora pianificata successiva).
+
+image::../media/autosupport_weekly_next_scheduled_time.png[Orario pianificato successivo AutoSupport settimanale]
+
+È possibile disattivare l'invio automatico dei messaggi AutoSupport settimanali in qualsiasi momento.
+
+.Fasi
+. Selezionare *SUPPORTO* > *Strumenti* > *AutoSupport*.
+. Deselezionare la casella di controllo *Enable Weekly AutoSupport* (Abilita aggiornamento settimanale).
+. Selezionare *Salva*.
+
+
+
+
+== Disattiva i messaggi AutoSupport attivati dagli eventi
+
+Per impostazione predefinita, il sistema StorageGRID è configurato per inviare un messaggio AutoSupport al supporto NetApp quando si verifica un avviso importante o un altro evento significativo del sistema.
+
+È possibile disattivare i messaggi AutoSupport attivati da eventi in qualsiasi momento.
+
+.Fasi
+. Selezionare *SUPPORTO* > *Strumenti* > *AutoSupport*.
+. Deselezionare la casella di controllo *attiva AutoSupport attivato da eventi*.
+. Selezionare *Salva*.
+
+
+
+
+== Attiva AutoSupport on Demand
+
+AutoSupport on Demand può aiutare a risolvere i problemi sui quali il supporto tecnico sta lavorando attivamente.
+
+Per impostazione predefinita, AutoSupport on Demand è disattivato. L'attivazione di questa funzione consente al supporto tecnico di richiedere l'invio automatico dei messaggi AutoSupport da parte del sistema StorageGRID. Il supporto tecnico può anche impostare l'intervallo di tempo di polling per le query AutoSupport on Demand.
+
+Il supporto tecnico non può attivare o disattivare AutoSupport on Demand.
+
+.Fasi
+. Selezionare *SUPPORTO* > *Strumenti* > *AutoSupport*.
+. Selezionare *HTTPS* per il protocollo.
+. Selezionare la casella di controllo *Enable Weekly AutoSupport* (Abilita aggiornamento settimanale).
+. Selezionare la casella di controllo *attiva AutoSupport su richiesta*.
+. Selezionare *Salva*.
++
+AutoSupport on Demand è attivato e il supporto tecnico può inviare richieste AutoSupport on Demand a StorageGRID.
+
+
+
+
+
+== Disattiva i controlli per gli aggiornamenti software
+
+Per impostazione predefinita, StorageGRID contatta NetApp per determinare se sono disponibili aggiornamenti software per il sistema. Se è disponibile una correzione rapida StorageGRID o una nuova versione, la nuova versione viene visualizzata nella pagina aggiornamento StorageGRID.
+
+Se necessario, è possibile disattivare la verifica degli aggiornamenti software. Ad esempio, se il sistema non dispone di accesso WAN, disattivare il controllo per evitare errori di download.
+
+.Fasi
+. Selezionare *SUPPORTO* > *Strumenti* > *AutoSupport*.
+. Deselezionare la casella di controllo *Controlla aggiornamenti software*.
+. Selezionare *Salva*.
+
+
+
+
+== Aggiungere una destinazione AutoSupport aggiuntiva
+
+Quando abiliti AutoSupport, i messaggi di stato e di salute vengono inviati al supporto NetApp. È possibile specificare una destinazione aggiuntiva per tutti i messaggi AutoSupport.
+
+Per verificare o modificare il protocollo utilizzato per inviare messaggi AutoSupport, consultare le istruzioni a. <<Specificare il protocollo per i messaggi AutoSupport>>.
+
+
+NOTE: Non è possibile utilizzare il protocollo SMTP per inviare messaggi AutoSupport a una destinazione aggiuntiva.
+
+.Fasi
+. Selezionare *SUPPORTO* > *Strumenti* > *AutoSupport*.
+. Selezionare *attiva destinazione AutoSupport aggiuntiva*.
+. Specificare quanto segue:
++
+[cols="1a,2a"]
+|===
+| Campo | Descrizione 
+
+
+ a| 
+Nome host
+ a| 
+Il nome host del server o l'indirizzo IP di un server di destinazione AutoSupport aggiuntivo.
+
+*Nota*: È possibile inserire solo una destinazione aggiuntiva.
+
+
+
+ a| 
+Porta
+ a| 
+Porta utilizzata per connettersi a un server di destinazione AutoSupport aggiuntivo. L'impostazione predefinita è la porta 80 per HTTP o la porta 443 per HTTPS.
+
+
+
+ a| 
+Convalida della certificazione
+ a| 
+Se viene utilizzato un certificato TLS per proteggere la connessione alla destinazione aggiuntiva.
+
+** Selezionare *non verificare il certificato* per inviare i messaggi AutoSupport senza la convalida del certificato.
++
+Selezionare questa opzione solo se si dispone di un buon motivo per non utilizzare la convalida del certificato, ad esempio quando si verifica un problema temporaneo con un certificato.
+
+** Selezionare *Usa bundle CA personalizzato* per utilizzare la convalida del certificato.
+
+
+|===
+. Se è stato selezionato *Use custom CA bundle* (Usa bundle CA personalizzato), effettuare una delle seguenti operazioni:
++
+** Selezionare *Sfoglia*, individuare il file contenente i certificati, quindi selezionare *Apri* per caricare il file.
+** Utilizzare uno strumento di modifica per copiare e incollare tutto il contenuto di ciascun file di certificato CA con codifica PEM nel campo *bundle CA*, concatenato in ordine di catena del certificato.
++
+È necessario includere `----BEGIN CERTIFICATE----` e. `----END CERTIFICATE----` nella selezione.
+
++
+image::../media/autosupport_certificate.png[Certificato AutoSupport]
+
+
+
+. Selezionare *Salva*.
++
+Tutti i messaggi AutoSupport futuri, generati da eventi e attivati dall'utente, verranno inviati alla destinazione aggiuntiva.
+
+

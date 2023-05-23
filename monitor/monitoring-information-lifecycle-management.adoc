@@ -1,0 +1,68 @@
+---
+permalink: monitor/monitoring-information-lifecycle-management.html 
+sidebar: sidebar 
+keywords: lifecycle management, lifecycle, monitoring, ILM, information lifecycle management 
+summary: 'Il sistema ILM (Information Lifecycle Management) fornisce la gestione dei dati per tutti gli oggetti memorizzati nella griglia. È necessario monitorare le operazioni ILM per capire se la griglia è in grado di gestire il carico corrente o se sono necessarie ulteriori risorse.' 
+---
+= Monitorare la gestione del ciclo di vita delle informazioni
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il sistema ILM (Information Lifecycle Management) fornisce la gestione dei dati per tutti gli oggetti memorizzati nella griglia. È necessario monitorare le operazioni ILM per capire se la griglia è in grado di gestire il carico corrente o se sono necessarie ulteriori risorse.
+
+.A proposito di questa attività
+Il sistema StorageGRID gestisce gli oggetti applicando il criterio ILM attivo. Il criterio ILM e le regole ILM associate determinano il numero di copie eseguite, il tipo di copie create, la posizione delle copie e il periodo di conservazione di ciascuna copia.
+
+L'acquisizione di oggetti e altre attività correlate agli oggetti possono superare la velocità con cui StorageGRID può valutare ILM, causando la messa in coda degli oggetti le cui istruzioni di posizionamento ILM non possono essere soddisfatte quasi in tempo reale. È possibile controllare se StorageGRID sta mantenendo il passo con le azioni del client inserendo l'attributo in attesa - client.
+
+Per inserire questo attributo:
+
+. Accedi a Grid Manager.
+. Dalla dashboard, individuare la voce *in attesa - Client* nella scheda Information Lifecycle Management (ILM).
+. Fare clic sull'icona del grafico image:../media/icon_chart_new_for_11_5.png["Icona del grafico"].
+
+
+Il grafico di esempio mostra una situazione in cui il numero di oggetti in attesa di valutazione ILM è aumentato temporaneamente in modo insostenibile, per poi diminuire. Tale tendenza indica che ILM non è stato temporaneamente soddisfatto quasi in tempo reale.
+
+image::../media/ilm_awaiting_client_vs_time.gif[In attesa - confronto tra client e Diagramma temporale]
+
+Sono previsti picchi temporanei nel grafico di in attesa - Client. Tuttavia, se il valore mostrato nel grafico continua ad aumentare e non diminuisce mai, la griglia richiede più risorse per funzionare in modo efficiente: Più nodi di storage o, se la policy ILM colloca gli oggetti in posizioni remote, maggiore larghezza di banda della rete.
+
+È possibile analizzare ulteriormente le code ILM utilizzando la pagina *NODES*.
+
+.Fasi
+. Selezionare *NODI*.
+. Selezionare *_grid name_* > *ILM*.
+. Posizionare il cursore sul grafico ILM Queue per visualizzare il valore dei seguenti attributi in un dato momento:
++
+** *Oggetti accodati (da operazioni client)*: Il numero totale di oggetti in attesa di valutazione ILM a causa delle operazioni del client (ad esempio, acquisizione).
+** *Oggetti accodati (da tutte le operazioni)*: Il numero totale di oggetti in attesa di valutazione ILM.
+** *Scan rate (objects/sec)*: La velocità con cui gli oggetti nella griglia vengono sottoposti a scansione e messi in coda per ILM.
+** *Evaluation rate (objects/sec)*: La velocità corrente alla quale gli oggetti vengono valutati rispetto alla policy ILM nella griglia.
+
+
+. Nella sezione ILM Queue (coda ILM), esaminare i seguenti attributi.
++
+
+NOTE: La sezione ILM Queue (coda ILM) è inclusa solo per la griglia. Queste informazioni non vengono visualizzate nella scheda ILM per un sito o un nodo di storage.
+
++
+** *Scan Period (periodo di scansione) - Estimated (stimato)*: Tempo stimato per completare una scansione ILM completa di tutti gli oggetti.
++
+
+NOTE: Una scansione completa non garantisce che ILM sia stato applicato a tutti gli oggetti.
+
+** *Riparazioni tentate*: Il numero totale di operazioni di riparazione di oggetti per i dati replicati che sono stati tentati. Questo numero aumenta ogni volta che un nodo di storage tenta di riparare un oggetto ad alto rischio. Le riparazioni ILM ad alto rischio hanno la priorità se la rete diventa occupata.
++
+
+NOTE: La stessa riparazione dell'oggetto potrebbe aumentare di nuovo se la replica non è riuscita dopo la riparazione.
+
+
+
++
+Questi attributi possono essere utili quando si monitora l'avanzamento del ripristino del volume di Storage Node. Se il numero di riparazioni tentate ha smesso di aumentare ed è stata completata una scansione completa, la riparazione probabilmente è stata completata.
+
+

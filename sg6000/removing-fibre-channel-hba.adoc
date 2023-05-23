@@ -1,0 +1,56 @@
+---
+permalink: sg6000/removing-fibre-channel-hba.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, sg6000-cn, hba, host bus adapter, fibre channel, fiber channel, remove, removing, removal 
+summary: 'Potrebbe essere necessario sostituire l"HBA (host bus adapter) Fibre Channel nel controller SG6000-CN se non funziona in modo ottimale o se si è verificato un guasto.' 
+---
+= Rimuovere l'HBA Fibre Channel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Potrebbe essere necessario sostituire l'HBA (host bus adapter) Fibre Channel nel controller SG6000-CN se non funziona in modo ottimale o se si è verificato un guasto.
+
+.Prima di iniziare
+* Si dispone dell'HBA Fibre Channel sostitutivo corretto.
+* Lo hai fatto link:verifying-fibre-channel-hba-to-replace.html["Determinato quale controller SG6000-CN contiene l'HBA Fibre Channel da sostituire"].
+* Lo hai fatto link:locating-controller-in-data-center.html["Situato fisicamente nel controller SG6000-CN"] nel data center.
+* Lo hai fatto link:shutting-down-sg6000-cn-controller.html["Spegnere il controller SG6000-CN"].
++
+
+CAUTION: Prima di rimuovere il controller dal rack, è necessario eseguire uno shutdown controllato.
+
+* Lo hai fatto link:removing-sg6000-cn-controller-from-cabinet-or-rack.html["il controller è stato rimosso dal cabinet o dal rack"].
+* Lo hai fatto link:removing-sg6000-cn-controller-cover.html["rimozione del coperchio del controller"].
+
+
+.A proposito di questa attività
+Per evitare interruzioni del servizio, verificare che tutti gli altri nodi di storage siano collegati alla rete prima di iniziare la sostituzione dell'HBA Fibre Channel o sostituire l'adattatore durante una finestra di manutenzione programmata, quando sono normalmente previsti periodi di interruzione del servizio. Consultare le informazioni su link:../monitor/monitoring-system-health.html#monitor-node-connection-states["monitoraggio degli stati di connessione del nodo"].
+
+
+IMPORTANT: Se è stata utilizzata una regola ILM che crea una sola copia di un oggetto, è necessario sostituire l'HBA Fibre Channel durante una finestra di manutenzione pianificata. In caso contrario, è possibile che l'accesso a tali oggetti venga temporaneamente perso durante questa procedura. + vedere le informazioni su link:../ilm/why-you-should-not-use-single-copy-replication.html["perché non utilizzare la replica a copia singola"].
+
+.Fasi
+. Avvolgere l'estremità del braccialetto ESD intorno al polso e fissare l'estremità del fermaglio a una messa a terra metallica per evitare scariche elettrostatiche.
+. Individuare il gruppo riser sul retro del controller che contiene l'HBA Fibre Channel.
++
+image::../media/sg6060_riser_assembly_location.jpg[Posizione del gruppo del riser SG6060]
+
+. Afferrare il gruppo riser attraverso i fori blu e sollevarlo con cautela verso l'alto. Spostare il gruppo riser verso la parte anteriore dello chassis mentre lo si solleva per consentire ai connettori esterni degli adattatori installati di liberare lo chassis.
+. Posizionare la scheda di montaggio su una superficie piana antistatica con il lato del telaio metallico rivolto verso il basso per accedere agli adattatori.
++
+image::../media/sg6060_fc_hba_location.jpg[HBA Fibre Channel SG6060 nel gruppo riser]
+
++
+Nel gruppo riser sono presenti due adattatori: Un HBA Fibre Channel e un adattatore di rete Ethernet. L'HBA Fibre Channel è indicato nell'illustrazione.
+
+. Aprire il fermo blu dell'adattatore (cerchiato) e rimuovere con cautela l'HBA Fibre Channel dal gruppo riser. Far oscillare leggermente l'adattatore per rimuoverlo dal connettore. Non esercitare una forza eccessiva.
+. Posizionare l'adattatore su una superficie piana antistatica.
+
+
+.Al termine
+link:reinstalling-fibre-channel-hba.html["Installare l'HBA Fibre Channel sostitutivo"].
+
+Dopo aver sostituito il componente, restituire il componente guasto a NetApp, come descritto nelle istruzioni RMA fornite con il kit. Vedere https://mysupport.netapp.com/site/info/rma["Parti restituita  sostituzioni"^] per ulteriori informazioni.

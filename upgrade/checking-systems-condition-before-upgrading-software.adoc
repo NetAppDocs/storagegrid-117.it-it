@@ -1,0 +1,67 @@
+---
+permalink: upgrade/checking-systems-condition-before-upgrading-software.html 
+sidebar: sidebar 
+keywords: upgrade, grid tasks, firewall, ports 
+summary: 'Prima di aggiornare un sistema StorageGRID, è necessario verificare che il sistema sia pronto per l"aggiornamento. È necessario assicurarsi che il sistema funzioni correttamente e che tutti i nodi della griglia siano operativi.' 
+---
+= Controllare le condizioni del sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di aggiornare un sistema StorageGRID, è necessario verificare che il sistema sia pronto per l'aggiornamento. È necessario assicurarsi che il sistema funzioni correttamente e che tutti i nodi della griglia siano operativi.
+
+.Fasi
+. Accedere a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+. Verificare la presenza di eventuali avvisi attivi e risolverli.
+. Verificare che non vi siano attività della griglia in conflitto attive o in sospeso.
++
+.. Selezionare *SUPPORT* > *Tools* > *Grid topology*.
+.. Selezionare *_Site_* > *_Primary Admin Node_* > *CMN* > *Grid Tasks* > *Configuration*.
++
+I task ILME (Information Lifecycle Management Evaluation) sono gli unici task grid che possono essere eseguiti contemporaneamente all'aggiornamento del software.
+
+.. Se altre attività della griglia sono attive o in sospeso, attendere il completamento o rilasciare il blocco.
++
+
+NOTE: Contattare il supporto tecnico se un'attività non termina o non rilascia il blocco.
+
+
+
+. Fare riferimento a. link:../network/internal-grid-node-communications.html["Comunicazioni interne al nodo di rete"] e. link:../network/external-communications.html["Comunicazioni esterne"] Assicurarsi che tutte le porte richieste per StorageGRID 11.7 siano aperte prima di eseguire l'aggiornamento.
++
+Quanto segue link:../network/internal-grid-node-communications.html#storagegrid-internal-ports["porte interne"] Deve essere aperto prima di eseguire l'aggiornamento a StorageGRID 11.7:
+
++
+[cols="1a,2a"]
+|===
+| Porta | Descrizione 
+
+
+ a| 
+1055
+
+8011
+
+10342
+ a| 
+Utilizzato per i controlli firewall con protocollo di knocking.
+
+Prima di eseguire l'aggiornamento, verificare che la porta sia aperta tra tutti i nodi della rete Grid.
+
+
+
+ a| 
+18086
+ a| 
+Porta TCP utilizzata per il nuovo servizio LDR.
+
+Prima di eseguire l'aggiornamento, verificare che la porta sia aperta da tutti i nodi della griglia a tutti i nodi di storage.
+
+|===
+
+
+
+IMPORTANT: Se sono state aperte porte firewall personalizzate, viene inviata una notifica durante la verifica preliminare dell'aggiornamento. È necessario contattare il supporto tecnico prima di procedere con l'aggiornamento.

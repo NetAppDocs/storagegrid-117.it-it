@@ -1,0 +1,103 @@
+---
+permalink: tenant/viewing-s3-bucket-details.html 
+sidebar: sidebar 
+keywords: how to view bucket details 
+summary: 'È possibile visualizzare i bucket nell"account tenant.' 
+---
+= Visualizza i dettagli del bucket
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile visualizzare i bucket nell'account tenant.
+
+.Prima di iniziare
+* Hai effettuato l'accesso al tenant manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+
+
+.Fasi
+. Selezionare *View bucket* (Visualizza bucket) dalla dashboard oppure selezionare *STORAGE (S3)* > *Bucket*.
++
+Viene visualizzata la pagina Bucket.
+
+. Rivedere le informazioni di riepilogo per ciascun bucket.
++
+In base alle esigenze, è possibile ordinare le informazioni in base a qualsiasi colonna oppure scorrere l'elenco in avanti e indietro.
+
++
+
+IMPORTANT: I valori Object Count (Conteggio oggetti) e Space used (spazio utilizzato) visualizzati sono stime. Queste stime sono influenzate dai tempi di acquisizione, dalla connettività di rete e dallo stato dei nodi. Se nei bucket è attivata la versione, le versioni degli oggetti eliminati vengono incluse nel conteggio degli oggetti.
+
++
+[cols="1a,3a"]
+|===
+| Colonna | Descrizione 
+
+
+ a| 
+Nome
+ a| 
+Il nome univoco del bucket, che non può essere modificato.
+
+
+
+ a| 
+Funzionalità attivate
+ a| 
+L'elenco delle funzioni attivate per il bucket.
+
+
+
+ a| 
+Blocco oggetti S3
+ a| 
+Se S3 Object Lock è attivato per il bucket.
+
+Questa colonna viene visualizzata solo se S3 Object Lock (blocco oggetti S3) è attivato per la griglia. Questa colonna mostra anche informazioni relative a qualsiasi bucket compatibile legacy.
+
+
+
+ a| 
+Regione
+ a| 
+La regione del bucket, che non può essere modificata.
+
+
+
+ a| 
+Numero di oggetti
+ a| 
+Il numero di oggetti in questo bucket. Quando gli oggetti vengono aggiunti o cancellati, questo valore potrebbe non essere aggiornato immediatamente. Se nei bucket è attivata la versione, le versioni degli oggetti non correnti vengono incluse in questo valore.
+
+
+
+ a| 
+Spazio utilizzato
+ a| 
+La dimensione logica di tutti gli oggetti nel bucket. La dimensione logica non include lo spazio effettivo richiesto per le copie replicate o codificate in cancellazione o per i metadati degli oggetti.
+
+
+
+ a| 
+Data di creazione
+ a| 
+La data e l'ora di creazione del bucket.
+
+|===
+. Per visualizzare i dettagli di un bucket specifico, selezionare il nome del bucket dalla tabella.
++
+Viene visualizzata la pagina dei dettagli del bucket. Da questa pagina è possibile eseguire le seguenti operazioni:
+
++
+** Configurare e gestire le opzioni del bucket, ad esempio link:changing-consistency-level.html["livello di coerenza"], link:enabling-or-disabling-last-access-time-updates.html["ultimi aggiornamenti dell'orario di accesso"], link:changing-bucket-versioning.html["versione degli oggetti"], link:using-s3-object-lock.html["Blocco oggetti S3"] e. link:update-default-retention-settings.html["conservazione bucket predefinita"]
+** Configurare l'accesso al bucket, ad esempio link:configuring-cross-origin-resource-sharing-cors.html["Condivisione delle risorse tra origini (CORS)"]
+** Gestire link:what-platform-services-are.html["servizi della piattaforma"] (se consentito per il tenant), inclusi replica, notifiche di eventi e integrazione della ricerca
+** Attivare e. link:grid-federation-manage-cross-grid-replication.html["gestire la replica cross-grid"] (Se consentito dal tenant) per replicare gli oggetti acquisiti in questo bucket in un altro sistema StorageGRID
+** Accedere a. link:use-s3-console.html["Console S3 sperimentale"] per gestire gli oggetti nel bucket
+** link:deleting-s3-bucket-objects.html["Elimina tutti gli oggetti in un bucket"]
+** link:deleting-s3-bucket.html["Eliminare un bucket"] questo è già vuoto
+
+
+

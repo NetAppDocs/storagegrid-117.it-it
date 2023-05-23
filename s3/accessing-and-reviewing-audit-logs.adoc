@@ -1,0 +1,54 @@
+---
+permalink: s3/accessing-and-reviewing-audit-logs.html 
+sidebar: sidebar 
+keywords: access audit logs, review audit logs, view audit logs 
+summary: I messaggi di audit vengono generati dai servizi StorageGRID e memorizzati in file di log di testo. I messaggi di audit specifici delle API nei registri di audit forniscono dati critici di sicurezza, funzionamento e monitoraggio delle performance che possono aiutare a valutare lo stato di salute del sistema. 
+---
+= Accesso e revisione dei registri di audit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+I messaggi di audit vengono generati dai servizi StorageGRID e memorizzati in file di log di testo. I messaggi di audit specifici delle API nei registri di audit forniscono dati critici di sicurezza, funzionamento e monitoraggio delle performance che possono aiutare a valutare lo stato di salute del sistema.
+
+.Prima di iniziare
+* Si dispone di autorizzazioni di accesso specifiche.
+* Hai il `Passwords.txt` file.
+* Si conosce l'indirizzo IP di un nodo amministratore.
+
+
+.A proposito di questa attività
+Il file di log di audit attivo viene denominato `audit.log`E viene memorizzato nei nodi di amministrazione.
+
+Una volta al giorno, il file audit.log attivo viene salvato e viene visualizzato un nuovo file `audit.log` il file viene avviato. Il nome del file salvato indica quando è stato salvato, nel formato `_yyyy-mm-dd.txt_`.
+
+Dopo un giorno, il file salvato viene compresso e rinominato, nel formato `_yyyy-mm-dd.txt.gz_`, che conserva la data originale.
+
+In questo esempio viene visualizzato il valore attivo `audit.log` file del giorno precedente (`2018-04-15.txt`) e il file compresso per il giorno precedente (`2018-04-14.txt.gz`).
+
+[listing]
+----
+audit.log
+2018-04-15.txt
+2018-04-14.txt.gz
+----
+.Fasi
+. Accedere a un nodo amministratore:
++
+.. Immettere il seguente comando: `ssh admin@_primary_Admin_Node_IP_`
+.. Immettere la password elencata in `Passwords.txt` file.
+.. Immettere il seguente comando per passare a root: `su -`
+.. Immettere la password elencata in `Passwords.txt` file.
++
+Una volta effettuato l'accesso come root, il prompt cambia da `$` a. `#`.
+
+
+
+. Accedere alla directory contenente i file di log di controllo:
++
+`cd /var/local/audit/export`
+
+. Visualizzare il file di log di audit corrente o salvato, secondo necessità.
+

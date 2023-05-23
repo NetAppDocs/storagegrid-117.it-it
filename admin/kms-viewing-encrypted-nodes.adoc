@@ -1,0 +1,103 @@
+---
+permalink: admin/kms-viewing-encrypted-nodes.html 
+sidebar: sidebar 
+keywords: view encrypted nodes, kms nodes, appliances with kms 
+summary: 'È possibile visualizzare informazioni sui nodi dell"appliance nel sistema StorageGRID per i quali è stata attivata l"impostazione crittografia nodo.' 
+---
+= Visualizzare i nodi crittografati
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile visualizzare informazioni sui nodi appliance nel sistema StorageGRID per i quali è stata attivata l'impostazione *crittografia nodo*.
+
+.Fasi
+. Selezionare *CONFIGURATION* > *Security* > *Key management server*.
++
+Viene visualizzata la pagina Key Management Server (Server di gestione delle chiavi). La scheda Dettagli configurazione mostra tutti i server di gestione delle chiavi configurati.
+
+. Nella parte superiore della pagina, selezionare la scheda *nodi crittografati*.
++
+La scheda nodi crittografati elenca i nodi appliance nel sistema StorageGRID con l'impostazione *crittografia nodo* attivata.
+
+. Esaminare le informazioni contenute nella tabella per ciascun nodo appliance.
++
+[cols="1a,2a"]
+|===
+| Colonna | Descrizione 
+
+
+ a| 
+Nome del nodo
+ a| 
+Il nome del nodo appliance.
+
+
+
+ a| 
+Tipo di nodo
+ a| 
+Il tipo di nodo: Storage, Admin o Gateway.
+
+
+
+ a| 
+Sito
+ a| 
+Il nome del sito StorageGRID in cui è installato il nodo.
+
+
+
+ a| 
+NOME DEL KM
+ a| 
+Il nome descrittivo del KMS utilizzato per il nodo.
+
+Se non è elencato alcun KMS, selezionare la scheda Dettagli di configurazione per aggiungere un KMS.
+
+link:kms-adding.html["Aggiunta di un server di gestione delle chiavi (KMS)"]
+
+
+
+ a| 
+UID chiave
+ a| 
+ID univoco della chiave di crittografia utilizzata per crittografare e decrittare i dati sul nodo dell'appliance. Per visualizzare un intero UID chiave, posizionare il cursore sulla cella.
+
+Un trattino (--) indica che l'UID della chiave non è noto, probabilmente a causa di un problema di connessione tra il nodo dell'appliance e il KMS.
+
+
+
+ a| 
+Stato
+ a| 
+Lo stato della connessione tra il KMS e il nodo dell'appliance. Se il nodo è connesso, l'indicatore data e ora viene aggiornato ogni 30 minuti. L'aggiornamento dello stato di connessione può richiedere alcuni minuti dopo le modifiche della configurazione KMS.
+
+*Nota:* per visualizzare i nuovi valori, è necessario aggiornare il browser Web.
+
+|===
+. Se la colonna Status (Stato) indica un problema KMS, risolverlo immediatamente.
++
+Durante le normali operazioni KMS, lo stato sarà *connesso a KMS*. Se un nodo viene disconnesso dalla rete, viene visualizzato lo stato di connessione del nodo (amministrativamente inattivo o Sconosciuto).
+
++
+Gli altri messaggi di stato corrispondono agli avvisi StorageGRID con gli stessi nomi:
+
++
+** Impossibile caricare la configurazione KMS
+** Errore di connettività KMS
+** Nome chiave di crittografia KMS non trovato
+** Rotazione della chiave di crittografia KMS non riuscita
+** La chiave KMS non è riuscita a decrittare un volume dell'appliance
+** KMS non configurato
+
+
++
+Eseguire le azioni consigliate per questi avvisi.
+
+
+
+
+CAUTION: È necessario affrontare immediatamente qualsiasi problema per garantire la completa protezione dei dati.

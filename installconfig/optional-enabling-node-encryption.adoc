@@ -1,0 +1,74 @@
+---
+permalink: installconfig/optional-enabling-node-encryption.html 
+sidebar: sidebar 
+keywords: node encryption, encryption, kms, key management server 
+summary: 'Se si attiva la crittografia dei nodi, i dischi dell"appliance possono essere protetti dalla crittografia del server di gestione delle chiavi sicuro (KMS) contro la perdita fisica o la rimozione dal sito. È necessario selezionare e attivare la crittografia dei nodi durante l"installazione dell"appliance. Non è possibile disattivare la crittografia del nodo dopo l"avvio del processo di crittografia KMS.' 
+---
+= Facoltativo: Attivare la crittografia del nodo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se si attiva la crittografia dei nodi, i dischi dell'appliance possono essere protetti mediante crittografia KMS (Secure Key Management Server) contro la perdita fisica o la rimozione dal sito. È necessario selezionare e attivare la crittografia dei nodi durante l'installazione dell'appliance. Non è possibile disattivare la crittografia del nodo dopo l'avvio del processo di crittografia KMS.
+
+Se si utilizza ConfigBuilder per generare un file JSON, è possibile attivare automaticamente la crittografia del nodo. Vedere link:automating-appliance-installation-and-configuration.html["Automazione dell'installazione e della configurazione delle appliance"].
+
+.Prima di iniziare
+Esaminare le informazioni su link:../admin/kms-configuring.html["Configurazione di KMS"].
+
+.A proposito di questa attività
+Un'appliance con crittografia dei nodi abilitata si connette al server di gestione delle chiavi (KMS) esterno configurato per il sito StorageGRID. Ogni KMS (o cluster KMS) gestisce le chiavi di crittografia per tutti i nodi appliance del sito. Queste chiavi crittografano e decrittare i dati su ciascun disco di un'appliance che ha attivato la crittografia dei nodi.
+
+È possibile configurare un KMS in Grid Manager prima o dopo l'installazione dell'appliance in StorageGRID. Per ulteriori informazioni, consultare le informazioni relative a KMS e alla configurazione dell'appliance nelle istruzioni per l'amministrazione di StorageGRID.
+
+* Se viene configurato un KMS prima di installare l'appliance, la crittografia controllata da KMS inizia quando si attiva la crittografia dei nodi sull'appliance e la si aggiunge a un sito StorageGRID in cui è configurato KMS.
+* Se un KMS non viene configurato prima dell'installazione dell'appliance, la crittografia controllata da KMS viene eseguita su ogni appliance che ha attivato la crittografia del nodo non appena un KMS viene configurato e disponibile per il sito che contiene il nodo dell'appliance.
+
+
+
+IMPORTANT: I dati presenti su un'appliance con crittografia del nodo attivata prima della connessione a KMS vengono crittografati con una chiave temporanea non sicura. L'apparecchio non è protetto da rimozione o furto fino a quando la chiave non viene impostata su un valore fornito dal KMS.
+
+Senza la chiave KMS necessaria per decrittare il disco, i dati sull'appliance non possono essere recuperati e vengono effettivamente persi. Questo accade quando non è possibile recuperare la chiave di decrittografia dal KMS. La chiave diventa inaccessibile se un cliente cancella la configurazione del KMS, scade una chiave KMS, la connessione al KMS viene persa o l'appliance viene rimossa dal sistema StorageGRID in cui sono installate le chiavi KMS.
+
+.Fasi
+. Aprire un browser e inserire uno degli indirizzi IP del controller di elaborazione dell'appliance.
++
+`*https://_Controller_IP_:8443*`
+
++
+`_Controller_IP_` È l'indirizzo IP del controller di calcolo (non dello storage controller) su una qualsiasi delle tre reti StorageGRID.
+
++
+Viene visualizzata la pagina iniziale del programma di installazione dell'appliance StorageGRID.
+
++
+
+IMPORTANT: Dopo aver crittografato l'appliance con una chiave KMS, i dischi dell'appliance non possono essere decifrati senza utilizzare la stessa chiave KMS.
+
+. Selezionare *Configura hardware* > *crittografia nodo*.
++
+image::../media/kms_fde_enabled.png[KMS FDE attivato]
+
+. Selezionare *Enable node Encryption* (attiva crittografia nodo).
++
+Prima dell'installazione dell'appliance, è possibile deselezionare l'opzione *Enable node Encryption* (attiva crittografia del nodo) senza rischi di perdita di dati. All'avvio dell'installazione, il nodo appliance accede alle chiavi di crittografia KMS nel sistema StorageGRID e avvia la crittografia del disco. Non è possibile disattivare la crittografia dei nodi dopo l'installazione dell'appliance.
+
++
+
+IMPORTANT: Dopo aver aggiunto un'appliance con crittografia dei nodi abilitata a un sito StorageGRID con KMS, non è possibile interrompere l'utilizzo della crittografia KMS per il nodo.
+
+. Selezionare *Salva*.
+. Implementa l'appliance come nodo nel tuo sistema StorageGRID.
++
+La crittografia controllata DA KMS inizia quando l'appliance accede alle chiavi KMS configurate per il sito StorageGRID. Il programma di installazione visualizza messaggi di avanzamento durante il processo di crittografia KMS, che potrebbero richiedere alcuni minuti a seconda del numero di volumi di dischi nell'appliance.
+
++
+
+NOTE: Le appliance vengono inizialmente configurate con una chiave di crittografia casuale non KMS assegnata a ciascun volume di disco. I dischi vengono crittografati utilizzando questa chiave di crittografia temporanea, che non è sicura, fino a quando l'appliance che ha attivato la crittografia dei nodi non accede alle chiavi KMS configurate per il sito StorageGRID.
+
+
+
+.Al termine
+È possibile visualizzare lo stato della crittografia del nodo, i dettagli KMS e i certificati in uso quando il nodo dell'appliance è in modalità di manutenzione. Vedere link:../commonhardware/monitoring-node-encryption-in-maintenance-mode.html["Monitorare la crittografia dei nodi in modalità di manutenzione"] per informazioni.

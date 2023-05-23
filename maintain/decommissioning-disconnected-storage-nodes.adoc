@@ -1,0 +1,32 @@
+---
+permalink: maintain/decommissioning-disconnected-storage-nodes.html 
+sidebar: sidebar 
+keywords: storagegrid, connected nodes, decommission node, storage node, disconnected storage node 
+summary: 'È necessario comprendere cosa può accadere se si decommissiona un nodo di storage mentre è disconnesso (lo stato di salute è sconosciuto o amministrativamente inattivo).' 
+---
+= Decommissionare nodi di storage disconnessi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario comprendere cosa può accadere se si decommissiona un nodo di storage mentre è disconnesso (lo stato di salute è sconosciuto o amministrativamente inattivo).
+
+Quando si decommissiona un nodo di storage disconnesso dalla griglia, StorageGRID utilizza i dati di altri nodi di storage per ricostruire i dati dell'oggetto e i metadati presenti nel nodo disconnesso. Ciò avviene avviando automaticamente i lavori di riparazione dei dati al termine del processo di disattivazione.
+
+Prima di smantellare un nodo di storage disconnesso, tenere presente quanto segue:
+
+* Non decommissionare mai un nodo disconnesso a meno che non si sia sicuri che non possa essere portato online o ripristinato.
++
+
+IMPORTANT: Non eseguire questa procedura se si ritiene che sia possibile ripristinare i dati dell'oggetto dal nodo. Contattare invece il supporto tecnico per determinare se è possibile eseguire il ripristino del nodo.
+
+* Se un nodo di storage disconnesso contiene l'unica copia di un oggetto, tale oggetto verrà perso quando il nodo viene decommissionato. I processi di riparazione dei dati possono ricostruire e ripristinare gli oggetti solo se nei nodi di storage attualmente connessi sono presenti almeno una copia replicata o un numero sufficiente di frammenti con codifica di cancellazione.
+* Quando si decommissiona un nodo di storage disconnesso, la procedura di decommissionamento viene completata in modo relativamente rapido. Tuttavia, i lavori di riparazione dei dati possono richiedere giorni o settimane e non vengono monitorati dalla procedura di decommissionamento. È necessario monitorare manualmente questi lavori e riavviarli secondo necessità. Vedere link:checking-data-repair-jobs.html["Controllare i lavori di riparazione dei dati"].
+* Se si decommissiona più di un nodo di storage disconnesso alla volta, potrebbe verificarsi una perdita di dati. Il sistema potrebbe non essere in grado di ricostruire i dati se rimangono disponibili troppe copie di dati a oggetti, metadati o frammenti con codifica di cancellazione.
++
+
+IMPORTANT: Se si dispone di più nodi di storage disconnessi che non è possibile ripristinare, contattare il supporto tecnico per determinare la procedura migliore.
+
+

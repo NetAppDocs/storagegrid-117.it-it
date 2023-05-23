@@ -1,0 +1,69 @@
+---
+section: sg6000
+title: Manutenzione dell'hardware SG6000
+entries:
+- title: Panoramica
+  pdf-filename: Manutenzione dell'hardware SG6000
+  url: "/sg6000/index.html"
+- title: Procedure di configurazione della manutenzione
+  pdf-filename: Procedure di configurazione della manutenzione - SG6000
+  entries:
+  - title: Aggiornare il sistema operativo SANtricity sui controller di storage
+    url: "/sg6000/upgrading-santricity-os-on-storage-controllers.html"
+    entries:
+    - title: Aggiorna il sistema operativo SANtricity sui controller di storage utilizzando
+        Grid Manager
+      url: "/sg6000/upgrading-santricity-os-on-storage-controllers-using-grid-manager-sg6000.html"
+    - title: Aggiornare il sistema operativo SANtricity sui controller di storage
+        utilizzando la modalità di manutenzione
+      url: "/sg6000/upgrading-santricity-os-on-storage-controllers-using-maintenance-mode-sg6000.html"
+  - title: Aggiornare il firmware del disco utilizzando Gestione di sistema di SANtricity
+    url: "/sg6000/upgrading-drive-firmware-using-santricity-system-manager.html"
+  - title: Accendere e spegnere il LED di identificazione del controller
+    url: "/sg6000/turning-controller-identify-led-on-and-off.html"
+  - title: Individuare il controller nel data center
+    url: "/sg6000/locating-controller-in-data-center.html"
+  - title: Accendere e spegnere il controller
+    entries:
+    - title: Spegnere il controller SG6000-CN
+      url: "/sg6000/shutting-down-sg6000-cn-controller.html"
+    - title: Accendere il controller SG6000-CN e verificarne il funzionamento
+      url: "/sg6000/powering-on-sg6000-cn-controller-and-verifying-operation.html"
+  - title: Modificare la configurazione del collegamento del controller SG6000-CN
+    url: "/sg6000/changing-link-configuration-of-sg6000-cn-controller.html"
+- title: Procedure hardware
+  pdf-filename: Procedure hardware - SG6000
+  entries:
+  - title: Aggiunta di shelf di espansione a SG6060 implementato
+    url: "/sg6000/adding-expansion-shelf-to-deployed-sg6060.html"
+  - title: Sostituire il controller storage
+    url: "/sg6000/replacing-storage-controller-sg6000.html"
+  - title: Sostituire i componenti hardware nello shelf dello storage controller
+    url: "/sg6000/replacing-hardware-components-in-storage-controller-shelf.html"
+  - title: Sostituire i componenti hardware nello shelf di espansione opzionale da
+      60 dischi
+    url: "/sg6000/replacing-hardware-components-in-optional-60-drive-expansion-shelf.html"
+  - title: Sostituire il controller SG6000-CN
+    url: "/sg6000/replacing-sg6000-cn-controller.html"
+  - title: Sostituire uno o entrambi gli alimentatori del controller SG6000-CN
+    url: "/sg6000/replacing-one-or-both-power-supplies-in-sg6000-cn-controller.html"
+  - title: Sostituire il controller nel rack
+    entries:
+    - title: Rimuovere il controller SG6000-CN dal cabinet o dal rack
+      url: "/sg6000/removing-sg6000-cn-controller-from-cabinet-or-rack.html"
+    - title: Reinstallare il controller SG6000-CN nel cabinet o nel rack
+      url: "/sg6000/reinstalling-sg6000-cn-controller-into-cabinet-or-rack.html"
+  - title: Sostituire il coperchio del controller
+    entries:
+    - title: Rimuovere il coperchio del controller SG6000-CN
+      url: "/sg6000/removing-sg6000-cn-controller-cover.html"
+    - title: Reinstallare il coperchio del controller SG6000-CN
+      url: "/sg6000/reinstalling-sg6000-cn-controller-cover.html"
+  - title: Sostituire l'HBA Fibre Channel nel controller SG6000-CN
+    entries:
+    - title: Verificare l'HBA Fibre Channel da sostituire
+      url: "/sg6000/verifying-fibre-channel-hba-to-replace.html"
+    - title: Rimuovere l'HBA Fibre Channel
+      url: "/sg6000/removing-fibre-channel-hba.html"
+    - title: Reinstallare l'HBA Fibre Channel
+      url: "/sg6000/reinstalling-fibre-channel-hba.html"

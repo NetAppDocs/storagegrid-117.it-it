@@ -1,0 +1,21 @@
+---
+permalink: maintain/recovering-from-storage-volume-failure-where-system-drive-is-intact.html 
+sidebar: sidebar 
+keywords: storagegrid, recover, storage volume failure, volume failure, system drive intact 
+summary: È necessario completare una serie di attività per ripristinare un nodo di storage basato su software in cui uno o più volumi di storage sul nodo di storage si sono guastati, ma il disco di sistema è intatto. Se solo i volumi di storage sono guasti, il nodo di storage è ancora disponibile per il sistema StorageGRID. 
+---
+= Ripristino da un errore del volume di storage in cui il disco di sistema è intatto: Workflow
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È necessario completare una serie di attività per ripristinare un nodo di storage basato su software in cui uno o più volumi di storage sul nodo di storage si sono guastati, ma il disco di sistema è intatto. Se solo i volumi di storage sono guasti, il nodo di storage è ancora disponibile per il sistema StorageGRID.
+
+
+NOTE: Questa procedura di ripristino si applica solo ai nodi di storage basati su software. Se i volumi di storage si sono guastati su un nodo di storage dell'appliance, utilizzare la procedura dell'appliance: link:recovering-storagegrid-appliance-storage-node.html["Ripristinare il nodo storage dell'appliance"].
+
+Come illustrato nel diagramma del flusso di lavoro, è necessario identificare e smontare i volumi di storage guasti, ripristinare i volumi, ricostruire il database Cassandra e ripristinare i dati degli oggetti.
+
+image::../media/storage_node_recovery_storage_vol_only.gif[panoramica del diagramma di flusso del ripristino del volume di storage]

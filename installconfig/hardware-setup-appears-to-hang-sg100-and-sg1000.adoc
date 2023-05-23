@@ -1,0 +1,24 @@
+---
+permalink: installconfig/hardware-setup-appears-to-hang-sg100-and-sg1000.html 
+sidebar: sidebar 
+keywords: storagegrid, sg100, sg1000, service appliance, services appliance, gateway Node, admin node, troubleshoot, troubleshooting, hardware, setup, hang, hangs, fails, failure, stop, terminate, terminates, stuck 
+summary: 'Il programma di installazione dell"appliance StorageGRID potrebbe non essere disponibile se errori hardware o di cablaggio impediscono all"appliance di completare l"elaborazione di avvio.' 
+---
+= La configurazione dell'hardware sembra bloccarsi (SG100 e SG1000)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il programma di installazione dell'appliance StorageGRID potrebbe non essere disponibile se errori hardware o di cablaggio impediscono all'appliance di completare l'elaborazione di avvio.
+
+.Fasi
+. Esaminare i LED dell'apparecchio e i codici di avvio e di errore visualizzati nel BMC.
+. Se hai bisogno di aiuto per risolvere un problema, contatta il supporto tecnico.
+
+
+.Informazioni correlate
+* link:viewing-boot-up-codes-for-appliance-sg100-and-sg1000.html["Visualizzazione dei codici di avvio (SG100 e SG1000)"]
+* link:viewing-error-codes-for-sg1000-controller-sg100-and-sg1000.html["Visualizzazione dei codici di errore (SG100 e SG1000)"]
+

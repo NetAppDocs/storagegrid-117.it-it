@@ -1,0 +1,182 @@
+---
+permalink: ilm/creating-proposed-ilm-policy.html 
+sidebar: sidebar 
+keywords: how to create ILM policy, proposed policy 
+summary: È possibile creare un criterio ILM proposto da zero oppure clonare il criterio attivo corrente se si desidera iniziare con lo stesso insieme di regole. 
+---
+= Creare una policy ILM proposta
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+È possibile creare un criterio ILM proposto da zero oppure clonare il criterio attivo corrente se si desidera iniziare con lo stesso insieme di regole.
+
+Prima di creare una policy personalizzata, verificare che link:creating-ilm-policy.html#default-ilm-policy["Policy ILM predefinita"] non soddisfa i requisiti di storage.
+
+
+NOTE: Se il link:enabling-s3-object-lock-globally.html["L'impostazione Global S3 Object Lock (blocco oggetti S3 globale) è stata attivata"], È necessario assicurarsi che il criterio ILM sia conforme ai requisiti dei bucket che hanno attivato il blocco oggetti S3. In questa sezione, seguire le istruzioni relative all'attivazione del blocco oggetti S3.
+
+.Prima di iniziare
+* Hai effettuato l'accesso a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+* Hai il link:../admin/admin-group-permissions.html["autorizzazioni di accesso richieste"].
+* Lo hai fatto link:access-create-ilm-rule-wizard.html["Regole ILM create"] In base all'attivazione o meno di S3 Object Lock.
+
+
+[role="tabbed-block"]
+====
+.Blocco oggetti S3 non abilitato
+--
+* Lo hai fatto link:what-ilm-rule-is.html["Creazione delle regole ILM"] si desidera aggiungere alla policy proposta. Se necessario, è possibile salvare una policy proposta, creare regole aggiuntive e quindi modificare la policy proposta per aggiungere le nuove regole.
+* Lo hai fatto link:creating-default-ilm-rule.html["Creazione di una regola ILM predefinita"] che non contiene filtri.
+
+
+--
+.Blocco oggetti S3 attivato
+--
+* Il link:enabling-s3-object-lock-globally.html["L'impostazione Global S3 Object Lock (blocco oggetti S3 globale) è già attivata"] Per il sistema StorageGRID.
+* Lo hai fatto link:what-ilm-rule-is.html["Creazione delle regole ILM conformi e non conformi"] si desidera aggiungere alla policy proposta. Se necessario, è possibile salvare una policy proposta, creare regole aggiuntive e quindi modificare la policy proposta per aggiungere le nuove regole.
+* Lo hai fatto link:creating-default-ilm-rule.html["Creazione di una regola ILM predefinita"] per i criteri conformi.
+
+
+--
+====
+* Facoltativamente, hai guardato il video: https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0009ebe1-3665-4cdc-a101-afbd009a0466["Video: Policy di gestione del ciclo di vita delle informazioni in StorageGRID 11.7"^]
++
+[link=https://netapp.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0009ebe1-3665-4cdc-a101-afbd009a0466]
+image::../media/video-screenshot-ilm-policies-117.png[Video: Policy di gestione del ciclo di vita delle informazioni in StorageGRID 11.7]
+
+
+
+Vedere anche link:creating-ilm-policy.html["Creare una policy ILM: Panoramica"].
+
+.A proposito di questa attività
+I motivi tipici per la creazione di una policy ILM proposta includono:
+
+* È stato aggiunto un nuovo sito ed è necessario utilizzare nuove regole ILM per posizionare gli oggetti in tale sito.
+* Si sta smantellando un sito ed è necessario rimuovere tutte le regole ILM che fanno riferimento al sito.
+* È stato aggiunto un nuovo tenant con requisiti speciali per la protezione dei dati.
+* Hai iniziato a utilizzare un Cloud Storage Pool.
+
+
+
+IMPORTANT: Utilizzare solo il criterio fornito dal sistema, il criterio di base 2 copie, nei sistemi di test. Per StorageGRID 11.6 e versioni precedenti, la regola predefinita in questo criterio utilizza il pool di storage All Storage Node, che contiene tutti i siti. Se il sistema StorageGRID dispone di più siti, è possibile che due copie di un oggetto vengano posizionate sullo stesso sito.
+
+.Fasi
+. Selezionare *ILM* > *Policy*.
++
+Se l'impostazione blocco oggetti S3 globale è attivata, la pagina dei criteri ILM indica quali regole ILM sono conformi.
+
+. Determinare come si desidera creare il criterio ILM proposto. +
+
+
+[role="tabbed-block"]
+====
+.Inizia da zero
+--
+. Se esiste attualmente una policy ILM proposta, selezionare *proposed policy* > *Actions* > *Remove*.
++
+Non è possibile creare una nuova policy proposta se esiste già una policy proposta.
+
+. Selezionare *Crea policy proposta* > *Crea nuova policy*.
+
+
+--
+.Iniziare con le regole del criterio attivo
+--
+. Se esiste attualmente una policy ILM proposta, selezionare *proposed policy* > *Actions* > *Remove*.
++
+Non è possibile clonare il criterio attivo se esiste già un criterio proposto.
+
+. Selezionare *Crea policy proposta* > *Clona policy attiva*.
+
+
+--
+.Modificare la policy proposta esistente
+. Selezionare *criterio proposto* > *azioni* > *Modifica*.
+
+
+====
+. Nel campo *proposed policy name* (Nome policy proposto), immettere un nome univoco per la policy proposta.
+. Nel campo *motivo della modifica*, immettere il motivo per cui si sta creando una nuova policy proposta.
+. Per aggiungere regole al criterio, selezionare *Seleziona regole*. Selezionare il nome di una regola per visualizzare le relative impostazioni.
++
+
+NOTE: Periodicamente, l'elenco delle regole viene aggiornato automaticamente per riflettere aggiunte o rimozioni. Se una regola viene rimossa dopo essere stata selezionata, viene visualizzato un messaggio di errore.
+
++
+Se si sta clonando un criterio:
+
++
+** Vengono selezionate le regole utilizzate dal criterio che si sta clonando.
+** Se il criterio da clonare utilizza regole senza filtri che non erano la regola predefinita, viene richiesto di rimuovere tutte le regole tranne una di queste.
+** Se la regola predefinita utilizza un filtro, viene richiesto di selezionare una nuova regola predefinita.
+** Se la regola predefinita non è l'ultima, è possibile spostarla alla fine del nuovo criterio.
+
+
+
+
+[role="tabbed-block"]
+====
+.Blocco oggetti S3 non abilitato
+--
+. Selezionare una regola predefinita per la policy proposta. Per creare una nuova regola predefinita, selezionare *pagina regole ILM* image:../media/icon_nms_more_details.gif["ulteriori dettagli"].
++
+La regola predefinita si applica a tutti gli oggetti che non corrispondono a un'altra regola del criterio. La regola predefinita non può utilizzare alcun filtro e viene sempre valutata per ultima.
+
++
+
+IMPORTANT: Non utilizzare la regola di creazione di 2 copie come regola predefinita per un criterio. La regola Make 2 copies utilizza un singolo pool di storage, tutti i nodi di storage, che contiene tutti i siti. Se il sistema StorageGRID dispone di più siti, è possibile che due copie di un oggetto vengano posizionate sullo stesso sito.
+
+
+
+--
+.Blocco oggetti S3 attivato
+--
+. Selezionare una regola predefinita per la policy proposta. Per creare una nuova regola predefinita, selezionare *pagina regole ILM* image:../media/icon_nms_more_details.gif["ulteriori dettagli"].
++
+L'elenco delle regole contiene solo le regole che sono conformi e non utilizzano filtri.
+
++
+
+IMPORTANT: Non utilizzare la regola di creazione di 2 copie come regola predefinita per un criterio. La regola Make 2 copies utilizza un singolo pool di storage, tutti i nodi di storage, che contiene tutti i siti. Se si utilizza questa regola, sullo stesso sito potrebbero essere collocate più copie di un oggetto.
+
+. Se è necessaria una regola "`default`" diversa per gli oggetti nei bucket S3 non conformi, selezionare *include a rule without filters for non-compliant S3 bucket* (Includi una regola senza filtri per bucket S3 non conformi) e selezionare una regola non conforme che non utilizza un filtro.
++
+Ad esempio, è possibile utilizzare un Cloud Storage Pool per memorizzare oggetti in bucket che non hanno attivato il blocco oggetti S3.
+
++
+
+NOTE: È possibile selezionare solo una regola non conforme che non utilizza un filtro.
+
+
+
+Vedere anche link:example-7-compliant-ilm-policy-for-s3-object-lock.html["Esempio 7: Policy ILM conforme per il blocco oggetti S3"].
+
+--
+====
+. Una volta selezionata la regola predefinita, selezionare *continua*.
+. Per il passo altre regole, selezionare le altre regole che si desidera aggiungere al criterio. Queste regole utilizzano almeno un filtro (account tenant, nome bucket, filtro avanzato o tempo di riferimento non corrente). Quindi selezionare *Seleziona*.
++
+La finestra Create a Proposed policy (Crea una policy proposta) elenca ora le regole selezionate. La regola predefinita è alla fine, con le altre regole sopra di essa.
+
++
+Se S3 Object Lock è attivato e si è selezionata anche una regola "`default`" non conforme, tale regola viene aggiunta come seconda all'ultima regola del criterio.
+
++
+
+NOTE: Viene visualizzato un avviso se una regola non mantiene gli oggetti per sempre. Quando si attiva questo criterio, è necessario confermare che si desidera che StorageGRID elimini gli oggetti quando sono trascorse le istruzioni di posizionamento per la regola predefinita (a meno che un ciclo di vita del bucket non mantenga gli oggetti per un periodo di tempo più lungo).
+
+. Trascinare le righe per le regole non predefinite per determinare l'ordine in cui verranno valutate queste regole.
++
+Impossibile spostare la regola predefinita. Se S3 Object Lock è attivato, non è possibile spostare la regola non conforme "`default`", se selezionata.
+
++
+
+IMPORTANT: Verificare che le regole ILM siano nell'ordine corretto. Una volta attivato il criterio, gli oggetti nuovi ed esistenti vengono valutati dalle regole nell'ordine elencato, iniziando dall'inizio.
+
+. Se necessario, selezionare *Select rules* (Seleziona regole) per aggiungere o rimuovere le regole.
+. Al termine, selezionare *Salva*.
+. Passare a. link:simulating-ilm-policy.html["Simulare un criterio ILM"]. È necessario simulare sempre una policy proposta prima di attivarla per assicurarne il funzionamento come previsto.
+

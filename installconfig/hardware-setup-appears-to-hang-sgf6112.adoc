@@ -1,0 +1,24 @@
+---
+permalink: installconfig/hardware-setup-appears-to-hang-sgf6112.html 
+sidebar: sidebar 
+keywords: storagegrid, sgf6112, sg6100, troubleshoot, troubleshooting, hardware, setup, hang, hangs, fails, failure, stop, terminate, terminates, stuck 
+summary: 'Il programma di installazione dell"appliance StorageGRID potrebbe non essere disponibile se errori hardware o di cablaggio impediscono all"appliance di completare l"elaborazione di avvio.' 
+---
+= La configurazione dell'hardware sembra bloccarsi (SGF6112)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Il programma di installazione dell'appliance StorageGRID potrebbe non essere disponibile se errori hardware o di cablaggio impediscono all'appliance di completare l'elaborazione di avvio.
+
+.Fasi
+. Esaminare i LED dell'apparecchio e i codici di avvio e di errore visualizzati nel BMC.
+. Se hai bisogno di aiuto per risolvere un problema, contatta il supporto tecnico.
+
+
+.Informazioni correlate
+* link:viewing-boot-up-codes-for-sgf6112.html["Visualizzazione dei codici di avvio (SGF6112)"]
+* link:viewing-error-codes-for-sgf6112.html["Visualizzazione dei codici di errore (SGF6112)"]
+

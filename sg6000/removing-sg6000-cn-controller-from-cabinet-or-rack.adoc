@@ -1,0 +1,54 @@
+---
+permalink: sg6000/removing-sg6000-cn-controller-from-cabinet-or-rack.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, remove, removing, removal, cabinet, rack, controller, sg6000-cn 
+summary: Rimuovere il controller SG6000-CN da un cabinet o rack per accedere al coperchio superiore o per spostare il controller in una posizione diversa. 
+---
+= Rimuovere il controller SG6000-CN dal cabinet o dal rack
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Rimuovere il controller SG6000-CN da un cabinet o rack per accedere al coperchio superiore o per spostare il controller in una posizione diversa.
+
+.Prima di iniziare
+* Sono presenti etichette per identificare ciascun cavo collegato al controller SG6000-CN.
+* Il controller SG6000-CN è stato fisicamente posizionato in cui si esegue la manutenzione nel data center.
++
+link:locating-controller-in-data-center.html["Individuare il controller nel data center"]
+
+* Il controller SG6000-CN è stato spento.
++
+link:shutting-down-sg6000-cn-controller.html["Spegnere il controller SG6000-CN"]
+
++
+
+CAUTION: Non spegnere il controller utilizzando l'interruttore di alimentazione.
+
+
+
+.Fasi
+. Etichettare e scollegare i cavi di alimentazione del controller.
+. Avvolgere l'estremità del braccialetto ESD intorno al polso e fissare l'estremità del fermaglio a una messa a terra metallica per evitare scariche elettrostatiche.
+. Etichettare e scollegare i cavi dati del controller e i ricetrasmettitori SFP+ o SFP28.
++
+
+IMPORTANT: Per evitare prestazioni degradate, non attorcigliare, piegare, pizzicare o salire sui cavi.
+
+. Allentare le due viti di fissaggio sul pannello anteriore del controller.
++
+image::../media/sg6060_rack_retaining_screws.png[Viti di fissaggio del rack SG6060]
+
+. Far scorrere il controller SG6000-CN in avanti per estrarlo dal rack fino a quando le guide di montaggio non si estendono completamente e i fermi su entrambi i lati scattano.
++
+Il coperchio superiore del controller è accessibile.
+
+. Opzionale: Se si sta rimuovendo completamente il controller dal cabinet o dal rack, seguire le istruzioni del kit guide per rimuovere il controller dalle guide.
+
+
+Dopo aver sostituito il componente, restituire il componente guasto a NetApp, come descritto nelle istruzioni RMA fornite con il kit. Vedere https://mysupport.netapp.com/site/info/rma["Parti restituita  sostituzioni"^] per ulteriori informazioni.
+
+.Informazioni correlate
+link:removing-sg6000-cn-controller-cover.html["Rimuovere il coperchio del controller SG6000-CN"]

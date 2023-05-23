@@ -1,0 +1,51 @@
+---
+permalink: sg6000/verifying-fibre-channel-hba-to-replace.html 
+sidebar: sidebar 
+keywords: storagegrid, sg6000, storage node, storage appliance, sg6000-cn, hba, host bus adapter, fibre channel, fiber channel, locate, identify, find, replace, replacing, replacement 
+summary: 'In caso di dubbi sull"adattatore bus host Fibre Channel da sostituire, completare questa procedura per identificarlo.' 
+---
+= Verificare l'HBA Fibre Channel da sostituire
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In caso di dubbi sull'adattatore bus host Fibre Channel (HBA) da sostituire, completare questa procedura per identificarlo.
+
+.Prima di iniziare
+* Si dispone del numero di serie dell'appliance di storage o del controller SG6000-CN in cui è necessario sostituire l'HBA Fibre Channel.
++
+
+NOTE: Se il numero di serie del dispositivo di storage contenente l'HBA Fibre Channel da sostituire inizia con la lettera Q, non verrà elencato in Grid Manager. È necessario controllare le etichette applicate sulla parte anteriore di ciascun controller SG6000-CN del data center fino a quando non si trova una corrispondenza.
+
+* Hai effettuato l'accesso a Grid Manager utilizzando un link:../admin/web-browser-requirements.html["browser web supportato"].
+
+
+.Fasi
+. Da Grid Manager, selezionare *NODES*.
+. Dalla tabella della pagina Nodes (nodi), selezionare un nodo di storage dell'appliance.
+. Selezionare la scheda *hardware*.
++
+Controllare il numero di serie del telaio dell'appliance di storage* e il numero di serie del controller di calcolo* nella sezione dell'appliance StorageGRID. Verificare se uno di questi numeri di serie corrisponde al numero di serie dell'appliance di storage in cui si sostituisce l'HBA Fibre Channel. Se uno dei numeri di serie corrisponde, è stato trovato il dispositivo corretto.
+
++
+image::../media/nodes_page_hardware_tab_for_appliance_verify_HBA.png[Sezione appliance per Fibre Channel HCA]
+
++
+** Se la sezione dell'appliance StorageGRID non viene visualizzata, il nodo selezionato non è un'appliance StorageGRID. Selezionare un nodo diverso dalla vista ad albero.
+** Se il modello di appliance non è SG6060 o SG6060X, selezionare un nodo diverso dalla vista ad albero.
+** Se i numeri seriali non corrispondono, selezionare un nodo diverso dalla vista ad albero.
+
+
+. Dopo aver individuato il nodo in cui deve essere sostituito l'HBA Fibre Channel, annotare l'indirizzo IP BMC del controller di calcolo elencato nella sezione appliance StorageGRID.
++
+È possibile utilizzare questo indirizzo IP per attivare il LED di identificazione del controller di calcolo, per facilitare l'individuazione dell'appliance nel data center.
+
++
+link:turning-controller-identify-led-on-and-off.html["Accendere e spegnere il LED di identificazione del controller"]
+
+
+
+.Informazioni correlate
+link:removing-fibre-channel-hba.html["Rimuovere l'HBA Fibre Channel"]

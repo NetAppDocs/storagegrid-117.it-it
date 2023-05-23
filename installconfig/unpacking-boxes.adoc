@@ -1,0 +1,398 @@
+---
+permalink: installconfig/unpacking-boxes.html 
+sidebar: sidebar 
+keywords: unpack, unbox, prepare, inventory, components, contents 
+summary: 'Prima di installare l"appliance StorageGRID, disimballare tutte le confezioni e confrontare il contenuto con gli elementi riportati sulla confezione.' 
+---
+= Disimballare le scatole
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Prima di installare l'appliance StorageGRID, disimballare tutte le confezioni e confrontarne il contenuto con gli elementi riportati sulla confezione.
+
+
+
+== Appliance SGF6112
+
+
+
+=== Hardware
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+SGF6112
+ a| 
+image::../media/sg6000_cn_front_without_bezel.gif[Unità frontali dell'appliance SGF6112]
+
+
+
+ a| 
+Kit di guide con istruzioni
+ a| 
+image::../media/rail_kit.gif[Kit di guide]
+
+
+
+ a| 
+Pannello anteriore
+ a| 
+image::../media/sgf_6112_front_bezel.png[Pannello anteriore]
+
+|===
+
+
+=== Cavi di alimentazione
+
+La spedizione di un'appliance SGF6112 include i seguenti cavi di alimentazione.
+
+
+TIP: Il cabinet potrebbe essere dotato di cavi di alimentazione speciali utilizzati al posto dei cavi di alimentazione forniti con l'apparecchio.
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Due cavi di alimentazione per il tuo paese
+ a| 
+image::../media/power_cords.gif[Cavi di alimentazione]
+
+|===
+
+
+== Appliance SG6000
+
+
+
+=== Hardware SG6060
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Controller SG6000-CN
+ a| 
+image::../media/sg6000_cn_front_without_bezel.gif[Controller SG6000-CN]
+
+
+
+ a| 
+Shelf di controller E2860 senza unità installate
+ a| 
+image::../media/de460c_table_size.gif[Appliance 4U SG5760]
+
+
+
+ a| 
+Due cornici anteriori
+ a| 
+image::../media/sg6000_front_bezels_for_table.gif[Cornici anteriori]
+
+
+
+ a| 
+Due kit di guide con istruzioni
+ a| 
+image::../media/rail_kit.gif[Kit di guide]
+
+
+
+ a| 
+60 dischi (2 SSD e 58 NL-SAS)
+ a| 
+image::../media/sg5760_drive.gif[Disco]
+
+
+
+ a| 
+Quattro maniglie
+ a| 
+image::../media/handles.gif[Maniglie SG5760]
+
+
+
+ a| 
+Staffe posteriori e dadi a gabbia per l'installazione in rack a foro quadrato
+ a| 
+image::../media/back_brackets_table_size.gif[Staffe posteriori e dadi a gabbia per SG5760]
+
+|===
+
+
+=== Shelf di espansione SG6060
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Shelf di espansione senza dischi installati
+ a| 
+image::../media/de460c_table_size.gif[Appliance 4U SG5760]
+
+
+
+ a| 
+Pannello anteriore
+ a| 
+image::../media/front_bezel_for_table_de460c.gif[Pannello anteriore DE460C]
+
+
+
+ a| 
+60 unità NL-SAS
+ a| 
+image::../media/sg5760_drive.gif[Disco]
+
+
+
+ a| 
+Un kit di guide con istruzioni
+ a| 
+image::../media/rail_kit.gif[Kit di guide]
+
+
+
+ a| 
+Quattro maniglie
+ a| 
+image::../media/handles.gif[Maniglie SG5760]
+
+
+
+ a| 
+Staffe posteriori e dadi a gabbia per l'installazione in rack a foro quadrato
+ a| 
+image::../media/back_brackets_table_size.gif[Staffe posteriori e dadi a gabbia per SG5760]
+
+|===
+
+
+=== Hardware SGF6024
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Controller SG6000-CN
+ a| 
+image::../media/sg6000_cn_front_without_bezel.gif[Controller SG6000-CN]
+
+
+
+ a| 
+Flash array EF570 con 24 unità a stato solido (flash) installate
+ a| 
+image::../media/de224c_with_drives.gif[Shelf controller EF570]
+
+
+
+ a| 
+Due cornici anteriori
+ a| 
+image::../media/sgf6024_front_bezels_for_table.png[SG6024 Bezel anteriori]
+
+
+
+ a| 
+Due kit di guide con istruzioni
+ a| 
+image::../media/rail_kit.gif[Kit di guide]
+
+
+
+ a| 
+Cappucci terminali per shelf
+ a| 
+image::../media/endcaps.png[Cappucci terminali]
+
+|===
+
+
+=== Cavi e connettori
+
+La spedizione per un'appliance SG6000 include i seguenti cavi e connettori.
+
+
+TIP: Il cabinet potrebbe essere dotato di cavi di alimentazione speciali utilizzati al posto dei cavi di alimentazione forniti con l'apparecchio.
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Quattro cavi di alimentazione per il tuo paese
+ a| 
+image::../media/power_cords.gif[Cavi di alimentazione]
+
+
+
+ a| 
+Cavi ottici e ricetrasmettitori SFP
+ a| 
+image::../media/fc_cable_and_sfp.gif[Cavi ottici e SFP]
+
+* Quattro cavi ottici per le porte di interconnessione FC
+* Quattro ricetrasmettitori SFP+ che supportano FC a 16 GB/s.
+
+
+
+
+ a| 
+Opzionale: Due cavi SAS per il collegamento di ogni shelf di espansione SG6060
+ a| 
+image::../media/sas_cable.gif[Cavi SAS]
+
+|===
+
+
+== Appliance SG5700
+
+
+
+=== Hardware
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Appliance SG5712 con 12 dischi installati
+ a| 
+image::../media/de212c_table_size.gif[Appliance 2U SG5712]
+
+
+
+ a| 
+Appliance SG5760 senza unità installate
+ a| 
+image::../media/de460c_table_size.gif[Appliance 4U SG5760]
+
+
+
+ a| 
+Pannello anteriore dell'apparecchio
+ a| 
+image::../media/sg5700_front_bezels.gif[Cornici di SG5712 e SG5760]
+
+
+
+ a| 
+Kit di guide con istruzioni
+ a| 
+image::../media/rail_kit.gif[Kit di guide]
+
+
+
+ a| 
+SG5760: Sessanta dischi
+ a| 
+image::../media/sg5760_drive.gif[Disco]
+
+
+
+ a| 
+SG5760: Maniglie
+ a| 
+image::../media/handles.gif[Maniglie SG5760]
+
+
+
+ a| 
+SG5760: Staffe posteriori e dadi a gabbia per l'installazione in rack a foro quadrato
+ a| 
+image::../media/back_brackets_table_size.gif[Staffe posteriori e dadi a gabbia per SG5760]
+
+|===
+
+
+=== Cavi e connettori
+
+La spedizione per un'appliance SG5700 include i seguenti cavi e connettori.
+
+
+TIP: Il cabinet potrebbe essere dotato di cavi di alimentazione speciali utilizzati al posto dei cavi di alimentazione forniti con l'apparecchio.
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Due cavi di alimentazione per il tuo paese
+ a| 
+image::../media/power_cords.gif[Cavi di alimentazione]
+
+
+
+ a| 
+Cavi ottici e ricetrasmettitori SFP
+ a| 
+image::../media/fc_cable_and_sfp.gif[Cavi ottici e SFP]
+
+* Due cavi ottici per le porte di interconnessione FC
+* Otto ricetrasmettitori SFP+, compatibili con le quattro porte di interconnessione FC da 16 GB/s e le quattro porte di rete da 10 GbE
+
+
+|===
+
+
+== Appliance SG100 e SG1000
+
+
+
+=== Hardware
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+SG100 o SG1000
+ a| 
+image::../media/sg6000_cn_front_without_bezel.gif[Unità frontali SG 100 o SG1000 Services appliance]
+
+
+
+ a| 
+Kit di guide con istruzioni
+ a| 
+image::../media/rail_kit.gif[Kit di guide]
+
+|===
+
+
+=== Cavi di alimentazione
+
+La spedizione per un'appliance SG100 o SG1000 include i seguenti cavi di alimentazione.
+
+
+TIP: Il cabinet potrebbe essere dotato di cavi di alimentazione speciali utilizzati al posto dei cavi di alimentazione forniti con l'apparecchio.
+
+[cols="1a,4a"]
+|===
+| Elemento | Come si presenta 
+
+
+ a| 
+Due cavi di alimentazione per il tuo paese
+ a| 
+image::../media/power_cords.gif[Cavi di alimentazione]
+
+|===

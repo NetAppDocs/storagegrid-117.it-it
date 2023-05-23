@@ -1,0 +1,46 @@
+---
+permalink: admin/what-archive-node-is.html 
+sidebar: sidebar 
+keywords: archive node 
+summary: 'Facoltativamente, ogni sito del data center StorageGRID può essere implementato con un nodo di archiviazione, che consente di connettersi a un sistema di storage di archiviazione esterno mirato, come Tivoli Storage Manager (TSM).' 
+---
+= Che cos'è un nodo di archiviazione?
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Facoltativamente, ogni sito del data center StorageGRID può essere implementato con un nodo di archiviazione, che consente di connettersi a un sistema di storage di archiviazione esterno mirato, come Tivoli Storage Manager (TSM).
+
+[CAUTION]
+====
+Il supporto per i nodi di archiviazione (sia per l'archiviazione nel cloud utilizzando l'API S3 che per l'archiviazione su nastro utilizzando il middleware TSM) è obsoleto e verrà rimosso in una release futura. Lo spostamento di oggetti da un nodo di archiviazione a un sistema storage di archiviazione esterno è stato sostituito da pool di storage cloud ILM, che offrono maggiori funzionalità.
+
+Vedere:
+
+* link:../admin/migrating-objects-from-cloud-tiering-s3-to-cloud-storage-pool.html["Migrare gli oggetti in un pool di storage cloud"]
+* link:../ilm/what-cloud-storage-pool-is.html["Utilizza i Cloud Storage Pools"]
+
+
+Inoltre, è necessario rimuovere i nodi di archiviazione dal criterio ILM attivo in StorageGRID 11.7 o versioni precedenti. La rimozione dei dati degli oggetti memorizzati nei nodi di archiviazione semplificherà gli aggiornamenti futuri. Vedere link:../ilm/working-with-ilm-rules-and-ilm-policies.html["Utilizzo delle regole ILM e delle policy ILM"].
+
+====
+Il nodo di archiviazione fornisce un'interfaccia attraverso la quale è possibile indirizzare un sistema di storage di archiviazione esterno per lo storage a lungo termine dei dati a oggetti. Il nodo di archiviazione monitora inoltre questa connessione e il trasferimento dei dati degli oggetti tra il sistema StorageGRID e il sistema di archiviazione esterno di destinazione.
+
+Dopo aver configurato le connessioni alla destinazione esterna, è possibile configurare il nodo di archiviazione in modo da ottimizzare le prestazioni del TSM, disattivare un nodo di archiviazione quando un server TSM si avvicina alla capacità o non è disponibile e configurare le impostazioni di replica e recupero. È inoltre possibile impostare allarmi personalizzati per il nodo di archiviazione.
+
+I dati degli oggetti che non possono essere cancellati, ma a cui non si accede regolarmente, possono essere spostati in qualsiasi momento dai dischi rotanti di uno Storage Node e su uno storage di archiviazione esterno, come il cloud o il nastro. Questa archiviazione dei dati a oggetti viene eseguita attraverso la configurazione del nodo di archivio di un sito del data center e quindi la configurazione delle regole ILM in cui questo nodo di archivio viene selezionato come "destinazione" per le istruzioni di posizionamento del contenuto. Il nodo di archiviazione non gestisce i dati degli oggetti archiviati in sé; ciò viene ottenuto dal dispositivo di archiviazione esterno.
+
+
+NOTE: I metadati degli oggetti non vengono archiviati, ma rimangono nei nodi di storage.
+
+
+
+== Che cos'è il servizio ARC
+
+Il servizio Archive (ARC) sui nodi di archiviazione fornisce l'interfaccia di gestione che è possibile utilizzare per configurare le connessioni allo storage di archiviazione esterno, come ad esempio il nastro attraverso il middleware TSM.
+
+È il servizio ARC che interagisce con un sistema di storage di archiviazione esterno, inviando dati a oggetti per lo storage nearline ed eseguendo recuperi quando un'applicazione client richiede un oggetto archiviato. Quando un'applicazione client richiede un oggetto archiviato, un nodo di storage richiede i dati dell'oggetto al servizio ARC. Il servizio ARC invia una richiesta al sistema di storage di archiviazione esterno, che recupera i dati dell'oggetto richiesti e li invia al servizio ARC. Il servizio ARC verifica i dati dell'oggetto e li inoltra al nodo di storage, che a sua volta restituisce l'oggetto all'applicazione client richiedente.
+
+Le richieste di dati a oggetti archiviati su nastro tramite il middleware TSM vengono gestite per garantire l'efficienza dei recuperi. Le richieste possono essere ordinate in modo che gli oggetti memorizzati in ordine sequenziale su nastro vengano richiesti nello stesso ordine sequenziale. Le richieste vengono quindi messe in coda per l'invio al dispositivo di storage. A seconda del dispositivo di archiviazione, è possibile elaborare contemporaneamente più richieste di oggetti su diversi volumi.
