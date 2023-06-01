@@ -38,7 +38,7 @@ Per utilizzare sistemi e protocolli come SMTP, DNS, SSH o DHCP, è necessario ri
 La seguente tabella mostra le porte utilizzate per il traffico nei nodi.
 
 
-NOTE: Questo elenco non include le porte che potrebbero essere configurate come link:../admin/configuring-load-balancer-endpoints.html["endpoint del bilanciamento del carico"].
+NOTE: Questo elenco non include le porte che potrebbero essere configurate come link:../admin/configuring-load-balancer-endpoints.html["endpoint del bilanciamento del carico"] o utilizzato per link:../monitor/configuring-syslog-server.html["server syslog"].
 
 [cols="1a,1a,1a,1a,1a,4a"]
 |===

@@ -56,7 +56,7 @@ sidebar:
     - section: sg100-1000
   - title: Abilitare StorageGRID
     url: "/storagegrid-enable.html"
-  - title: Versioni precedenti
+  - title: Altre versioni
     url: "/earlier-versions.html"
   - title: Note legali
     url: "/legal-notices.html"
@@ -140,7 +140,7 @@ homepage:
       url: https://netapp.com/blog/
     - title: Community di NetApp
       url: https://community.netapp.com/
-  - title: Versioni precedenti
+  - title: Altre versioni
     links:
     - title: Documentazione di StorageGRID 11.6
       url: https://docs.netapp.com/us-en/storagegrid-116/index.html
