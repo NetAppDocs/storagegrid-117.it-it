@@ -71,9 +71,28 @@ Se l'account tenant dispone dell'autorizzazione *Usa connessione federazione gri
 *** Se si sta modificando un gruppo Swift, selezionare o deselezionare la casella di controllo *Swift Administrator*.
 
 
-.. Nella scheda *utenti*, aggiungere o rimuovere utenti locali.
+
+
+. Per aggiungere uno o più utenti locali al gruppo:
++
+.. Selezionare la scheda Users (utenti).
 +
 image::../media/manage_users.png[Gestire gli utenti]
+
+.. Selezionare *Aggiungi utenti*.
+.. Selezionare gli utenti che si desidera aggiungere e selezionare *Aggiungi utenti*.
++
+In alto a destra viene visualizzato il messaggio Success (operazione riuscita).
+
+
+
+. Per rimuovere utenti locali dal gruppo:
++
+.. Selezionare la scheda Users (utenti).
+.. Selezionare *Rimuovi utenti*.
+.. Selezionare gli utenti che si desidera rimuovere e selezionare *Rimuovi utenti*.
++
+In alto a destra viene visualizzato il messaggio Success (operazione riuscita).
 
 
 
