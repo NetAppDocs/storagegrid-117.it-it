@@ -25,7 +25,10 @@ Server di gestione delle chiavi (KMS) in Grid Manager
  a| 
 Tu link:kms-configuring.html["configurare un server di gestione delle chiavi"] Per il sito StorageGRID e. link:../installconfig/optional-enabling-node-encryption.html["abilitare la crittografia dei nodi per l'appliance"]. Quindi, un nodo appliance si connette al KMS per richiedere una chiave di crittografia a chiave (KEK). Questa chiave crittografa e decrta la chiave di crittografia dei dati (DEK) su ciascun volume.
  a| 
-Nodi appliance con *Node Encryption* attivato durante l'installazione. Tutti i dati dell'appliance sono protetti da perdite fisiche o rimozione dal data center. Può essere utilizzato con alcune appliance di storage e servizi StorageGRID.
+Nodi appliance con *Node Encryption* attivato durante l'installazione. Tutti i dati dell'appliance sono protetti da perdite fisiche o rimozione dal data center.
+
+
+NOTE: La gestione delle chiavi di crittografia con un KMS è supportata solo per i nodi di storage e le appliance di servizio.
 
 
 
