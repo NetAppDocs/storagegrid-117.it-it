@@ -525,12 +525,12 @@ L'istruzione di posizionamento inizia quando gli oggetti vengono inizialmente sa
  a| 
 Istruzioni per il posizionamento
  a| 
-2+1 erasure coding
+Utilizzare 2+1 erasure coding dal giorno 0 a per sempre
 
 |===
 . Ordinare il diagramma di conservazione per *periodo di tempo* e *pool di storage* per confermare le istruzioni di posizionamento.
 +
-** Il *periodo di tempo* per la regola è *giorno 0 - per sempre*. *Giorno 0* indica che la regola viene applicata quando i dati vengono sottoposti a tiering da ONTAP. *Per sempre*, StorageGRID non elimina i dati a più livelli da ONTAP a meno che non riceva una richiesta di eliminazione da ONTAP.
+** Il *periodo di tempo* per la regola è *giorno 0 - per sempre*. *Giorno 0* indica che la regola viene applicata quando i dati vengono sottoposti a tiering da ONTAP. *Per sempre* significa che ILM di StorageGRID non eliminerà i dati a più livelli da ONTAP.
 ** Il *Storage pool* per la regola è il pool di storage selezionato. *EC 2+1* indica che i dati verranno memorizzati utilizzando la codifica di cancellazione 2+1. Ogni oggetto verrà salvato come due frammenti di dati e un frammento di parità. I tre frammenti per ciascun oggetto verranno salvati in diversi nodi di storage in un singolo sito.
 
 
@@ -547,6 +547,9 @@ Per ulteriori informazioni su questo passaggio, vedere link:../ilm/creating-ilm-
 
 
 CAUTION: Quando si attiva un nuovo criterio ILM, StorageGRID utilizza tale criterio per gestire il posizionamento, la durata e la protezione dei dati di tutti gli oggetti nella griglia, inclusi gli oggetti esistenti e quelli appena acquisiti. In alcuni casi, l'attivazione di un nuovo criterio può causare lo spostamento degli oggetti esistenti in nuove posizioni.
+
+
+CAUTION: Per evitare la perdita di dati, non utilizzare una regola ILM che scadrà o eliminerà i dati del livello cloud di FabricPool. Impostare il periodo di conservazione su *forever* per garantire che gli oggetti FabricPool non vengano cancellati da ILM StorageGRID.
 
 .Fasi
 . Facoltativamente, aggiornare il nome * Policy* generato dal sistema. Per impostazione predefinita, il sistema aggiunge "`+ FabricPool`" al nome della policy attiva o proposta, ma è possibile specificare il proprio nome.
@@ -598,7 +601,7 @@ Poiché la regola FabricPool è la prima regola, tutti gli oggetti nel bucket Fa
 . Consulta il diagramma di conservazione per scoprire come conservare i diversi oggetti.
 +
 .. Selezionare *Espandi tutto* per visualizzare un diagramma di conservazione per ogni regola nella policy proposta.
-.. Selezionare *periodo di tempo* e *pool di storage* per rivedere il diagramma di conservazione.
+.. Selezionare *periodo di tempo* e *pool di storage* per rivedere il diagramma di conservazione. Confermare che le regole applicabili al bucket FabricPool o al tenant conservino gli oggetti *per sempre*.
 
 
 . Dopo aver esaminato la policy proposta, selezionare *Activate and Continue* (attiva e continua) per attivare la policy e passare alla fase di classificazione del traffico.

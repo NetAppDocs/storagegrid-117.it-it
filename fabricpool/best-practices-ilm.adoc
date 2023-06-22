@@ -33,7 +33,11 @@ La Best practice consigliata consiste nell'utilizzare la codifica di cancellazio
 
 CAUTION: Una regola ILM che crea una sola copia replicata per qualsiasi periodo di tempo mette i dati a rischio di perdita permanente. Se esiste una sola copia replicata di un oggetto, quest'ultimo viene perso in caso di errore o errore significativo di un nodo di storage. Inoltre, durante le procedure di manutenzione, ad esempio gli aggiornamenti, si perde temporaneamente l'accesso all'oggetto.
 
-* Non utilizzare una regola ILM che scadrà o eliminerà i dati del livello cloud di FabricPool. Impostare il periodo di conservazione in ogni regola ILM su "`forever`" per garantire che gli oggetti FabricPool non vengano cancellati da ILM StorageGRID.
+* Se necessario link:remove-fabricpool-data.html["Rimuovere i dati FabricPool da StorageGRID"], Utilizzare ONTAP per recuperare tutti i dati per il volume FabricPool e promuoverlo al livello di performance.
++
+
+CAUTION: Per evitare la perdita di dati, non utilizzare una regola ILM che scadrà o eliminerà i dati del livello cloud di FabricPool. Impostare il periodo di conservazione in ogni regola ILM su *forever* per garantire che gli oggetti FabricPool non vengano cancellati da ILM StorageGRID.
+
 * Non creare regole che spostino i dati del Tier cloud FabricPool dal bucket a un'altra posizione. Non è possibile utilizzare un pool di storage cloud per spostare i dati FabricPool in un altro archivio di oggetti. Allo stesso modo, non è possibile archiviare i dati FabricPool su nastro utilizzando un nodo di archiviazione.
 +
 
