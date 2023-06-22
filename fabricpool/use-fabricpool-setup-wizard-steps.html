@@ -3318,6 +3318,8 @@
   
 
 
+
+
         </li>
       </ul>
     
@@ -10573,7 +10575,14 @@
       class=" "
     ><a class="na-navbar-padding" href="/it-it/storagegrid-117/fabricpool/other-best-practices-for-storagegrid-and-fabricpool.html">
         Altre Best practice
-      </a></li></ul></li></ul></li></ul></li><li 
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Rimuovere i dati FabricPool da StorageGRID"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/it-it/storagegrid-117/fabricpool/remove-fabricpool-data.html">
+        Rimuovere i dati FabricPool da StorageGRID
+      </a></li></ul></li></ul></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="USA StorageGRID"
       data-li-level="1" 
@@ -15005,7 +15014,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-05-23 22:27:35 +0000">05/23/2023</time>
+    <time datetime="2023-06-22 22:10:15 +0000">06/22/2023</time>
     
   
 
@@ -15864,7 +15873,7 @@ Non chiudere questa pagina fino a quando non sono stati copiati entrambi i tasti
 <p>Istruzioni per il posizionamento</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>2+1 erasure coding</p>
+<p>Utilizzare 2+1 erasure coding dal giorno 0 a per sempre</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -15875,7 +15884,7 @@ Non chiudere questa pagina fino a quando non sono stati copiati entrambi i tasti
 <div class="ulist">
 <ul>
 <li>
-<p>Il <strong>periodo di tempo</strong> per la regola è <strong>giorno 0 - per sempre</strong>. <strong>Giorno 0</strong> indica che la regola viene applicata quando i dati vengono sottoposti a tiering da ONTAP. <strong>Per sempre</strong>, StorageGRID non elimina i dati a più livelli da ONTAP a meno che non riceva una richiesta di eliminazione da ONTAP.</p>
+<p>Il <strong>periodo di tempo</strong> per la regola è <strong>giorno 0 - per sempre</strong>. <strong>Giorno 0</strong> indica che la regola viene applicata quando i dati vengono sottoposti a tiering da ONTAP. <strong>Per sempre</strong> significa che ILM di StorageGRID non eliminerà i dati a più livelli da ONTAP.</p>
 </li>
 <li>
 <p>Il <strong>Storage pool</strong> per la regola è il pool di storage selezionato. <strong>EC 2+1</strong> indica che i dati verranno memorizzati utilizzando la codifica di cancellazione 2+1. Ogni oggetto verrà salvato come due frammenti di dati e un frammento di parità. I tre frammenti per ciascun oggetto verranno salvati in diversi nodi di storage in un singolo sito.</p>
@@ -15907,6 +15916,18 @@ Non chiudere questa pagina fino a quando non sono stati copiati entrambi i tasti
 </td>
 <td class="content">
 Quando si attiva un nuovo criterio ILM, StorageGRID utilizza tale criterio per gestire il posizionamento, la durata e la protezione dei dati di tutti gli oggetti nella griglia, inclusi gli oggetti esistenti e quelli appena acquisiti. In alcuni casi, l&#8217;attivazione di un nuovo criterio può causare lo spostamento degli oggetti esistenti in nuove posizioni.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/storagegrid-117/images/caution.svg" alt="Avvertenza">
+</td>
+<td class="content">
+Per evitare la perdita di dati, non utilizzare una regola ILM che scadrà o eliminerà i dati del livello cloud di FabricPool. Impostare il periodo di conservazione su <strong>forever</strong> per garantire che gli oggetti FabricPool non vengano cancellati da ILM StorageGRID.
 </td>
 </tr>
 </table>
@@ -16015,7 +16036,7 @@ Quando si attiva un nuovo criterio ILM, StorageGRID utilizza tale criterio per g
 <p>Selezionare <strong>Espandi tutto</strong> per visualizzare un diagramma di conservazione per ogni regola nella policy proposta.</p>
 </li>
 <li>
-<p>Selezionare <strong>periodo di tempo</strong> e <strong>pool di storage</strong> per rivedere il diagramma di conservazione.</p>
+<p>Selezionare <strong>periodo di tempo</strong> e <strong>pool di storage</strong> per rivedere il diagramma di conservazione. Confermare che le regole applicabili al bucket FabricPool o al tenant conservino gli oggetti <strong>per sempre</strong>.</p>
 </li>
 </ol>
 </div>
