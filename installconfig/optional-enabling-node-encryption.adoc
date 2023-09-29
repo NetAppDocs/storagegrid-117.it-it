@@ -28,7 +28,7 @@ Un'appliance con crittografia dei nodi abilitata si connette al server di gestio
 
 
 
-IMPORTANT: Prima che un dispositivo con crittografia dei nodi abilitata venga connesso al sistema di gestione delle chiavi (KMS), i dati dell'appliance vengono crittografati con una chiave temporanea non protetta. L'apparecchio non è protetto da rimozione o furto fino a quando la chiave non viene impostata su un valore fornito dal KMS.
+IMPORTANT: Quando si installa un appliance con la crittografia dei nodi attivata, viene assegnata una chiave temporanea. I dati sull'appliance non sono protetti finché l'appliance non viene collegata al sistema di gestione delle chiavi (KMS) e non viene impostata una chiave di sicurezza KMS. Vedere https://docs.netapp.com/us-en/storagegrid-117/admin/kms-overview-of-kms-and-appliance-configuration.html["Panoramica della configurazione dell'appliance KMS"^] per ulteriori informazioni.
 
 Senza la chiave KMS necessaria per decrittare il disco, i dati sull'appliance non possono essere recuperati e vengono effettivamente persi. Questo accade quando non è possibile recuperare la chiave di decrittografia dal KMS. La chiave diventa inaccessibile se un cliente cancella la configurazione del KMS, scade una chiave KMS, la connessione al KMS viene persa o l'appliance viene rimossa dal sistema StorageGRID in cui sono installate le chiavi KMS.
 
