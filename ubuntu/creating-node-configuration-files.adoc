@@ -617,17 +617,17 @@ link:../ubuntu/configuring-host-network.html#considerations-and-recommendations-
 
 
  a| 
-INTERFACES_TARGET_nnnn
+INTERFACE_TARGET_nnnn
  a| 
 O
  a| 
 Nome e descrizione opzionale per un'interfaccia aggiuntiva che si desidera aggiungere a questo nodo. È possibile aggiungere più interfacce aggiuntive a ciascun nodo.
 
-Per _nnnn_, specificare un numero univoco per ogni voce INTERFACES_TARGET che si sta aggiungendo.
+Per _nnnnn_, specificare un numero univoco per ogni voce di INTERFACCIA_TARGET che si sta aggiungendo.
 
 Per il valore, specificare il nome dell'interfaccia fisica sull'host bare-metal. Quindi, facoltativamente, aggiungere una virgola e fornire una descrizione dell'interfaccia, che viene visualizzata nella pagina delle interfacce VLAN e nella pagina dei gruppi ha.
 
-Ad esempio: `INTERFACES_TARGET_01=ens256, Trunk`
+Ad esempio: `INTERFACE_TARGET_0001=ens256, Trunk`
 
 Se si aggiunge un'interfaccia di linea, è necessario configurare un'interfaccia VLAN in StorageGRID. Se si aggiunge un'interfaccia di accesso, è possibile aggiungerla direttamente a un gruppo ha; non è necessario configurare un'interfaccia VLAN.
 

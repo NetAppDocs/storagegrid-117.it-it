@@ -114,7 +114,7 @@ La scheda *Restoration Progress* (avanzamento ripristino) mostra lo stato del pr
 
 image::../media/vol-restore-restore-progress.png[Ripristino del volume - scheda Restoration Progress (avanzamento ripristino)]
 
-I tassi di riparazione dei dati per gli oggetti replicati e con codifica di cancellazione in tutti i volumi sono stime che riassumono tutti i ripristini in corso, inclusi i ripristini iniziati con `repair-data` script. Viene indicata anche la percentuale di oggetti in quei volumi che sono intatti e non richiedono il ripristino.
+I tassi di riparazione dei dati per gli oggetti replicati e con erasure coding in tutti i volumi sono la media che riepiloga tutti i ripristini in corso, inclusi quelli avviati utilizzando `repair-data` script. Viene indicata anche la percentuale di oggetti in quei volumi che sono intatti e non richiedono il ripristino.
 
 
 NOTE: Il ripristino dei dati replicati dipende dalla disponibilità delle risorse in cui sono memorizzate le copie replicate. L'avanzamento del ripristino dei dati replicati non è lineare e potrebbe richiedere giorni o settimane.

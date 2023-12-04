@@ -13,9 +13,6 @@ summary: È necessario aggiornare le informazioni di licenza per il sistema Stor
 [role="lead"]
 È necessario aggiornare le informazioni di licenza per il sistema StorageGRID in qualsiasi momento in cui i termini della licenza cambiano. Ad esempio, è necessario aggiornare le informazioni sulla licenza se si acquista ulteriore capacità di storage per il grid.
 
-
-NOTE: Se si desidera modificare i termini della licenza o unire, dividere o ridistribuire una licenza esistente, contattare il supporto per aprire un caso di supporto non tecnico.
-
 .Prima di iniziare
 * Si dispone di un nuovo file di licenza da applicare al sistema StorageGRID.
 * Si dispone di autorizzazioni di accesso specifiche.

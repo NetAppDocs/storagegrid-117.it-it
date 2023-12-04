@@ -15,12 +15,19 @@ L'interfaccia utente per il controller di gestione della scheda base (BMC) sull'
 
 Per configurare il BMC durante l'installazione dell'appliance, attenersi alle seguenti procedure descritte in questa sezione:
 
-* Modificare la password root per l'interfaccia BMC
-* Impostare l'indirizzo IP per la porta di gestione BMC
-* Accedere all'interfaccia BMC
-* Configurare le impostazioni SNMP
-* Imposta notifiche e avvisi via email
+* link:../installconfig/changing-root-password-for-bmc-interface.html["Modificare la password root per l'interfaccia BMC"]
+* link:../installconfig/setting-ip-address-for-bmc-management-port.html["Impostare l'indirizzo IP per la porta di gestione BMC"]
+* link:../installconfig/accessing-bmc-interface.html["Accedere all'interfaccia BMC"]
+* link:../installconfig/configuring-snmp-settings-for-bmc.html["Configurare le impostazioni SNMP"]
+* link:../installconfig/setting-up-email-notifications-for-alerts.html["Impostare le notifiche e-mail per gli avvisi BMC"]
 
 
+[NOTE]
+====
+Se l'appliance è già stata installata in una griglia e sta eseguendo il software StorageGRID, attenersi alle seguenti procedure:
 
-NOTE: Se l'appliance è già stata installata in una griglia e viene eseguito il software StorageGRID, consultare le seguenti procedure per un meccanismo alternativo per la configurazione BMC.
+* link:../commonhardware/placing-appliance-into-maintenance-mode.html["Impostare l'apparecchio in modalità di manutenzione"] Per accedere al programma di installazione dell'appliance StorageGRID.
+* Vedere link:../installconfig/setting-ip-address-for-bmc-management-port.html["Impostare l'indirizzo IP per la porta di gestione BMC"] Per informazioni sull'accesso all'interfaccia BMC tramite il programma di installazione dell'appliance StorageGRID.
+
+
+====

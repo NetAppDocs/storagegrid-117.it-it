@@ -42,10 +42,10 @@ Il nodo non è disponibile per un breve periodo di tempo quando si aggiungono in
 
 . Aggiungere una voce al file per specificare il nome e, facoltativamente, la descrizione di ogni interfaccia aggiuntiva che si desidera aggiungere al nodo. USA questo formato.
 +
-`INTERFACES_TARGET_nnnn=_value_`
+`INTERFACE_TARGET_nnnn=_value_`
 
 +
-Per _nnnn_, specificare un numero univoco per ciascuno di essi `INTERFACES_TARGET` voce da aggiungere.
+Per _nnnn_, specificare un numero univoco per ciascuno di essi `INTERFACE_TARGET` voce da aggiungere.
 
 +
 Per _valore_, specificare il nome dell'interfaccia fisica sull'host bare-metal. Quindi, facoltativamente, aggiungere una virgola e fornire una descrizione dell'interfaccia, che viene visualizzata nella pagina delle interfacce VLAN e nella pagina dei gruppi ha.
@@ -54,7 +54,7 @@ Per _valore_, specificare il nome dell'interfaccia fisica sull'host bare-metal. 
 Ad esempio:
 
 +
-`INTERFACES_TARGET_01=ens256, Trunk`
+`INTERFACE_TARGET_0001=ens256, Trunk`
 
 +
 
