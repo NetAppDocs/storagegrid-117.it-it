@@ -18,6 +18,9 @@ Quando il messaggio AutoSupport non viene inviato, nella scheda *Results* della 
 image::../media/autosupport_results_tab.png[Errore invio messaggio AutoSupport]
 
 
+NOTE: Se è stato configurato un server proxy per inoltrare i messaggi AutoSupport a NetApp, è necessario link:configuring-admin-proxy-settings.html["verificare che le impostazioni di configurazione del server proxy siano corrette"].
+
+
 
 == Errore settimanale del messaggio AutoSupport
 

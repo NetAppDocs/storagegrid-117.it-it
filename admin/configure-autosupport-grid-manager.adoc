@@ -18,6 +18,9 @@ summary: È possibile attivare la funzione AutoSupport e le singole opzioni Auto
 * Si dispone dell'autorizzazione di accesso root o di altra configurazione della griglia.
 * Se si utilizza HTTPS per l'invio di messaggi AutoSupport, è stato fornito l'accesso a Internet in uscita al nodo di amministrazione primario, direttamente o link:configuring-admin-proxy-settings.html["utilizzando un server proxy"] (non sono richieste connessioni in entrata).
 * Se nella pagina StorageGRID AutoSupport è selezionato HTTP, è stato configurato un server proxy per l'inoltro dei messaggi AutoSupport come HTTPS. I server AutoSupport di NetApp rifiuteranno i messaggi inviati tramite HTTP.
++
+link:configuring-admin-proxy-settings.html["Informazioni sulla configurazione delle impostazioni proxy dell'amministratore"].
+
 * Se si utilizza SMTP come protocollo per i messaggi AutoSupport, è stato configurato un server di posta SMTP. La stessa configurazione del server di posta viene utilizzata per le notifiche e-mail di allarme (sistema legacy).
 
 
