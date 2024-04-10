@@ -44,7 +44,7 @@ Durante l'installazione, si utilizza VMware vSphere Web Client per implementare 
  a| 
 Laptop di assistenza
  a| 
-Il sistema StorageGRID viene installato tramite un taglioIl laptop di assistenza deve disporre di:
+Il sistema StorageGRID viene installato tramite un laptop di assistenza. Il laptop di assistenza deve disporre di:
 
 * Porta di rete
 * Client SSH (ad esempio, putty)
