@@ -16,6 +16,8 @@ summary: La documentazione relativa ad altre versioni del software NetApp Storag
 [role="lead"]
 La documentazione relativa ad altre versioni del software NetApp StorageGRID è disponibile qui:
 
+* https://docs.netapp.com/us-en/storagegrid/index.html["Documentazione di StorageGRID 11,9"^]
+* https://docs.netapp.com/us-en/storagegrid-118/index.html["Documentazione di StorageGRID 11,8"^]
 * https://docs.netapp.com/us-en/storagegrid-116/index.html["Documentazione di StorageGRID 11.6"^]
 * https://docs.netapp.com/us-en/storagegrid-115/index.html["Documentazione di StorageGRID 11.5"^]
 * https://docs.netapp.com/sgws-114/index.jsp["Centro documentazione di StorageGRID 11.4"^]
