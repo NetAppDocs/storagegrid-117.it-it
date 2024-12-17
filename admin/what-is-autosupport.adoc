@@ -1,7 +1,7 @@
 ---
 permalink: admin/what-is-autosupport.html 
 sidebar: sidebar 
-keywords: autosupport, technical support, storagegrid health, system status, Active IQ 
+keywords: autosupport, technical support, storagegrid health, system status, Digital Advisor 
 summary: La funzione AutoSupport consente al sistema StorageGRID di inviare messaggi di stato e di stato al supporto tecnico. 
 ---
 = Use AutoSupport: Panoramica
@@ -45,13 +45,13 @@ Se si chiude il messaggio, questo non viene visualizzato fino a quando la cache 
 
 
 
-== Che cos'è Active IQ?
+== Cos'è Digital Advisor?
 
-Active IQ è un consulente digitale basato sul cloud che sfrutta l'analisi predittiva e la saggezza della community della base installata di NetApp. Le valutazioni continue dei rischi, gli avvisi predittivi, le indicazioni prescrittive e le azioni automatizzate consentono di prevenire i problemi prima che si verifichino, migliorando lo stato di salute del sistema e la disponibilità del sistema.
+Digital Advisor è basato su cloud e sfrutta gli analytics predittivi e le conoscenze della community della base installata di NetApp. Le valutazioni continue dei rischi, gli avvisi predittivi, le indicazioni prescrittive e le azioni automatizzate consentono di prevenire i problemi prima che si verifichino, migliorando lo stato di salute del sistema e la disponibilità del sistema.
 
-Se si desidera utilizzare le dashboard e le funzionalità di Active IQ sul sito del supporto, è necessario attivare AutoSupport.
+È necessario attivare AutoSupport se si desidera utilizzare i dashboard e le funzionalità di Digital Advisor sul sito di supporto NetApp.
 
-https://docs.netapp.com/us-en/active-iq/index.html["Documentazione di Active IQ Digital Advisor"^]
+https://docs.netapp.com/us-en/active-iq/index.html["Documentazione di Digital Advisor"^]
 
 
 

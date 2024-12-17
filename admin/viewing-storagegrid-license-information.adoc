@@ -39,7 +39,7 @@ image::../media/dashboard_health_panel_license_status.png[Stato della licenza de
 ** Data di fine della licenza. *N/A* appare per una licenza perpetua.
 ** Data di fine del contratto di assistenza
 +
-Questa data viene letta dal file di licenza corrente e potrebbe non essere aggiornata se si estende o si rinnova il contratto del servizio di supporto dopo aver ottenuto il file di licenza. Per aggiornare questo valore, vedere link:updating-storagegrid-license-information.html["Aggiornare le informazioni sulla licenza StorageGRID"]. È inoltre possibile visualizzare la data di fine effettiva del contratto utilizzando Active IQ.
+Questa data viene letta dal file di licenza corrente e potrebbe non essere aggiornata se si estende o si rinnova il contratto del servizio di supporto dopo aver ottenuto il file di licenza. Per aggiornare questo valore, fare riferimento alla link:updating-storagegrid-license-information.html["Aggiornare le informazioni sulla licenza StorageGRID"]. È inoltre possibile visualizzare la data effettiva di fine del contratto utilizzando il consulente digitale Active IQ (noto anche come consulente digitale).
 
 ** Contenuto del file di testo della licenza
 +
