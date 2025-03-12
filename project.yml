@@ -1,6 +1,6 @@
 ---
 settings:
-  name: StorageGRID 11.7
+  name: StorageGRID
   search: storagegrid-enable,storagegrid-117
   downlevel: true
   internal:
@@ -10,10 +10,21 @@ settings:
     pdf_enabled: true
     harmony_enabled: false
     hide_language_selector: false
+  versions:
+  - version-number: '11.7'
+    url: "/storagegrid-117"
+  - version-number: '11.9'
+    url: "/storagegrid"
+  - version-number: '11.8'
+    url: "/storagegrid-118"
+  - version-number: '11.6'
+    url: "/storagegrid-116"
+  - version-number: '11.5'
+    url: "/storagegrid-115"
   langs: it-it,us-en,de-de,es-es,fr-fr,pt-br,ja-jp,ko-kr,zh-cn,zh-tw
 sidebar:
   entries:
-  - title: StorageGRID 11.7 documenti
+  - title: Documentazione di StorageGRID 11,7
     url: "/index.html"
   - title: Note di rilascio
     url: "/release-notes/index.html"
@@ -58,8 +69,6 @@ sidebar:
     - section: sg100-1000
   - title: Abilitare StorageGRID
     url: "/storagegrid-enable.html"
-  - title: Altre versioni
-    url: "/earlier-versions.html"
   - title: Note legali
     url: "/legal-notices.html"
 product-family:
